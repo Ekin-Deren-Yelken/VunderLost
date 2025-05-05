@@ -5,13 +5,13 @@
 
 namespace core {
     enum class DamageType { 
-        TEST,
         Physical,    // Medium Damage, High Accuracy
         Fire,        // High Damage, Low Accuracy
         Lightning,   // Mega Damage, Low Accuracy
         Frost,       // Medium Damage, Medium Accuracy
         Poison       // Low Damage, Mega Accuracy
     };
+
     enum class StatusType {
         None,        // no status
         Bleed,       // damage over time

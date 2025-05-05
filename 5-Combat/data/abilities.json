@@ -18,6 +18,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Frost",
     "effects": [
       {
         "status": "Frostbitten",
@@ -46,6 +47,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Shocked",
@@ -74,6 +76,7 @@
     "range": 0,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Frost",
     "effects": [
       {
         "status": "Fortified",
@@ -102,6 +105,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Bleed",
@@ -130,6 +134,7 @@
     "range": 2,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Frost",
     "effects": [
       {
         "status": "Frostbitten",
@@ -158,6 +163,7 @@
     "range": 3,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Fire",
     "effects": [
       {
         "status": "Scorched",
@@ -186,6 +192,7 @@
     "range": 3,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Lightning",
     "effects": [
       {
         "status": "Shocked",
@@ -214,6 +221,7 @@
     "range": 2,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Frost",
     "effects": [
       {
         "status": "Frostbitten",
@@ -242,6 +250,7 @@
     "range": 4,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Fire",
     "effects": [
       {
         "status": "Scorched",
@@ -270,6 +279,7 @@
     "range": 0,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Lighnting",
     "effects": [
       {
         "status": "DMG",
@@ -298,6 +308,7 @@
     "range": 4,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "DMG",
@@ -326,6 +337,7 @@
     "range": 4,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Poison",
     "effects": [
       {
         "status": "Poisoned",
@@ -354,6 +366,7 @@
     "range": 2,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Frost",
     "effects": [
       {
         "status": "Frostbitten",
@@ -382,6 +395,7 @@
     "range": 3,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [],
     "comment": "A rapid volley of arrows."
   },
@@ -404,6 +418,7 @@
     "range": 4,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Poisoned",
@@ -432,6 +447,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [],
     "comment": "High risk, high reward."
   },
@@ -454,6 +470,7 @@
     "range": 2,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Shocked",
@@ -482,6 +499,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Bleed",
@@ -510,6 +528,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Poisoned",
@@ -538,6 +557,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Lightning",
     "effects": [
       {
         "status": "DMG",
@@ -566,6 +586,7 @@
     "range": 2,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Shocked",
@@ -594,6 +615,7 @@
     "range": 2,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Shocked",
@@ -622,6 +644,7 @@
     "range": 3,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [
       {
         "status": "Poisoned",
@@ -650,6 +673,7 @@
     "range": 1,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Physical",
     "effects": [],
     "comment": "Absolutely Rekt."
   },
@@ -672,6 +696,7 @@
     "range": 3,
     "requiresQTE": false,
     "qteWindowMs": 0,
+    "instDType": "Frost",
     "effects": [
       {
         "status": "Frostbitten",

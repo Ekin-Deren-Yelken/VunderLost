@@ -48,4 +48,15 @@ namespace core {
         return DamageType::Physical;
     }
 
+    DamageType getDamageTypeFromStatus(StatusType status) {
+        switch (status) {
+            case StatusType::Bleed:       return DamageType::Physical;
+            case StatusType::Scorched:    return DamageType::Fire;
+            case StatusType::Frostbitten: return DamageType::Frost;
+            case StatusType::Poisoned:    return DamageType::Poison;
+            default:                      return DamageType::Physical; // fallback
+        }
+    }
+    
+
 }

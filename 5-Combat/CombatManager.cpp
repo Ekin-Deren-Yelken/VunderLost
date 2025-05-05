@@ -26,7 +26,6 @@ void CombatManager::startEncounter(std::vector<Character*>& players, std::vector
             enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
         if (!anyPlayerAlive || !anyEnemyAlive) break;
         std::cout << "\n-Next Combatant's Turn-\n";
-        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
     std::cout << (std::any_of(
@@ -72,8 +71,9 @@ void CombatManager::nextTurn() {
 }
 
 void CombatManager::playerTurn(Character& p) {
-    std::cout << "\n-- " << p.getName() << "'s turn --\n";
+    std::cout << "\n-- " << p.getName() << "'s turn --";
     p.printCombatStats();
+    std::cout << "\n";
 
     auto it = characterAbilities.find(&p);
     if (it == characterAbilities.end() || it->second.empty()) {
@@ -237,7 +237,7 @@ void CombatManager::resolveAbility(
     std::cout << "\nIt Hits!" << " Calculating Damage... \n\n";
     std::this_thread::sleep_for(std::chrono::seconds(1));
     int damage = RPGUtils::rollDice(a.damageRoll.count, a.damageRoll.sides) + a.damageRoll.bonus;
-    target.applyInstantDamage(damage, core::DamageType::TEST, a.name);  // damageRollType = new field if needed
+    target.applyInstantDamage(damage, a.dType, a.name);  // damageRollType = new field if needed
 
     
     std::this_thread::sleep_for(std::chrono::seconds(1));

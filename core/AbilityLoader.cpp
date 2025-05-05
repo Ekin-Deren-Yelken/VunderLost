@@ -47,6 +47,9 @@ namespace core {
                 a.requiresQTE  = j.at("requiresQTE").get<bool>();
                 a.qteWindowMs  = j.at("qteWindowMs").get<int>();
                 a.profession   = j.at("profession").get<std::string>();
+
+                auto dtStr = j.value("instDType", "Physical");
+                a.dType = stringToDamageType(dtStr);
     
                 // Optional comment
                 if (j.contains("comment"))
