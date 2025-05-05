@@ -19,14 +19,14 @@ void CombatManager::startEncounter(std::vector<Character*>& players, std::vector
     // loop until one side is wiped out, all players or enemies health is reduced to zero
     while (true) {
         nextTurn();
-        std::this_thread::sleep_for(std::chrono::seconds(3));
-        std::cout << "\n\nNext Combatant's Turn! \n";
-        std::this_thread::sleep_for(std::chrono::seconds(3));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         bool anyPlayerAlive = std::any_of(
             players.begin(), players.end(), [](Character* c){ return c->isAlive(); });
         bool anyEnemyAlive  = std::any_of(
             enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
         if (!anyPlayerAlive || !anyEnemyAlive) break;
+        std::cout << "\n-Next Combatant's Turn-\n";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
     std::cout << (std::any_of(
@@ -60,7 +60,7 @@ void CombatManager::nextTurn() {
     Character* actor = allCombatants[activeIndex]; // Actor is the who has the turn and they are doing something
     if (!actor->isAlive()) {
         std::cout << actor->getName() << "has been defeated, skipping...";
-        std::this_thread::sleep_for(std::chrono::seconds(2));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         // skip dead combatants, get next available player or enemy
     } else if (actor->isPlayer() || actor->getController()==ControllerType::Summoned) {
         playerTurn(*actor);
@@ -101,10 +101,9 @@ void CombatManager::playerTurn(Character& p) {
 
     for (size_t i = 0; i < usableAbilities.size(); ++i) {
         std::cout << "[" << i << "] " << usableAbilities[i].name
-                  << " | Mana Cost: " << usableAbilities[i].cost << "    Mana Available: "<< p.getCurrentMana() << "\n";
+                  << " (" << usableAbilities[i].cost << " mana)\n";
     }
-    std::this_thread::sleep_for(std::chrono::seconds(2));
-
+    std::cout << "Choose an ability to use > ";
     size_t abilityChoice;
     std::cin >> abilityChoice;
     const Ability& chosen = usableAbilities[abilityChoice];
@@ -123,21 +122,18 @@ void CombatManager::playerTurn(Character& p) {
     }
 
     // Let player choose target
-    std::cout << "\nChoose a target:\n";
+    std::cout << "\nAvailable targets: ";
     for (size_t i = 0; i < possibleTarget.size(); ++i) {
         std::cout << "[" << i << "] " << possibleTarget[i]->getName() << "    ";
         possibleTarget[i]->printCombatStats();
-        std::cout << "\n";
+        std::cout;
     }
-
+    std::cout << "Choose a Target > ";
     size_t targetChoice;
     std::cin >> targetChoice;
     Character* target = possibleTarget[targetChoice];
 
     resolveAbility(p, *target, chosen);
-    
-    std::cout << target->getName() << "'s Stats:";
-    target->printCombatStats();
 }
 
 void CombatManager::enemyTurn(Character& e) {
@@ -225,9 +221,9 @@ void CombatManager::resolveAbility(
     int toHit = RPGUtils::rollDice(a.hitRoll.count, a.hitRoll.sides)
                 + a.hitRoll.bonus;
 
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    std::cout << "Roll to Hit..." << " You need " << a.hitThreshold << "\n\n Rolling Dice..."; // TLDR; DISPLAY ODDS HERE
-    std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::cout << "Roll to hit:" << " you need " << a.hitThreshold << "\n\n Rolling Dice..."; // TLDR; DISPLAY ODDS HERE
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 
 
 
@@ -239,15 +235,14 @@ void CombatManager::resolveAbility(
 
     // 2) Roll damage
     std::cout << "\nIt Hits!" << " Calculating Damage... \n\n";
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     int damage = RPGUtils::rollDice(a.damageRoll.count, a.damageRoll.sides) + a.damageRoll.bonus;
+    target.applyInstantDamage(damage, core::DamageType::TEST, a.name);  // damageRollType = new field if needed
 
-    // Apply the damage as an Effect so that multipliers/DoT work uniformly
-    target.applyEffect(core::Effect(core::DamageType::Physical, damage), a.name);
     
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    std::cout << " Applying Status Effects...\n\n";
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    std::cout << "\n Applying Status Effects...\n\n";
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 
     // 3) Apply any status effects
     for (auto& e : a.effects) {
@@ -257,13 +252,13 @@ void CombatManager::resolveAbility(
 
      // 5) Show the flavor comment
     if (!a.comment.empty()) {
-       std::cout << a.comment << "\n";
+       std::cout << a.comment << "\n\n";
     }
 
     // (Optional) QTE hook here for bonus
 }
 
 void CombatManager::endTurnCleanup() {
-    for (auto* c : allCombatants)
-        c->tickStatuses();
+    for (auto* c : allCombatants)         c->tickStatuses();
+
 }

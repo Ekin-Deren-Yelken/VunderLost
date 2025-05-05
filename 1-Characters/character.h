@@ -135,6 +135,7 @@ public:
     // Combat hooks
     void applyEffect(const core::Effect& e, const std::string& sourceName);
     void tickStatuses();
+    void applyInstantDamage(int dmg, core::DamageType type, const std::string& source);
 
     // Ability API
     void addAbility(const core::Ability& a);

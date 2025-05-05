@@ -5,6 +5,7 @@
 
 namespace core {
     enum class DamageType { 
+        TEST,
         Physical,    // Medium Damage, High Accuracy
         Fire,        // High Damage, Low Accuracy
         Lightning,   // Mega Damage, Low Accuracy
@@ -34,8 +35,8 @@ namespace core {
 
     struct Effect {
         // Single field per effect
-        int        dmgValue; // amount of instant damage
-        int        dotValue;
+        int        dmgValue = 0; // amount of instant damage
+        int        dotValue = 0;
         StatusType status;   // for Damage over time (DoT) or debuff effects
         int        duration;  // turns remaining for debuff or DoT
         core::DamageType dmgType = core::DamageType::Physical;
@@ -51,12 +52,11 @@ namespace core {
         {}
 
         Effect(StatusType s, int dur, int dot = 0, int dmg = 0, DamageType type = DamageType::Physical)
-            : status(s)
-            , duration(dur)
-            , dotValue(dot)
-            , dmgValue(dmg)
-            , dmgType(type)
-        {}
+        : status(s)
+        , duration(dur)
+        , dotValue(dot)
+        , dmgValue(dmg)
+        , dmgType(type) {}
     };
 
 }

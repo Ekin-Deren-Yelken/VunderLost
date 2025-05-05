@@ -169,8 +169,7 @@ void Character::printStats() const {
 }
 
 void Character::printCombatStats() const {
-    std::cout << name << "'s Stats: \n"
-              << "Health: " << currentHealth << "/" << maxHealth << "\n"
+    std::cout << "\nHealth: " << currentHealth << "/" << maxHealth << "\n"
               << "Mana: " << currentMana << "/" << maxMana << "\n";
 }
 
@@ -279,11 +278,12 @@ void Character::applyEffect(const core::Effect& e, const std::string& sourceName
                        || e.status == core::StatusType::Scorched
                        || e.status == core::StatusType::Poisoned
                        || e.status == core::StatusType::Frostbitten)
-                         ? e.dmgValue
+                         ? e.dotValue
                          : 0;
         node.dmgMultiplier    = 1.0f;
         node.accuracyModifier = 1.0f;
         node.flatDamageBuff   = 0;
+        node.damageType = e.dmgType;
 
         switch (e.status) {
             case core::StatusType::Shocked:
@@ -304,7 +304,7 @@ void Character::applyEffect(const core::Effect& e, const std::string& sourceName
 
         activeStatuses.push_back(node);
         std::cout << name
-                  << " gains status " << static_cast<int>(e.status)
+                  << " gains " << core::status_toString(node.status)
                   << " for " << e.duration << " turns.\n";
     }
 }
@@ -318,8 +318,8 @@ void Character::tickStatuses() {
                       << " " << core::damage_toString(node.damageType) << " damage from "
                       << core::status_toString(node.status)
                       << " (" << node.turnsLeft << " turns left)\n";
-
-
+            std::cout << name << ": ";
+            printCombatStats();
         }
         // Decrement duration
         --node.turnsLeft;
@@ -334,6 +334,19 @@ void Character::tickStatuses() {
         activeStatuses.end()
     );
 }
+void Character::applyInstantDamage(int dmg, core::DamageType type, const std::string& source) {
+    float finalDmg = static_cast<float>(dmg);
+    for (const auto& node : activeStatuses)
+        finalDmg *= node.dmgMultiplier;
+
+    int finalInt = static_cast<int>(finalDmg);
+    currentHealth -= finalInt;
+
+    std::cout << name << " takes " << finalInt << " " 
+              << core::damage_toString(type) 
+              << " damage from " << source << "!\n";
+}
+
 
 // ─── Ability API ─────────────────────────────────────────────────────────────
 void Character::addAbility(const core::Ability& a) {

@@ -61,17 +61,14 @@ namespace core {
                 a.damageRoll = { dr.at("count"), dr.at("sides"), dr.at("bonus") };
     
                 // Effects
-                for (const auto& ef : j.at("effects")) {
-                    auto st       = stringToStatusType(ef.at("status").get<std::string>());
-                    int  dur      = ef.at("duration").get<int>();
-                    int  dot      = ef.value("dotValue", 0);
-                    int  dmg      = ef.value("dmgValue", 0);
-                    auto dmgType  = stringToDamageType(ef.value("dmgType", "Physical"));
-    
-                    Effect effect(st, dur, dot, dmg, dmgType);
-                    effect.source = a.name;
-    
-                    a.effects.emplace_back(std::move(effect));
+                for (auto& ef : j.at("effects")) {
+                    auto st   = stringToStatusType(ef.at("status").get<std::string>());
+                    int  dur  = ef.at("duration").get<int>();
+                    int  dot  = ef.value("dotValue", 0);
+                    int  dmg  = ef.value("dmgValue", 0);  // If any instant damage
+                    auto dt   = stringToDamageType(ef.value("damageType", "Physical"));
+                
+                    a.effects.emplace_back(st, dur, dot, dmg, dt); 
                 }
     
                 m.emplace(j.at("id").get<std::string>(), std::move(a));
