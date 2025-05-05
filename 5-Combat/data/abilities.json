@@ -3,6 +3,7 @@
     "id": "ice_crash",
     "name": "Ice Crash",
     "profession": "Knight",
+    "abilityTarget": "enemy",
     "cost": 4,
     "hitRoll": {
       "count": 1,
@@ -32,6 +33,7 @@
     "id": "shield_bash",
     "name": "Shield Bash",
     "profession": "Knight",
+    "abilityTarget": "enemy",
     "cost": 3,
     "hitRoll": {
       "count": 1,
@@ -59,8 +61,9 @@
   },
   {
     "id": "iron_will",
-    "name": "Iron Will",
+    "name": "Iron Will (self target)",
     "profession": "Knight",
+    "abilityTarget": "self",
     "cost": 3,
     "hitRoll": {
       "count": 1,
@@ -90,6 +93,7 @@
     "id": "brutal_cleave",
     "name": "Brutal Cleave",
     "profession": "Knight",
+    "abilityTarget": "enemy",
     "cost": 4,
     "hitRoll": {
       "count": 1,
@@ -119,6 +123,7 @@
     "id": "winters_endurance",
     "name": "Winter's Endurance",
     "profession": "Knight",
+    "abilityTarget": "enemy",
     "cost": 6,
     "hitRoll": {
       "count": 1,
@@ -148,6 +153,7 @@
     "id": "fireball",
     "name": "Fireball",
     "profession": "Mage",
+    "abilityTarget": "enemy",
     "cost": 5,
     "hitRoll": {
       "count": 2,
@@ -177,6 +183,7 @@
     "id": "lightning_strike",
     "name": "Lightning Strike",
     "profession": "Mage",
+    "abilityTarget": "enemy",
     "cost": 9,
     "hitRoll": {
       "count": 2,
@@ -206,6 +213,7 @@
     "id": "frost_nova",
     "name": "Frost Nova",
     "profession": "Mage",
+    "abilityTarget": "enemy",
     "cost": 3,
     "hitRoll": {
       "count": 3,
@@ -235,6 +243,7 @@
     "id": "pyroclasm",
     "name": "Pyroclasm",
     "profession": "Mage",
+    "abilityTarget": "enemy",
     "cost": 6,
     "hitRoll": {
       "count": 3,
@@ -264,6 +273,7 @@
     "id": "arcane_focus",
     "name": "Arcane Focus",
     "profession": "Mage",
+    "abilityTarget": "enemy",
     "cost": 4,
     "hitRoll": {
       "count": 0,
@@ -293,6 +303,7 @@
     "id": "piercing_shot",
     "name": "Piercing Shot",
     "profession": "Archer",
+    "abilityTarget": "enemy",
     "cost": 4,
     "hitRoll": {
       "count": 3,
@@ -322,6 +333,7 @@
     "id": "poison_arrow",
     "name": "Poison Arrow",
     "profession": "Archer",
+    "abilityTarget": "enemy",
     "cost": 5,
     "hitRoll": {
       "count": 2,
@@ -351,6 +363,7 @@
     "id": "frost_trap",
     "name": "Frost Trap",
     "profession": "Archer",
+    "abilityTarget": "enemy",
     "cost": 5,
     "hitRoll": {
       "count": 3,
@@ -380,6 +393,7 @@
     "id": "rapid_volley",
     "name": "Rapid Volley",
     "profession": "Archer",
+    "abilityTarget": "enemy",
     "cost": 6,
     "hitRoll": {
       "count": 3,
@@ -403,6 +417,7 @@
     "id": "toxic_rain",
     "name": "Toxic Rain",
     "profession": "Archer",
+    "abilityTarget": "enemy",
     "cost": 6,
     "hitRoll": {
       "count": 2,
@@ -432,6 +447,7 @@
     "id": "backstab",
     "name": "Backstab",
     "profession": "Thief",
+    "abilityTarget": "enemy",
     "cost": 8,
     "hitRoll": {
       "count": 3,
@@ -453,8 +469,9 @@
   },
   {
     "id": "smoke_bomb",
-    "name": "Smoke Bomb",
+    "name": "Smoke Bomb (self target)",
     "profession": "Thief",
+    "abilityTarget": "self",
     "cost": 6,
     "hitRoll": {
       "count": 2,
@@ -473,9 +490,9 @@
     "instDType": "Physical",
     "effects": [
       {
-        "status": "Shocked",
+        "status": "Fortified",
         "duration": 2,
-        "dotValue": 4
+        "dotValue": 10
       }
     ],
     "comment": "Quick. This is your get-away."
@@ -484,6 +501,7 @@
     "id": "crippling_cut",
     "name": "Crippling Cut",
     "profession": "Thief",
+    "abilityTarget": "enemy",
     "cost": 2,
     "hitRoll": {
       "count": 13,
@@ -513,6 +531,7 @@
     "id": "viper_blade",
     "name": "Viper Blade",
     "profession": "Thief",
+    "abilityTarget": "enemy",
     "cost": 4,
     "hitRoll": {
       "count": 2,
@@ -542,6 +561,7 @@
     "id": "silent_step",
     "name": "Silent Step",
     "profession": "Thief",
+    "abilityTarget": "enemy",
     "cost": 3,
     "hitRoll": {
       "count": 1,
@@ -571,6 +591,7 @@
     "id": "banana_peel",
     "name": "Banana Peel",
     "profession": "Clown",
+    "abilityTarget": "enemy",
     "cost": 2,
     "hitRoll": {
       "count": 2,
@@ -600,6 +621,7 @@
     "id": "seltzer_spray",
     "name": "Seltzer Spray",
     "profession": "Clown",
+    "abilityTarget": "enemy",
     "cost": 3,
     "hitRoll": {
       "count": 2,
@@ -629,6 +651,7 @@
     "id": "poison_pie",
     "name": "Poison Pie",
     "profession": "Clown",
+    "abilityTarget": "enemy",
     "cost": 5,
     "hitRoll": {
       "count": 3,
@@ -658,6 +681,7 @@
     "id": "balloon_barrage",
     "name": "Balloon Barrage",
     "profession": "Clown",
+    "abilityTarget": "enemy",
     "cost": 3,
     "hitRoll": {
       "count": 3,
@@ -681,6 +705,7 @@
     "id": "laugh_riot",
     "name": "Laugh Riot",
     "profession": "Clown",
+    "abilityTarget": "enemy",
     "cost": 4,
     "hitRoll": {
       "count": 1,

@@ -1,0 +1,27 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 3,
+    "controller": 1,
+    "currentHealth": 160,
+    "currentMana": 86,
+    "currentTitle": "",
+    "gender": "homosexual",
+    "level": 1,
+    "maxHealth": 160,
+    "maxMana": 86,
+    "name": "",
+    "profession": "Archer",
+    "race": "beast",
+    "sex": "male",
+    "stats": {
+        "CHARM": 4,
+        "DEX": 6,
+        "GIRTH": 7,
+        "INT": 7,
+        "LUCK": 7,
+        "STR": 11
+    },
+    "titles": [],
+    "trainingPoints": 0
+}

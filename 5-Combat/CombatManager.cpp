@@ -97,43 +97,54 @@ void CombatManager::playerTurn(Character& p) {
     }
 
     std::this_thread::sleep_for(std::chrono::seconds(1));
-    // Show ability list
 
+    // Show ability list
     for (size_t i = 0; i < usableAbilities.size(); ++i) {
         std::cout << "[" << i << "] " << usableAbilities[i].name
                   << " (" << usableAbilities[i].cost << " mana)\n";
     }
+
+    // Choose Ability
     std::cout << "Choose an ability to use > ";
     size_t abilityChoice;
     std::cin >> abilityChoice;
     const Ability& chosen = usableAbilities[abilityChoice];
 
-    // Build enemy target list
-    std::vector<Character*> possibleTarget;
-    for (Character* c : allCombatants) {
-        if (c->getController() == ControllerType::AI && c->isAlive()) {
-            possibleTarget.push_back(c);
+    // Ensure Spell hits correct target
+    if (chosen.abilityTarget == "self") {
+        // Resolve with self target
+        resolveAbility(p, p, chosen);
+    } else {
+        // Build enemy target list
+        std::vector<Character*> possibleTarget;
+        for (Character* c : allCombatants) {
+            if (c->getController() == ControllerType::AI && c->isAlive()) {
+                possibleTarget.push_back(c);
+            }
         }
+        
+        // Valid Targets?
+        if (possibleTarget.empty()) {
+            std::cout << "There are no valid targets.\n";
+            return;
+        }
+        // Player Target Choice
+        std::cout << "\nAvailable targets: ";
+        for (size_t i = 0; i < possibleTarget.size(); ++i) {
+            std::cout << "[" << i << "] " << possibleTarget[i]->getName() << "    ";
+            possibleTarget[i]->printCombatStats();
+            std::cout;
+        }
+        // Get Choice
+        std::cout << "Choose a Target > ";
+        size_t targetChoice;
+        std::cin >> targetChoice;
+        Character* target = possibleTarget[targetChoice];
+
+        // Resolve
+        resolveAbility(p, *target, chosen);
     }
 
-    if (possibleTarget.empty()) {
-        std::cout << "There are no valid targets.\n";
-        return;
-    }
-
-    // Let player choose target
-    std::cout << "\nAvailable targets: ";
-    for (size_t i = 0; i < possibleTarget.size(); ++i) {
-        std::cout << "[" << i << "] " << possibleTarget[i]->getName() << "    ";
-        possibleTarget[i]->printCombatStats();
-        std::cout;
-    }
-    std::cout << "Choose a Target > ";
-    size_t targetChoice;
-    std::cin >> targetChoice;
-    Character* target = possibleTarget[targetChoice];
-
-    resolveAbility(p, *target, chosen);
 }
 
 void CombatManager::enemyTurn(Character& e) {
@@ -163,15 +174,23 @@ void CombatManager::enemyTurn(Character& e) {
     int idx = RPGUtils::rollDice(1, usable.size()) - 1;
     const auto& chosen = usable[idx];
 
-    // Targetting Rule:
-    // Focus on Characters who are Summond first
-    // If an opponent is below 25% health
-    Character* target = chooseAITarget();
-    if (!target) {
-        std::cout << e.getName() << " finds no valid target.\n";
-        return;
+    // Ensure correct target
+    if (chosen.abilityTarget == "self") {
+        resolveAbility(e, e, chosen);
+    } else {
+        // Targetting Rule:
+        // Focus on Characters who are Summond first
+        // If an opponent is below 25% health
+        Character* target = chooseAITarget();
+        if (!target) {
+            std::cout << e.getName() << " finds no valid target.\n";
+            return;
+        }
+        resolveAbility(e, *target, chosen);
     }
-    resolveAbility(e, *target, chosen);
+    
+
+    
     
 }
 

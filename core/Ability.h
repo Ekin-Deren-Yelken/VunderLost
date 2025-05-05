@@ -17,6 +17,7 @@ struct Ability {
     DiceSpec            damageRoll;            // Which Dice to use
     DiceSpec            hitRoll;               // use bonus as the “to‐hit” target number
     int                 hitThreshold;          // Threshold for ability to hit
+    std::string abilityTarget = "enemy";       // Possible target for spell (self or enemy)
 
     std::vector<Effect> effects;               // damage + status effects
 

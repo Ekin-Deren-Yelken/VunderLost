@@ -50,7 +50,9 @@ namespace core {
 
                 auto dtStr = j.value("instDType", "Physical");
                 a.dType = stringToDamageType(dtStr);
-    
+                if (j.contains("abilityTarget"))
+                    a.abilityTarget = j.at("abilityTarget").get<std::string>();
+
                 // Optional comment
                 if (j.contains("comment"))
                     a.comment = j.at("comment").get<std::string>();
