@@ -59,6 +59,7 @@ protected:
         float            dmgMultiplier; // multiplies incoming damage (e.g. 1.2 for +20%)
         float            accuracyModifier; // modifies hit chance (e.g. 0.8 for -20%)
         int              flatDamageBuff; // flat bonus added to next outgoing damage
+        core::DamageType damageType = core::DamageType::Physical;
     };
     std::vector<StatusNode> activeStatuses;
 
@@ -85,7 +86,7 @@ public:
     
     // Stat and attribute setters
     void setStat(const std::string& statName, int val);
-    void Character::setHealthMana(std::string type, int delta);
+    void setHealthMana(std::string type, int delta);
     void setRace(const std::string& raceValue);
     void setProfession(const std::string& professionValue);
     void setSex(const std::string& sexValue);
@@ -93,8 +94,8 @@ public:
     void setAct(int value);
     void addTitle(const std::string& title);
 
-    void Character::setHealth(int delta);
-    void Character::setMana(int delta);
+    void setHealth(int delta);
+    void setMana(int delta);
 
     //  Sttus Checks
     bool isAlive() const;
@@ -112,10 +113,10 @@ public:
     int getTrainingPoints() const;
     std::string getDisplayName() const;
     
-    int         Character::getMaxHealth() const;
-    int         Character::getMaxMana() const;
-    int         Character::getCurrentHealth() const;
-    int         Character::getCurrentMana() const;
+    int getMaxHealth() const;
+    int getMaxMana() const;
+    int getCurrentHealth() const;
+    int getCurrentMana() const;
     
     // XP and Leveling
     void spendTrainingPoint(const std::string& statName);
@@ -132,7 +133,7 @@ public:
     void loadFromJson(const json& j);
 
     // Combat hooks
-    void applyEffect(const core::Effect& e);
+    void applyEffect(const core::Effect& e, const std::string& sourceName);
     void tickStatuses();
 
     // Ability API

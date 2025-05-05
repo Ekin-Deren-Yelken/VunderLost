@@ -148,9 +148,11 @@ void runCharacterSelection(Character& player) {
 
     // 4. Final confirmation
     std::cout << "\nMhm, I see... " << player.getDisplayName()
-              << ". You are, in fact, " << player.getGender()
+              << ". You are, in fact, a " << player.getGender()
               << " " << player.getSex()
-              << " " << player.getRace() << ".\n\n S...\n";
+              << " " << player.getRace() << ".\n";
+
+    waitForEnter();
 
     std::cout << "You hear footsteps approaching your cell... knightly footsteps.\n\n";
 
@@ -212,6 +214,8 @@ void runCharacterSelection(Character& player) {
             // 3) Assign to player
             player.setProfession(chosenClass);
             player.setAct(1);
+            player.setHealth(player.getMaxHealth());
+            player.setMana(player.getMaxMana());
             waitForEnter();
             break;
         }

@@ -1,6 +1,8 @@
 #include "stat_utils.h"
 #include "../core/Effect.h"
+#include "../core/status_util.h"
 #include "../core/AbilityLoader.h"
+#include "../core/status_util.h"
 #include <iostream>
 #include "character.h"
 
@@ -248,7 +250,7 @@ void Character::loadFromJson(const json& j) {
 }
 
 // ─── Combat Hooks ─────────────────────────────────────────────────────────────
-void Character::applyEffect(const core::Effect& e) {
+void Character::applyEffect(const core::Effect& e, const std::string& sourceName) {
     // --- Instant Damage with multipliers from active statuses ---
 
     // Only handle effects that deal damage in this method
@@ -260,7 +262,11 @@ void Character::applyEffect(const core::Effect& e) {
         }
         int finalDmg = static_cast<int>(dmg);
         currentHealth -= finalDmg;
-        std::cout << name << " takes " << finalDmg << " damage." << std::endl;
+
+        std::cout << name << " takes " << finalDmg << " "
+          << core::damage_toString(e.dmgType)
+          << " damage from " << sourceName << ".\n";
+
     }
 
     // --- Add new status effect to the list ---
@@ -307,9 +313,13 @@ void Character::tickStatuses() {
     for (auto& node : activeStatuses) {
         // --- Damage over Time ---
         if (node.dotValue > 0) {
-            currentHealth -= node.dotValue;
-            std::cout << name << " suffers " << node.dotValue 
-                      << " damage from status." << std::endl;
+            setHealth(-node.dotValue);
+            std::cout << name << " takes " << node.dotValue
+                      << " " << core::damage_toString(node.damageType) << " damage from "
+                      << core::status_toString(node.status)
+                      << " (" << node.turnsLeft << " turns left)\n";
+
+
         }
         // Decrement duration
         --node.turnsLeft;

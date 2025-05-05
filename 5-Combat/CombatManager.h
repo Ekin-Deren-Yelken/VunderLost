@@ -19,7 +19,7 @@ public:
 
 private:
     std::vector<Character*>      allCombatants;   // combined turn order
-    std::map<Character*, std::vector<Ability>> characterAbilities;       // list of available abilities by character
+    std::map<Character*, std::vector<core::Ability>> characterAbilities;       // list of available abilities by character
     size_t                       activeIndex = 0; // whose turn it is
 
     // Loads a prototype list of abilities (hard-coded or from JSON)
@@ -34,7 +34,7 @@ private:
     // Handles an AI-controlled enemy's turn
     void enemyTurn(Character& e);
 
-    Character* CombatManager::chooseAITarget();
+    Character* chooseAITarget();
 
     void summondTurn(Character& e);
 

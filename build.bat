@@ -9,11 +9,9 @@ g++ ^
   core/Effect.cpp ^
   core/Ability.cpp ^
   core/AbilityLoader.cpp ^
+  core/status_util.cpp ^
   3-Story/story.cpp ^
   3-Story/act1.cpp ^
-  3-Story/act2.cpp ^
-  3-Story/act3.cpp ^
-  3-Story/act4.cpp ^
   4-Saves/save_system.cpp ^
   5-Combat/CombatManager.cpp ^
   -std=c++17 -o game

@@ -47,6 +47,7 @@ namespace core {
                 a.range        = j.at("range").get<int>();
                 a.requiresQTE  = j.at("requiresQTE").get<bool>();
                 a.qteWindowMs  = j.at("qteWindowMs").get<int>();
+                a.effects.back().source = j.at("name");
                 if (j.contains("comment"))
                     a.comment  = j.at("comment").get<std::string>();
                 for (auto& ef : j.at("effects")) {

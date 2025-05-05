@@ -34,10 +34,12 @@ namespace core {
 
     struct Effect {
         // Single field per effect
-        DamageType dmgType;  // insatnt damage
         int        dmgValue; // amount of instant damage
         StatusType status;   // for Damage over time (DoT) or debuff effects
         int        duration;  // turns remaining for debuff or DoT
+        core::DamageType dmgType = core::DamageType::Physical;
+
+        std::string source; 
 
         // Constructor for Damage. Easy to access everything.
         Effect(DamageType dt, int val)

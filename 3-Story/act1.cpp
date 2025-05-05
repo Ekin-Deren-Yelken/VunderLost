@@ -76,12 +76,12 @@ void runAct1(Character& player) {
     auto* slime = loadMonster("5-Combat/data/slime.json");
 
     std::cout << slime->getDisplayName()
-          << " slithers closer and sneers:\n\n";
+          << ":\n\n";
 
     std::cout << "\"Humpty dum, humpty dee,\n"
             << "Who dares disturb the slimey me?\n"
-            << "Flesh and bone don’t stand a chance—\n"
-            << "Come now, stranger, join me for a DANCE!\"\n\n";
+            << "Flesh and bone don't stand a chance-\n"
+            << "Come now, stranger, let us DANCE!\"\n\n";
 
     waitForEnter();
 
@@ -90,8 +90,9 @@ void runAct1(Character& player) {
     std::vector<Character*> enemies;
 
     if (slime) enemies.push_back(slime);
-
+    
     combat::CombatManager cm;
+    std::cout << "\nstart combat\n";
     cm.startEncounter(players, enemies);
     waitForEnter();
     for (auto* enemy : enemies) delete enemy;

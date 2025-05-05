@@ -1,6 +1,7 @@
 #include "CombatManager.h"
 #include "../0-utils/rpg_utils.h"    // for rollDice, chanceRoll
 #include "../core/AbilityLoader.h"
+#include "../core/Effect.h"
 #include <iostream>
 #include <algorithm>
 #include <chrono>
@@ -10,10 +11,12 @@ using namespace combat;
 using namespace core;
 
 void CombatManager::startEncounter(std::vector<Character*>& players, std::vector<Character*>& enemies) {
+    std::cout << "\ntrace 1\n";
     // build turn order: players then enemies
     allCombatants = players;
     allCombatants.insert(allCombatants.end(), enemies.begin(), enemies.end());
     loadAbilities();
+    std::cout << "\ntrace 2\n";
     activeIndex = 0;
     // loop until one side is wiped out, all players or enemies health is reduced to zero
     while (true) {
@@ -57,6 +60,7 @@ void CombatManager::loadAbilities() {
 }
 
 void CombatManager::nextTurn() {
+    std::cout << "\ntrace 1\n";
     Character* actor = allCombatants[activeIndex]; // Actor is the who has the turn and they are doing something
     if (!actor->isAlive()) {
         std::cout << actor->getName() << "has been defeated, skipping...";
@@ -227,7 +231,7 @@ void CombatManager::resolveAbility(
 
     std::this_thread::sleep_for(std::chrono::seconds(3));
     std::cout << "Roll to Hit..." << " You need " << a.hitThreshold << "\n\n Rolling Dice..."; // TLDR; DISPLAY ODDS HERE
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::this_thread::sleep_for(std::chrono::seconds(3));
 
 
 
@@ -240,18 +244,19 @@ void CombatManager::resolveAbility(
     // 2) Roll damage
     std::cout << "\nIt Hits!" << " Calculating Damage... \n\n";
     std::this_thread::sleep_for(std::chrono::seconds(2));
-    int damage = RPGUtils::rollDice(a.damageRoll.count,
-                                    a.damageRoll.sides)
-                 + a.damageRoll.bonus;
+    int damage = RPGUtils::rollDice(a.damageRoll.count, a.damageRoll.sides) + a.damageRoll.bonus;
+
     // Apply the damage as an Effect so that multipliers/DoT work uniformly
-    target.applyEffect(
-      core::Effect(core::DamageType::Physical, damage)
-    );
+    target.applyEffect(core::Effect(core::DamageType::Physical, damage), a.name);
+    
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::cout << " Applying Status Effects...\n\n";
+    std::this_thread::sleep_for(std::chrono::seconds(2));
 
     // 3) Apply any status effects
     for (auto& e : a.effects) {
         if (e.status != core::StatusType::None)
-            target.applyEffect(e);
+            target.applyEffect(e, a.name);
     }
 
      // 5) Show the flavor comment
