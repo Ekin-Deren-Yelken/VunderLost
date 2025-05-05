@@ -11,12 +11,10 @@ using namespace combat;
 using namespace core;
 
 void CombatManager::startEncounter(std::vector<Character*>& players, std::vector<Character*>& enemies) {
-    std::cout << "\ntrace 1\n";
     // build turn order: players then enemies
     allCombatants = players;
     allCombatants.insert(allCombatants.end(), enemies.begin(), enemies.end());
     loadAbilities();
-    std::cout << "\ntrace 2\n";
     activeIndex = 0;
     // loop until one side is wiped out, all players or enemies health is reduced to zero
     while (true) {
@@ -42,7 +40,6 @@ void CombatManager::loadAbilities() {
     characterAbilities.clear();
     // Pull in the static map that was built once from your JSON file
     const auto& dict = getAllAbilities();
-
     for(Character* c : allCombatants) { 
         std::string prof = c->getProfession();                  //get profession for each combatant
         std::vector<Ability> aList;                             // List of abilities
@@ -60,7 +57,6 @@ void CombatManager::loadAbilities() {
 }
 
 void CombatManager::nextTurn() {
-    std::cout << "\ntrace 1\n";
     Character* actor = allCombatants[activeIndex]; // Actor is the who has the turn and they are doing something
     if (!actor->isAlive()) {
         std::cout << actor->getName() << "has been defeated, skipping...";

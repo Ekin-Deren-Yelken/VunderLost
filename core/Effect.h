@@ -35,6 +35,7 @@ namespace core {
     struct Effect {
         // Single field per effect
         int        dmgValue; // amount of instant damage
+        int        dotValue;
         StatusType status;   // for Damage over time (DoT) or debuff effects
         int        duration;  // turns remaining for debuff or DoT
         core::DamageType dmgType = core::DamageType::Physical;
@@ -49,11 +50,12 @@ namespace core {
             , duration(0)
         {}
 
-        Effect(StatusType st, int dur, int val = 0)
-            : dmgType()
-            , dmgValue(val)
-            , status(st)
+        Effect(StatusType s, int dur, int dot = 0, int dmg = 0, DamageType type = DamageType::Physical)
+            : status(s)
             , duration(dur)
+            , dotValue(dot)
+            , dmgValue(dmg)
+            , dmgType(type)
         {}
     };
 

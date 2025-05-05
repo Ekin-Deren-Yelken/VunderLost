@@ -92,7 +92,6 @@ void runAct1(Character& player) {
     if (slime) enemies.push_back(slime);
     
     combat::CombatManager cm;
-    std::cout << "\nstart combat\n";
     cm.startEncounter(players, enemies);
     waitForEnter();
     for (auto* enemy : enemies) delete enemy;

@@ -7,15 +7,18 @@
 using json = nlohmann::json;
 
 namespace core {
+
     const std::unordered_map<std::string, Ability>& getAllAbilities() {
         static auto map = [](){
+            // Check try to open abilities.json
             std::ifstream in("5-Combat/data/abilities.json");
             if (!in.is_open()) {
                 std::cerr << "Failed to open abilities.json at: "
                           << std::filesystem::current_path() / "data/abilities.json" << "\n";
                 std::exit(1);
             }
-    
+            
+            // Check if abilities.json is empty
             in.seekg(0, std::ios::end);
             size_t size = in.tellg();
             if (size == 0) {
@@ -23,7 +26,8 @@ namespace core {
                 std::exit(1);
             }
             in.seekg(0);
-    
+            
+            // Parse abilities.json
             json arr;
             try {
                 in >> arr;
@@ -31,35 +35,51 @@ namespace core {
                 std::cerr << "Failed to parse abilities.json: " << e.what() << std::endl;
                 std::exit(1);
             }
-    
+
             std::unordered_map<std::string, Ability> m;
-            for (auto& j : arr) {
+
+            for (const auto& j : arr) {
                 Ability a;
-                auto id = j.at("id").get<std::string>();
                 a.name         = j.at("name").get<std::string>();
                 a.cost         = j.at("cost").get<int>();
-                a.profession   = j.at("profession").get<std::string>();
-                auto hr        = j.at("hitRoll");
-                a.hitRoll      = { hr.at("count"), hr.at("sides"), hr.at("bonus") };
                 a.hitThreshold = j.at("hitThreshold").get<int>();
-                auto dr        = j.at("damageRoll");
-                a.damageRoll   = { dr.at("count"), dr.at("sides"), dr.at("bonus") };
                 a.range        = j.at("range").get<int>();
                 a.requiresQTE  = j.at("requiresQTE").get<bool>();
                 a.qteWindowMs  = j.at("qteWindowMs").get<int>();
-                a.effects.back().source = j.at("name");
+                a.profession   = j.at("profession").get<std::string>();
+    
+                // Optional comment
                 if (j.contains("comment"))
-                    a.comment  = j.at("comment").get<std::string>();
-                for (auto& ef : j.at("effects")) {
-                    auto st    = stringToStatusType(ef.at("status").get<std::string>());
-                    int dur    = ef.at("duration").get<int>();
-                    int dot    = ef.value("dotValue", 0);
-                    a.effects.emplace_back(st, dur, dot);
+                    a.comment = j.at("comment").get<std::string>();
+    
+                // Hit roll
+                const auto& hr = j.at("hitRoll");
+                a.hitRoll = { hr.at("count"), hr.at("sides"), hr.at("bonus") };
+    
+                // Damage roll
+                const auto& dr = j.at("damageRoll");
+                a.damageRoll = { dr.at("count"), dr.at("sides"), dr.at("bonus") };
+    
+                // Effects
+                for (const auto& ef : j.at("effects")) {
+                    auto st       = stringToStatusType(ef.at("status").get<std::string>());
+                    int  dur      = ef.at("duration").get<int>();
+                    int  dot      = ef.value("dotValue", 0);
+                    int  dmg      = ef.value("dmgValue", 0);
+                    auto dmgType  = stringToDamageType(ef.value("dmgType", "Physical"));
+    
+                    Effect effect(st, dur, dot, dmg, dmgType);
+                    effect.source = a.name;
+    
+                    a.effects.emplace_back(std::move(effect));
                 }
-                m.emplace(std::move(id), std::move(a));
+    
+                m.emplace(j.at("id").get<std::string>(), std::move(a));
             }
+    
             return m;
         }();
+    
         return map;
     }
 }

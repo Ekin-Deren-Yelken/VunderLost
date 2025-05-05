@@ -40,4 +40,12 @@ namespace core {
         return StatusType::None;
     }
 
+    DamageType stringToDamageType(const std::string& s) {
+        if (s == "Fire")      return DamageType::Fire;
+        if (s == "Frost")     return DamageType::Frost;
+        if (s == "Poison")    return DamageType::Poison;
+        if (s == "Lightning") return DamageType::Lightning;
+        return DamageType::Physical;
+    }
+
 }
