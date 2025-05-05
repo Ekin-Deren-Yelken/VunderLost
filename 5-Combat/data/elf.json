@@ -1,0 +1,31 @@
+{
+    "name": "Elf Archer",
+    "profession": "Archer",
+    "level": 4,
+    "XP": 20,
+    "armor": 10,
+    "health": 90,
+    "mana": 54,
+    "trainingPoints": 0,
+    "currentTitle": "Archer",
+    "titles": ["Archer"],
+    "stats": {
+      "STR": 4,
+      "DEX": 7,
+      "INT": 3,
+      "LUCK": 5,
+      "CHARM": 3,
+      "GIRTH": 1
+    },
+    "race": "Elf",
+    "sex": "Female",
+    "gender": "Bisexual",
+    "act": 2,
+    "abilities": [
+      "piercing_shot",
+      "poison_arrow",
+      "frost_trap",
+      "rapid_volley"
+    ]
+  }
+  

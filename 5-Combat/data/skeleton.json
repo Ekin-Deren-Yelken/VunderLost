@@ -1,0 +1,32 @@
+{
+    "name": "Skeleton",
+    "profession": "Archer",
+    "level": 2,
+    "XP": 12,
+    "armor": 8,
+    "health": 70,
+    "mana": 54,
+    "trainingPoints": 0,
+    "currentTitle": "Archer",
+    "titles": ["Archer"],
+    "stats": {
+      "STR": 3,
+      "DEX": 3,
+      "INT": 1,
+      "LUCK": 1,
+      "CHARM": 0,
+      "GIRTH": 1
+    },
+    "race": "Skeleton",
+    "sex": "Neutral",
+    "gender": "Straight",
+    "act": 1,
+    "abilities": [
+      "ice_crash",
+      "iron_will",
+      "piercing_shot",
+      "poison_arrow",
+      "toxic_rain"
+    ]
+  }
+  

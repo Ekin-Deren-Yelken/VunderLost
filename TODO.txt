@@ -1,0 +1,31 @@
+1. Check Mana for enemies, can go negative
+2. Set Slime health to 30
+3. Gain mana per turn? based on INT.
+4. INcrease luck? Decrease Luck of Enemies.
+5. Variety of attacks for enemies.
+6. Abilities based on profession
+7. space the fights text better:
+        Choose an ability > 24 
+        Stefan uses Poison Arrow on Gregory, Lord of Goo
+        Spending 5 Mana
+
+        Roll to Hit... You need 4
+
+        Rolling Dice...
+        It Hits! Calculating Damage... 
+
+        Gregory, Lord of Goo takes 3 damage.
+        Gregory, Lord of Goo takes 2 damage.
+        Gregory, Lord of Goo gains status 5 for 5 turns.
+        Perfect for a long fight, sustained damage.
+        Gregory, Lord of Goo's Stats:Gregory, Lord of Goo's Stats:
+        Health: 8
+        Mana: -5
+        Stefan suffers 2 damage from status.
+        Stefan suffers 2 damage from status.
+        Gregory, Lord of Goo suffers 3 damage from status.
+        Gregory, Lord of Goo suffers 2 damage from status.
+
+
+        Next Combatant's Turn!
+8. 

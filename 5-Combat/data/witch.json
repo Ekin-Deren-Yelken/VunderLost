@@ -1,0 +1,30 @@
+{
+    "name": "Witch",
+    "profession": "Mage",
+    "level": 3,
+    "XP": 10,
+    "armor": 2,
+    "health": 60,
+    "mana": 86,
+    "trainingPoints": 0,
+    "currentTitle": "Mage",
+    "titles": ["Mage"],
+    "stats": {
+      "STR": 1,
+      "DEX": 3,
+      "INT": 21,
+      "LUCK": 4,
+      "CHARM": 2,
+      "GIRTH": 1
+    },
+    "race": "Witch",
+    "sex": "Female",
+    "gender": "Homosexual",
+    "act": 3,
+    "abilities": [
+      "fireball",
+      "lightning_strike",
+      "frost_nova"
+    ]
+  }
+  

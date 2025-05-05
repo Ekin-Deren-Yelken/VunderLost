@@ -1,0 +1,31 @@
+{
+    "name": "Goblin Grunt",
+    "profession": "Thief",
+    "level": 1,
+    "XP": 0,
+    "armor": 4,
+    "health": 50,
+    "mana": 38,
+    "trainingPoints": 0,
+    "currentTitle": "Grunt",
+    "titles": ["Grunt"],
+    "stats": {
+      "STR": 3,
+      "DEX": 4,
+      "INT": 1,
+      "LUCK": 2,
+      "CHARM": 0,
+      "GIRTH": 1
+    },
+    "race": "Goblin",
+    "sex": "Male",
+    "gender": "Straight",
+    "act": 1,
+    "abilities": [
+      "backstab",
+      "smoke_bomb",
+      "crippling_cut",
+      "silent_step"
+    ]
+  }
+  

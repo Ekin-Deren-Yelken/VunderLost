@@ -1,0 +1,33 @@
+{
+    "name": "Golem",
+    "profession": "Knight",
+    "level": 3,
+    "XP": 80,
+    "armor": 15,
+    "health": 150,
+    "mana": 58,
+    "trainingPoints": 0,
+    "currentTitle": "Knight",
+    "titles": ["Knight"],
+    "stats": {
+      "STR": 15,
+      "DEX": 2,
+      "INT": 1,
+      "LUCK": 1,
+      "CHARM": 0,
+      "GIRTH": 16
+    },
+    "race": "Golem",
+    "sex": "Male",
+    "gender": "Homosexual",
+    "act": 4,
+    "abilities": [
+      "iron_will",
+      "brutal_cleave",
+      "winter_endurance",
+      "frost_nova",
+      "arcane_focus",
+      "frost_trap"
+    ]
+  }
+  

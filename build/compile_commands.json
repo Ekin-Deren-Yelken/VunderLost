@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/14168/Documents/Video Game/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -o CMakeFiles\\VunderLost.dir\\main.cpp.obj -c \"C:\\Users\\14168\\Documents\\Video Game\\main.cpp\"",
+  "file": "C:/Users/14168/Documents/Video Game/main.cpp",
+  "output": "CMakeFiles/VunderLost.dir/main.cpp.obj"
+}
+]

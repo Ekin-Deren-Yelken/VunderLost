@@ -1,0 +1,32 @@
+{
+    "name": "Blood Knight",
+    "profession": "Knight",
+    "level": 5,
+    "XP": 125,
+    "armor": 20,
+    "health": 120,
+    "mana": 50,
+    "trainingPoints": 2,
+    "currentTitle": "Blood Knight",
+    "titles": ["Blood Knight"],
+    "stats": {
+      "STR": 7,
+      "DEX": 5,
+      "INT": 3,
+      "LUCK": 4,
+      "CHARM": 6,
+      "GIRTH": 2
+    },
+    "race": "Human",
+    "sex": "Male",
+    "gender": "Straight",
+    "act": 2,
+    "abilities": [
+    "ice_crash",
+    "shield_bash",
+    "iron_will",
+    "brutal_cleave",
+    "winter_endurance"
+    ]
+  }
+  

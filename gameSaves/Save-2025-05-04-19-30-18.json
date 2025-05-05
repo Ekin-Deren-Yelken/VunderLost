@@ -1,0 +1,27 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 3,
+    "controller": 1,
+    "currentTitle": "The Stinky",
+    "gender": "homosexual",
+    "health": 160,
+    "level": 1,
+    "mana": 86,
+    "name": "Stefan",
+    "profession": "Archer",
+    "race": "elf",
+    "sex": "female",
+    "stats": {
+        "CHARM": 4,
+        "DEX": 6,
+        "GIRTH": 7,
+        "INT": 7,
+        "LUCK": 7,
+        "STR": 11
+    },
+    "titles": [
+        "The Stinky"
+    ],
+    "trainingPoints": 0
+}

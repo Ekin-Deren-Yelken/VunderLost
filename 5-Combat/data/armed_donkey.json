@@ -1,0 +1,43 @@
+{
+    "name": "Armed Donkey",
+    "profession": "Clown",
+    "level": 69,
+    "XP": 100,
+    "armor": 5,
+    "health": 200,
+    "mana": 80,
+    "trainingPoints": 0,
+    "currentTitle": "Clown",
+    "titles": ["Clown"],
+    "stats": {
+      "STR": 60,
+      "DEX": 15,
+      "INT": 30,
+      "LUCK": 69,
+      "CHARM": 70,
+      "GIRTH": 8
+    },
+    "race": "Armed Donkey",
+    "sex": "Male",
+    "gender": "Bisexual",
+    "act": 4,
+    "abilities": [
+      "iron_will",
+      "winter_endurance",
+      "fireball",
+      "lightning_strike",
+      "pyroclasm",
+      "arcane_focus",
+      "backstab",
+      "smoke_bomb",
+      "crippling_cut",
+      "viper_blade",
+      "silent_step",
+      "banana_peel",
+      "seltzer_spray",
+      "poison_pie",
+      "balloon_barrage",
+      "laugh_riot"
+    ]
+  }
+  
