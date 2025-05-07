@@ -1,6 +1,7 @@
 #include "act1.h"
 #include "../1-Characters/character.h"
 #include "../5-Combat/CombatManager.h"
+#include "../0-utils/rpg_utils.h"
 #include "../0-utils/json.hpp"
 #include "story.h"
 
@@ -89,28 +90,22 @@ void runAct1(Character& player, Character& roland) {
               << "Come now, stranger, let us DANCE!\"\n\n";
     waitForEnter();
 
-    encounter_gregory_lord_of_goo(player, slime, roland);
-    //player.setAct(2);  // Advance to next act when done
-}
-
-void encounter_gregory_lord_of_goo(Character& player, auto* slime, Character& roland) {
-
-    // Your party is just the player
-    std::vector<Character*> players = { &player };
-    std::vector<Character*> enemies;
-
-    if (slime) enemies.push_back(slime);
+        // Your party is just the player
+        std::vector<Character*> players = { &player };
+        std::vector<Character*> enemies;
     
-    combat::CombatManager cm;
-    bool gregoryBattle = cm.startEncounter(players, enemies);
-    waitForEnter();
+        if (slime) enemies.push_back(slime);
+        
+        combat::CombatManager cm;
+        bool gregoryBattle = cm.startEncounter(players, enemies);
+        waitForEnter();
 
     if (gregoryBattle) {
         // Greg Won
-        std::cout << gregory.getDisplayName() << ": \"Another one bites the goo!\"\n";
-        std::cout<< gregory.getDisplayName() << ": Honestly, I expected more from you. Someone with limbs lost to me; sadly true.\"\n";
+        std::cout << slime->getDisplayName() << ": \"Another one bites the goo!\"\n";
+        std::cout<< slime->getDisplayName() << ": Honestly, I expected more from you. Someone with limbs lost to me; sadly true.\"\n";
         waitForEnter();
-        std::cout << gregory.getDisplayName() << ": Now if you’ll excuse me, I must moonwalk into the abyss. *squelch*\"\n";
+        std::cout << slime->getDisplayName() << ": Now if you'll excuse me, I must moonwalk into the abyss. *squelch*\"\n";
         waitForEnter();
         std::cout << slime->getDisplayName() << "As you lie in defeat that you just lost to a rhymin', dancin' ball of goo, you hear a familiar voice...\n";
     } else {
@@ -121,13 +116,11 @@ void encounter_gregory_lord_of_goo(Character& player, auto* slime, Character& ro
         waitForEnter();
     }
     for (auto* enemy : enemies) delete enemy;
-}
 
-void talk_with_gregory_lord_of_goo(Character& player, auto* slime, Character& roland) {
     bool gainGreg = false;
 
     std::string henchSex;
-    if (player.getSex() == "Male") {henchSex="man" } else {henchSex="woman"}
+    if (player.getSex() == "Male") {henchSex="man"; } else {henchSex="woman";}
 
     std::cout << slime->getDisplayName() << ": How about we team up, you could be my hench" << henchSex
                                          <<  ". As a poet and dancer, far superior to you, I demand a lengthy and detailed acceptance to my offer...\n";
@@ -142,7 +135,7 @@ void talk_with_gregory_lord_of_goo(Character& player, auto* slime, Character& ro
         if (!pipe) { std::cerr << "Failed to run sentiment check.\n"; return; }
     
         char buffer[128];
-        std::string sentiment = runSentimentAnalysis(hechmenChoice);
+        std::string sentiment = RPGUtils::runSentimentAnalysis(hechmenChoice);
         if (sentiment == "hostile") {
             std::cout << slime->getName() << "recoils in gooey anger.\n";
             sentimentChecked = true;
@@ -152,7 +145,7 @@ void talk_with_gregory_lord_of_goo(Character& player, auto* slime, Character& ro
             sentimentChecked = true;
         } else {
             std::cout << slime->getName() << "... is confused.\n";
-            std::out << slime->getDisplayName() << ": speak clearly fool, be as descriptive as you like,"
+            std::cout << slime->getDisplayName() << ": speak clearly fool, be as descriptive as you like,"
                      << " a poet and artist of my calibre, far outside your liguistic capabilities, can "
                      << "take any length of answer you decide is necessary\n";
         }

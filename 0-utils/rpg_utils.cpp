@@ -1,6 +1,8 @@
 //g++ main.cpp characters/character.cpp utils/rpg_utils.cpp combat/combat.cpp -o game
 #include "rpg_utils.h"
 
+#include <iostream>
+
 
 namespace {
     std::mt19937& getRng() {
@@ -8,6 +10,26 @@ namespace {
         static std::mt19937 eng(rd());
         return eng;
     }
+}
+
+std::string runSentimentAnalysis(const std::string& sentence) {
+    std::string cmd = "python sentiment_check.py \"" + sentence + "\"";
+
+    FILE* pipe = _popen(cmd.c_str(), "r");
+    if (!pipe) {
+        std::cerr << "Failed to run sentiment analysis script.\n";
+        return "error";
+    }
+
+    char buffer[128];
+    std::string result;
+    while (fgets(buffer, sizeof(buffer), pipe)) {
+        result += buffer;
+    }
+    _pclose(pipe);
+
+    result.erase(result.find_last_not_of(" \n\r\t") + 1);
+    return result;
 }
 
 
