@@ -62,7 +62,7 @@ Character* loadMonster(const std::string& relPath) {
     return monster;
 }
 
-void runAct1(Character& player) {
+void runAct1(Character& player, Character& roland) {
     std::cout << "\n[ACT 1 begins for " << player.getDisplayName() << "]\n";
 
     std::cout << "\nYou slowly regain consciousness as distant screams echo in the corridors.\n";

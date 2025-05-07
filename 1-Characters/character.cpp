@@ -2,7 +2,6 @@
 #include "../core/Effect.h"
 #include "../core/status_util.h"
 #include "../core/AbilityLoader.h"
-#include "../core/status_util.h"
 #include <iostream>
 #include "character.h"
 
@@ -76,6 +75,18 @@ int         Character::getStat(const std::string& statName) const {
     if (it != stats.end())
         return it->second;
     return 0;
+}
+void Character::recalculateStats(const std::string& race, const std::string& sex, const std::string& gender, const std::string& profession) {
+    auto updatedStats = applyStatModifiers(stats, race, sex, gender, profession);
+
+    for (const auto& [key, value] : updatedStats) {
+        std::cout << "[DEBUG] " << key << " before: " << getStat(key) << ", after: " << value << "\n";
+        setStat(key, value);
+    }
+
+    calculateVitals(); // recalc max HP/mana
+    setHealth(getMaxHealth());
+    setMana(getMaxMana());
 }
 std::string Character::getName() const { return name; }
 std::string Character::getRace() const { return race.value_or("Unset"); }
@@ -172,7 +183,6 @@ void Character::printCombatStats() const {
     std::cout << "\nHealth: " << currentHealth << "/" << maxHealth << "\n"
               << "Mana: " << currentMana << "/" << maxMana << "\n";
 }
-
 
 // ─── Titles ───────────────────────────────────────────────────────────────────
 void Character::addTitle(const std::string& title) {

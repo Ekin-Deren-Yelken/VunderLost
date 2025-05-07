@@ -127,6 +127,7 @@ public:
     void calculateVitals();
     void printStats() const;
     void printCombatStats() const;
+    void recalculateStats(const std::string& race, const std::string& sex, const std::string& gender, const std::string& profession);
     
     // Serialization
     json toJson() const;

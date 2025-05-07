@@ -9,6 +9,7 @@
 #include <limits>
 #include "story.h"
 #include "../4-Saves/save_system.h"
+#include "../1-Characters/stat_utils.h"
 #include "act1.h"
 
 // Helper: Wait for Enter
@@ -29,40 +30,59 @@ std::string getInput(const std::string& prompt, bool toLower = false) {
     return input;
 }
 
+std::string toLowerStr(const std::string& input) {
+    std::string result = input;
+    std::transform(result.begin(), result.end(), result.begin(),
+                   [](unsigned char c) { return std::tolower(c); });
+    return result;
+}
+
 // Main intro logic
 void runIntroScene() {
+    // Dialogue 1
     std::cout << "You wake up on the hard surface of what you assume to be a wooden cart as it bumps along a dirt road. A hood covers your eyes but can make out shapes...\n";
     waitForEnter();
 
+    // Dialogue 2
     std::cout << "A knightly figure bellows \"What is your name, scum?\" As you fade out of your daze, you mumble: \"My name is \" ";
     std::string playerName = getInput("> ", false);
-
     std::cout << "\nYou hear the knight scribbling something down as you pass out again...\n";
     waitForEnter();
 
+    // Dialogue 3
     std::cout << "\nYou wake up again looking around and see a mirror and a bed in a stone cell.\n";
     std::cout << "The window letting moonlight through is too high to see through, the cell door is shut tight.\n";
     
-    Character player(playerName, "Human", "Knight", "Male", "Straight", 3, 0, 1, 0);
+    // Create player Character
+    Character player(playerName, "Human", "Knight", "Male", "Straight", 0, 0, 1, 1);
     player.setController(core::ControllerType::Human);
+    std::map<std::string, int> baseStats = getBaseStats();
+
+    for (const auto& [key, value] : baseStats) {
+        player.setStat(key, value);
+    }
+    //player.printStats();
     loopUntilMirrorChoice(player);
 }
 
-// Interactive scene: player must choose 'mirror' to continue
+// Introduction to Interactive text
 void loopUntilMirrorChoice(Character& player) {
     int invalidCount = 0;
     int doNothingCount = 0;
     bool bedChecked = false;
 
+    // Action 1
     while (true) {
         std::string choice = getInput("\nDo nothing? Or, do you decide to approach the....\n> ", true);
-
+        
+        // Mirror Option
         if (choice == "mirror") {
             std::cout << "\nYou cautiously approach the mirror...\n";
             std::cout << player.getName() << " holds the mirror up to their face...\n";
             break;
         }
 
+        // Bed Option
         else if (choice == "bed" && !bedChecked) {
             std::cout << "\nYou see poop stains on the mattress. How embarassing... Shamefully, you walk back to where you woke up.";
             bedChecked = true;
@@ -70,12 +90,12 @@ void loopUntilMirrorChoice(Character& player) {
             player.addTitle("The Stinky");
             continue;
         }
-
         else if (choice == "bed" && bedChecked) {
             std::cout << "\nYou already checked the bed, stinker. Nothing has changed.";
             continue;
         }
 
+        // Do Nothing Option
         else if (choice == "do nothing") {
             doNothingCount++;
             if (doNothingCount == 1)
@@ -94,6 +114,7 @@ void loopUntilMirrorChoice(Character& player) {
             }
         }
 
+        // Invalid Input Option
         else {
             invalidCount++;
             std::cout << "You look around and try to \"" << choice << "\", but fail. You blush in embarrassment...\n";
@@ -106,7 +127,9 @@ void loopUntilMirrorChoice(Character& player) {
 
 }
 
+// Set Player Stats
 void runCharacterSelection(Character& player) {
+
     // 1. Race selection
     const std::vector<std::string> validRaces = { "human", "elf", "beast" };
     std::string race;
@@ -146,16 +169,22 @@ void runCharacterSelection(Character& player) {
         }
     }
 
-    // 4. Final confirmation
-    std::cout << "\nMhm, I see... " << player.getDisplayName()
-              << ". You are, in fact, a " << player.getGender()
-              << " " << player.getSex()
-              << " " << player.getRace() << ".\n";
+    // 4. Selection Confirmation
+    std::cout << "\n" << player.getDisplayName()
+              << " of the " << player.getRace()
+              << "s. A " << player.getGender()
+              << " " << player.getSex() << ".\n";
 
     waitForEnter();
 
+    runProfessionSelection(player);
+}
+
+void runProfessionSelection(Character& player) {
+    // Dialogue 1
     std::cout << "You hear footsteps approaching your cell... knightly footsteps.\n\n";
 
+    // Create Roland NPC for later...
     Character roland(
         "Sir Roland",
         "Human",
@@ -170,12 +199,13 @@ void runCharacterSelection(Character& player) {
     roland.addTitle("The Rigid Oak");
     roland.setController(core::ControllerType::AI);
 
+    // Dialogue 2
     std::cout << "\n" << roland.getDisplayName()
           << ": \"Get up, " << player.getName()
           << "! Follow me into the council chamber.\n";
     waitForEnter();
 
-    // 2) Class‐selection loop
+    // Confirm Profession
     while (true) {
         std::cout << "\n" << roland.getDisplayName() << ": On the table lie five items we recovered from the forest, which one belongs to you scum:\n"
                 << " [1] Sword   (Knight)\n"
@@ -198,45 +228,53 @@ void runCharacterSelection(Character& player) {
         case 5: chosenClass="Clown";  item="wig";    break;
         case 6: //roll to see if it works.
         default:
-            std::cout << roland.getDisplayName()
-                    << ": \"Pathetic. Speak clearly, which of these belongs to you.\"\n";
+            std::cout << roland.getDisplayName() << ": \"Pathetic. Speak clearly, which of these belongs to you.\"\n";
             continue;
         }
         
-        std::cout << roland.getDisplayName()
-                << ": \"A " << chosenClass
-                << "? I knew it. Now confirm.\"\n";
-
+        std::cout << roland.getDisplayName() << ": \"A " << chosenClass << "? I knew it. Now confirm.\"\n";
         std::string confirm = getInput("Confirm your choice? (y/n): ", true);
+
         if (confirm == "y" || confirm == "yes") {
-            std::cout << player.getName()
-                    << " snatches up the " << item << ".\n";
-            // 3) Assign to player
-            player.setProfession(chosenClass);
-            player.setAct(1);
-            player.setHealth(player.getMaxHealth());
-            player.setMana(player.getMaxMana());
-            waitForEnter();
+            std::cout << player.getName() << " snatches up the " << item << ".\n";
+            
+        // Initialize Character (create wrapper later)
+        player.setProfession(chosenClass);
+
+        std::map<std::string, int> playerStats = applyStatModifiers(getBaseStats(), toLowerStr(player.getRace()), toLowerStr(player.getSex()), toLowerStr(player.getGender()), toLowerStr(player.getProfession()));
+
+        for (const auto& [stat, val] : playerStats) {
+            player.setStat(stat, val);
+        }
+
+        // Now re-set health/mana based on new stats
+        player.calculateVitals();
+        player.setHealth(player.getMaxHealth());
+        player.setMana(player.getMaxMana());
+        player.setAct(1);  
+
+        waitForEnter();
             break;
         }
 
-        std::cout << roland.getDisplayName()
-                << ": \"Hesitant? Then choose again!\"\n";
+        std::cout << roland.getDisplayName() << ": \"Hesitant? Then choose again!\"\n";
     }
 
+    // Dialogue 3
     std::cout << roland.getDisplayName()
           << ": \"I almost forgot... one last gift.\"\n";
     waitForEnter();
 
+    // Dialogue 4
     std::cout << "Before you can react, " << roland.getName() << " winds up punches you... WHACK!\n\n";
-
-
     std::cout << "Stars burst in your vision. Then darkness.\n";
     std::cout << "You collapse, unconscious... again.\n";
     waitForEnter();
 
+    // Print Stats
     player.printStats();
 
+    // Save Character?
     std::string choice = getInput("Would you like to save your character? (yes/no): ", true);
     for (auto &c : choice) c = std::tolower(c);
     while (true) {
@@ -251,6 +289,7 @@ void runCharacterSelection(Character& player) {
         }
     }
 
+    // Start Act 1
     std::string prompt = std::string("Start Act ") 
                    + std::to_string(player.getAct()) 
                    + " (y/n): ";
@@ -259,7 +298,7 @@ void runCharacterSelection(Character& player) {
     for (auto &c : confirmAct1) c = std::tolower(c);
     while (true) {
         if (confirmAct1 == "yes" || confirmAct1 == "y") {
-            runAct1(player);
+            runAct1(player, roland);
             break;
         } else if (confirmAct1 == "no" || confirmAct1 == "n"){
             break;
@@ -267,8 +306,4 @@ void runCharacterSelection(Character& player) {
             std::cout << "Please Type Valid Input.";
         }
     }
-
-
 }
-
-

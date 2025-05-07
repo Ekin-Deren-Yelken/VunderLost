@@ -35,7 +35,7 @@ int main() {
     }
 
     switch (player.getAct()) {
-        case 1: runAct1(player); break;
+        //case 1: runAct1(player, roland); break;
         //case 2: runAct2(player); break;
         //case 3: runAct3(player); break;
         //case 4: runAct4(player); break;

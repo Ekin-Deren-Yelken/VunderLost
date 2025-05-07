@@ -186,11 +186,9 @@ void CombatManager::enemyTurn(Character& e) {
             std::cout << e.getName() << " finds no valid target.\n";
             return;
         }
+        
         resolveAbility(e, *target, chosen);
     }
-    
-
-    
     
 }
 
@@ -240,7 +238,7 @@ void CombatManager::resolveAbility(
     int toHit = RPGUtils::rollDice(a.hitRoll.count, a.hitRoll.sides)
                 + a.hitRoll.bonus;
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::seconds(3));
     std::cout << "Roll to hit:" << " you need " << a.hitThreshold << "\n\n Rolling Dice..."; // TLDR; DISPLAY ODDS HERE
     std::this_thread::sleep_for(std::chrono::seconds(1));
 

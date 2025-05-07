@@ -4,113 +4,94 @@
 
 std::map<std::string, int> getBaseStats() {
     return {
-        {"STR", 7},
-        {"DEX", 7},
-        {"INT", 7},
-        {"GIRTH", 5},
-        {"LUCK", 5},
-        {"CHARM", 5}
+        { "STR",   7 },
+        { "DEX",   6 },
+        { "INT",   4 },
+        { "LUCK",  5 },
+        { "CHARM", 5 },
+        { "GIRTH", 6 },
+        { "ARMOR", 0 }
     };
 }
 
-void applyStatModifiers(std::map<std::string, int>& stats,
-                        const std::string& race,
-                        const std::string& sex,
-                        const std::string& gender,
-                        const std::string& profession) {
-    
-    stats = getBaseStats();
+std::map<std::string, int> applyStatModifiers(
+    std::map<std::string, int> baseStats,
+    const std::string& race,
+    const std::string& sex,
+    const std::string& gender,
+    const std::string& profession
+) {
 
-    // Race
-    if (race == "Elf") {
-        stats["INT"] += 3;
-        stats["DEX"] += 2;
-        stats["STR"] -= 3;
-        stats["LUCK"] -= 2;
-        stats["CHARM"] += 1;
-    } else if (race == "Beast") {
-        stats["INT"] -= 2;
-        stats["DEX"] += 2;
-        stats["STR"] += 4;
-        stats["LUCK"] += 2;
-        stats["CHARM"] -= 3;
+    // --- RACE ---
+    if (race == "elf") {
+        baseStats["INT"] += 3;
+        baseStats["DEX"] += 2;
+        baseStats["STR"] -= 3;
+        baseStats["LUCK"] -= 2;
+        baseStats["CHARM"] += 1;
+    } else if (race == "beast") {
+        baseStats["INT"] -= 2;
+        baseStats["DEX"] += 2;
+        baseStats["STR"] += 4;
+        baseStats["LUCK"] += 2;
+        baseStats["CHARM"] -= 3;
+    }
+    // Human = no change
+
+    // --- SEX ---
+    if (sex == "male") {
+        baseStats["STR"] += 1;
+        baseStats["DEX"] -= 1;
+        baseStats["LUCK"] += 1;
+    } else if (sex == "female") {
+        baseStats["DEX"] += 1;
+        baseStats["INT"] += 1;
+        baseStats["CHARM"] += 2;
     }
 
-    // Sex
-    if (sex == "Male") {
-        stats["STR"] += 1;
-        stats["DEX"] -= 1;
-        stats["LUCK"] += 1;
-    }
-    else if (sex == "Female") {
-        stats["DEX"] += 1;
-        stats["INT"] += 1;
-        stats["CHARM"] += 2;
+    // --- GENDER ---
+    if (gender == "homosexual" && sex == "male") {
+        baseStats["CHARM"] += 2;
+        baseStats["STR"] -= 1;
+        baseStats["INT"] += 1;
+        baseStats["LUCK"] -= 1;
+    } else if (gender == "homosexual" && sex == "female") {
+        baseStats["CHARM"] -= 2;
+        baseStats["STR"] += 1;
+        baseStats["INT"] -= 1;
+        baseStats["DEX"] += 1;
+    } else if (gender == "bisexual" && sex == "female") {
+        baseStats["LUCK"] += 1;
+    } else if (gender == "bisexual" && sex == "male") {
+        baseStats["CHARM"] += 2;
+        baseStats["LUCK"] -= 1;
+    } else if (gender == "straight") {
+        baseStats["LUCK"] += 1;
+        baseStats["CHARM"] -= 1;
     }
 
-    // Gender (just examples — balance however you like)
-    if (gender == "Homosexual") {
-        if (sex == "Male") {
-            stats["CHARM"] += 2;
-            stats["STR"] -= 1;
-            stats["INT"] += 1;
-            stats["LUCK"] -= 1;
-        } else {
-            stats["CHARM"] -= 2;
-            stats["STR"] += 1;
-            stats["INT"] -= 1;
-            stats["DEX"] += 1;
-        }
-    } else if (gender == "Bisexual") {
-        if (sex == "Female") {
-            stats["LUCK"] += 1;
-        } else {
-            stats["CHARM"] += 2;
-            stats["LUCK"] -= 1;
-        }
-        
-    } else {
-        stats["LUCK"] += 1;
-        stats["CHARM"] -= 1;
-    };
-
-    // Profession
-    if (profession == "Knight") {
-        stats["STR"] += 3;
-        stats["GIRTH"] += 2;
-    } else if (profession == "Mage") {
-        stats["INT"] += 4;
-        stats["DEX"] -= 1;
-    } else if (profession == "Archer") {
-        stats["GIRTH"] -= 1;
-        stats["DEX"] += 1;
-    } else if (profession == "Thief") {
-        stats["DEX"] += 2;
-        stats["CHARM"] += 1;
-    } else if (profession == "Clown") {
-        // 1. Sum all stat values
-        int total = 0;
-        for (const auto& stat : stats) {
-            total += stat.second;
-        }
-    
-        // 2. Pick a random stat
-        std::vector<std::string> keys;
-        for (const auto& stat : stats) {
-            keys.push_back(stat.first);
-        }
-        int randomIndex = RPGUtils::rollDie(static_cast<int>(keys.size())) - 1;
-        std::string chosenStat = keys[randomIndex];
-    
-        // 3. Zero all stats
-        for (auto& stat : stats) {
-            stat.second = 0;
-        }
-    
-        // 4. Assign total to chosen stat
-        stats[chosenStat] = total;
-    
-        std::cout << "[CLOWN EFFECT] All stats combined into: " << chosenStat
-                  << " = " << total << "\n";
+    // --- PROFESSION ---
+    if (profession == "knight") {
+        baseStats["STR"] += 3;
+        baseStats["GIRTH"] += 2;
+    } else if (profession == "mage") {
+        baseStats["INT"] += 4;
+        baseStats["DEX"] -= 2;
+    } else if (profession == "archer") {
+        baseStats["GIRTH"] -= 1;
+        baseStats["DEX"] += 3;
+    } else if (profession == "thief") {
+        baseStats["DEX"] += 4;
+        baseStats["LUCK"] += 1;
+        baseStats["INT"] += 2;
+        baseStats["CHARM"] += 1;
+    } else if (profession == "clown") {
+        baseStats["GIRTH"] += 5;
+        baseStats["INT"] -= 3;
+        baseStats["DEX"] -= 2;
+        baseStats["CHARM"] += 2;
+        baseStats["LUCK"] += 8;
     }
+
+    return baseStats;
 }

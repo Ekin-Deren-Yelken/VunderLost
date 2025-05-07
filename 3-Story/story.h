@@ -11,5 +11,7 @@ void loopUntilMirrorChoice(Character& player);
 
 void runCharacterSelection(Character& player);
 
+void runProfessionSelection(Character& player);
+
 
 #endif
