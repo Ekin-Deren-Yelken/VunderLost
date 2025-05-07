@@ -10,7 +10,7 @@
 using namespace combat;
 using namespace core;
 
-void CombatManager::startEncounter(std::vector<Character*>& players, std::vector<Character*>& enemies) {
+bool CombatManager::startEncounter(std::vector<Character*>& players, std::vector<Character*>& enemies) {
     // build turn order: players then enemies
     allCombatants = players;
     allCombatants.insert(allCombatants.end(), enemies.begin(), enemies.end());
@@ -22,17 +22,17 @@ void CombatManager::startEncounter(std::vector<Character*>& players, std::vector
         std::this_thread::sleep_for(std::chrono::seconds(1));
         bool anyPlayerAlive = std::any_of(
             players.begin(), players.end(), [](Character* c){ return c->isAlive(); });
-        bool anyEnemyAlive  = std::any_of(
+            bool anyEnemyAlive  = std::any_of(
             enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
         if (!anyPlayerAlive || !anyEnemyAlive) break;
         std::cout << "\n-Next Combatant's Turn-\n";
     }
 
-    std::cout << (std::any_of(
-                        enemies.begin(), enemies.end(),
-                        [](Character* c){ return c->isAlive(); })
-                      ? "Defeat..." : "Victory!")
-              << std::endl;
+    bool victory = std::any_of(enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
+
+    std::cout << (victory? "Defeat..." : "Victory!") << std::endl;
+    
+    return victory;
 }
 
 void CombatManager::loadAbilities() {
@@ -224,11 +224,7 @@ Character* CombatManager::chooseAITarget() {
     return firstSummoned ? firstSummoned : lowestHP;
 }
 
-
-void CombatManager::resolveAbility(
-                                    Character& user,
-                                    Character& target,
-                                    const core::Ability& a) {
+void CombatManager::resolveAbility(Character& user, Character& target, const core::Ability& a) {
     std::cout << user.getName() << " uses " << a.name << " on " << target.getName() << std::endl;
     
     //Spend Mana

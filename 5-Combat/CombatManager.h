@@ -14,7 +14,7 @@ public:
      * @param players Vector of pointers to player-controlled Characters
      * @param enemies Vector of pointers to enemy Characters
      */
-    void startEncounter(std::vector<Character*>& players,
+    bool startEncounter(std::vector<Character*>& players,
                         std::vector<Character*>& enemies);
 
 private:

@@ -5,6 +5,7 @@
 
 // Runs the full intro story sequence
 void runIntroScene();
+std::string getInput(const std::string& prompt, bool toLower = false);
 
 // Internal part of intro: loop until player chooses "mirror"
 void loopUntilMirrorChoice(Character& player);

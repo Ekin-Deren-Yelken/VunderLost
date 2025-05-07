@@ -10,6 +10,7 @@
 #include "story.h"
 #include "../4-Saves/save_system.h"
 #include "../1-Characters/stat_utils.h"
+#include "0-utils/rpg_utils.h"
 #include "act1.h"
 
 // Helper: Wait for Enter
@@ -51,7 +52,7 @@ void runIntroScene() {
 
     // Dialogue 3
     std::cout << "\nYou wake up again looking around and see a mirror and a bed in a stone cell.\n";
-    std::cout << "The window letting moonlight through is too high to see through, the cell door is shut tight.\n";
+    std::cout << "A small window slit lets some moonlight through, and a thick steel cell door separates you from the hallway.\n";
     
     // Create player Character
     Character player(playerName, "Human", "Knight", "Male", "Straight", 0, 0, 1, 1);
@@ -70,31 +71,82 @@ void loopUntilMirrorChoice(Character& player) {
     int invalidCount = 0;
     int doNothingCount = 0;
     bool bedChecked = false;
+    bool doorChecked = false;
+    int doorDamage = 0;
+    int windowDamage = 0;
+    int damage_from_stupidity = 0;
 
     // Action 1
     while (true) {
-        std::string choice = getInput("\nDo nothing? Or, do you decide to approach the....\n> ", true);
+        std::cout << "\n" << player.getName();
+        std::string choice = getInput(" decides to approach the \n> ", true);
         
         // Mirror Option
-        if (choice == "mirror") {
+        if (choice.find("mirror") != std::string::npos) {
             std::cout << "\nYou cautiously approach the mirror...\n";
             std::cout << player.getName() << " holds the mirror up to their face...\n";
             break;
         }
+        //Door Option
+        else if (choice.find("door") != std::string::npos) {
+            std::cout << "\nYou turn your attention to the cell door and approach the thick frame... ";
+            if (!doorChecked) {
+                std::string choiceDoor = getInput("maybe you can break it down... \nDo you trust your strength and ram into the door? (y/n) \n> ", true);
+                if (choiceDoor == "yes" || choiceDoor == "y") {
+                    std::cout << player.getDisplayName() << " backs up and charges at the door with all their might...\n";
+                    std::cout << " Rolling for Strength...";
+                    doorDamage = RPGUtils::rollDie(4) + 1;
+                    damage_from_stupidity += doorDamage;
+                    std::cout << player.getDisplayName() << " rams into a solid steel door taking " << doorDamage << " physical damage. \n\n";
 
+                    std::cout << "Note from Developer: Congrats, the game just started and you ran straight into a solid steel door...\n";
+                    waitForEnter();
+
+                    std::cout << "\nTitle Unlocked: \"The Stupid\"";
+                    player.addTitle("The Stupid");
+                } else if (choiceDoor == "no" || choiceDoor == "n") {
+                    std::cout << player.getDisplayName() << ": Hm, nothing of note here...\n";
+                }
+                doorChecked = true;
+            } else {
+                std::cout << player.getDisplayName() << ": I already checked here, nothing to see...\n";
+            }
+            break;
+        }
         // Bed Option
-        else if (choice == "bed" && !bedChecked) {
-            std::cout << "\nYou see poop stains on the mattress. How embarassing... Shamefully, you walk back to where you woke up.";
-            bedChecked = true;
-            std::cout << "\nTitle Unlocked: \"The Stinky\"";
-            player.addTitle("The Stinky");
-            continue;
+        else if (choice == "bed") {
+            if (!bedChecked) {
+                std::cout << "\nYou see poop stains on the mattress. What a mess you made, how embarassing... Shamefully, you walk back to where you woke up.";
+                bedChecked = true;
+                std::cout << "\nTitle Unlocked: \"The Stinky\"";
+                player.addTitle("The Stinky");
+                continue;
+            } else if (bedChecked) {
+                std::cout << "\nYou already checked the bed, stinker. Nothing has changed.";
+                continue;
+            }
         }
-        else if (choice == "bed" && bedChecked) {
-            std::cout << "\nYou already checked the bed, stinker. Nothing has changed.";
-            continue;
+        //Window Option
+        else if (choice.find("window") != std::string::npos) {
+            std::cout << "\nYou approach the window its quite high... ";
+            if (!doorChecked) {
+                std::string choiceDoor = getInput("maybe you can jump real high and see through it... \nDo you trust your dexterity and jump up to see through? (y/n) \n> ", true);
+                if (choiceDoor == "yes" || choiceDoor == "y") {
+                    std::cout << player.getDisplayName() << " runs and jumps with all their might...\n";
+                    std::cout << " Rolling for Dexterity...";
+                    windowDamage = RPGUtils::rollDie(3) + 1;
+                    damage_from_stupidity += windowDamage;
+                    std::cout << player.getDisplayName() << " smashes misses the landing and hits the wall taking " << windowDamage << " physical damage. \n\n";
+                    waitForEnter();
+                } else if (choiceDoor == "no" || choiceDoor == "n") {
+                    std::cout << player.getDisplayName() << ": Too high up to see through...\n";
+                }
+                doorChecked = true;
+            } else {
+                std::cout << player.getDisplayName() << ": I already checked here, nothing to see...\n";
+            }
+            break;
         }
-
         // Do Nothing Option
         else if (choice == "do nothing") {
             doNothingCount++;
@@ -112,6 +164,9 @@ void loopUntilMirrorChoice(Character& player) {
                 runIntroScene();  // Restart
                 return;
             }
+        }
+        else if (choice.find("search") != std::string::npos) {
+            std::cout << "You find nothing else of note in the room...\n\n";
         }
 
         // Invalid Input Option
