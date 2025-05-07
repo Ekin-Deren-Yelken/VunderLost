@@ -66,7 +66,7 @@ Character* loadMonster(const std::string& relPath) {
     return monster;
 }
 
-void runAct1(Character& player, Character& roland) {
+void runAct1(Character& player) {
 
     std::cout << "\n[ACT 1 begins for " << player.getDisplayName() << "]\n";
     waitForEnter();

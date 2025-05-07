@@ -353,7 +353,7 @@ void runProfessionSelection(Character& player) {
     for (auto &c : confirmAct1) c = std::tolower(c);
     while (true) {
         if (confirmAct1 == "yes" || confirmAct1 == "y") {
-            runAct1(player, roland);
+            runAct1(player);
             break;
         } else if (confirmAct1 == "no" || confirmAct1 == "n"){
             break;

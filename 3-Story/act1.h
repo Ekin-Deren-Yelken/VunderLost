@@ -2,7 +2,7 @@
 #define ACT1_H
 
 #include "../1-Characters/character.h"
-void runAct1(Character& player, Character& rol);
+void runAct1(Character& player);
 void waitForEnter();
 
 #endif
