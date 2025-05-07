@@ -1,0 +1,31 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 0,
+    "controller": 1,
+    "currentHealth": 183,
+    "currentMana": 54,
+    "currentTitle": "The Stinky",
+    "gender": "homosexual",
+    "level": 1,
+    "maxHealth": 190,
+    "maxMana": 54,
+    "name": "Ekin",
+    "profession": "Knight",
+    "race": "beast",
+    "sex": "male",
+    "stats": {
+        "ARMOR": 0,
+        "CHARM": 4,
+        "DEX": 7,
+        "GIRTH": 8,
+        "INT": 3,
+        "LUCK": 7,
+        "STR": 14
+    },
+    "titles": [
+        "The Stupid",
+        "The Stinky"
+    ],
+    "trainingPoints": 0
+}

@@ -97,6 +97,9 @@ public:
     void setHealth(int delta);
     void setMana(int delta);
 
+    void setCurrentHealth(int health);
+    void setCurrentMana(int mana);
+
     //  Sttus Checks
     bool isAlive() const;
 
@@ -136,7 +139,7 @@ public:
     // Combat hooks
     void applyEffect(const core::Effect& e, const std::string& sourceName);
     void tickStatuses();
-    void applyInstantDamage(int dmg, core::DamageType type, const std::string& source);
+    void applyInstantDamage(int dmg, core::DamageType type, const std::string& source, bool suppressPrint = false);
 
     // Ability API
     void addAbility(const core::Ability& a);

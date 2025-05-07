@@ -1,16 +1,16 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
-#include <iostream>
-#include <string>
 #include <algorithm>
 #include <cctype>
 #include <limits>
+#include <chrono>
+#include <thread>
+
 #include "story.h"
 #include "../4-Saves/save_system.h"
 #include "../1-Characters/stat_utils.h"
-#include "0-utils/rpg_utils.h"
+#include "../0-utils/rpg_utils.h"
 #include "act1.h"
 
 // Helper: Wait for Enter
@@ -20,7 +20,7 @@ void waitForEnter() {
 }
 
 // Helper: Get input from player
-std::string getInput(const std::string& prompt, bool toLower = false) {
+std::string getInput(const std::string& prompt, bool toLower) {
     std::string input;
     std::cout << prompt;
     std::getline(std::cin, input);
@@ -71,6 +71,7 @@ void loopUntilMirrorChoice(Character& player) {
     int invalidCount = 0;
     int doNothingCount = 0;
     bool bedChecked = false;
+    bool windowChecked = false;
     bool doorChecked = false;
     int doorDamage = 0;
     int windowDamage = 0;
@@ -89,29 +90,37 @@ void loopUntilMirrorChoice(Character& player) {
         }
         //Door Option
         else if (choice.find("door") != std::string::npos) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             std::cout << "\nYou turn your attention to the cell door and approach the thick frame... ";
+            std::this_thread::sleep_for(std::chrono::seconds(1));
             if (!doorChecked) {
                 std::string choiceDoor = getInput("maybe you can break it down... \nDo you trust your strength and ram into the door? (y/n) \n> ", true);
                 if (choiceDoor == "yes" || choiceDoor == "y") {
+
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
                     std::cout << player.getDisplayName() << " backs up and charges at the door with all their might...\n";
-                    std::cout << " Rolling for Strength...";
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
+                    std::cout << " Rolling for Strength...\n\n";
+                    std::this_thread::sleep_for(std::chrono::seconds(2));
+
                     doorDamage = RPGUtils::rollDie(4) + 1;
                     damage_from_stupidity += doorDamage;
-                    std::cout << player.getDisplayName() << " rams into a solid steel door taking " << doorDamage << " physical damage. \n\n";
+                    player.applyInstantDamage(doorDamage, core::DamageType::Physical, "ramming into a solid steel door");
 
-                    std::cout << "Note from Developer: Congrats, the game just started and you ran straight into a solid steel door...\n";
+                    std::cout << "\nNote from Developer: Congrats, the game just started and you ran straight into a solid steel door...\n\n";
                     waitForEnter();
 
                     std::cout << "\nTitle Unlocked: \"The Stupid\"";
                     player.addTitle("The Stupid");
                 } else if (choiceDoor == "no" || choiceDoor == "n") {
                     std::cout << player.getDisplayName() << ": Hm, nothing of note here...\n";
+                } else {
+                    std::cout << player.getDisplayName() << ": Hm, nothing of note here...\n";
                 }
                 doorChecked = true;
             } else {
                 std::cout << player.getDisplayName() << ": I already checked here, nothing to see...\n";
             }
-            break;
         }
         // Bed Option
         else if (choice == "bed") {
@@ -129,23 +138,31 @@ void loopUntilMirrorChoice(Character& player) {
         //Window Option
         else if (choice.find("window") != std::string::npos) {
             std::cout << "\nYou approach the window its quite high... ";
-            if (!doorChecked) {
-                std::string choiceDoor = getInput("maybe you can jump real high and see through it... \nDo you trust your dexterity and jump up to see through? (y/n) \n> ", true);
-                if (choiceDoor == "yes" || choiceDoor == "y") {
-                    std::cout << player.getDisplayName() << " runs and jumps with all their might...\n";
-                    std::cout << " Rolling for Dexterity...";
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            if (!windowChecked) {
+                std::string choiceWindow = getInput("maybe you can jump real high and see through it... \nDo you trust your dexterity and jump up to see through? (y/n) \n> ", true);
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                if (choiceWindow == "yes" || choiceWindow == "y") {
+                    
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
+                    std::cout << player.getDisplayName() << " runs and jumps with all their might...\n\n";
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
+                    std::cout << " Rolling for Dexterity...\n\n";
+                    std::this_thread::sleep_for(std::chrono::seconds(1));
+
                     windowDamage = RPGUtils::rollDie(3) + 1;
                     damage_from_stupidity += windowDamage;
-                    std::cout << player.getDisplayName() << " smashes misses the landing and hits the wall taking " << windowDamage << " physical damage. \n\n";
+                    player.applyInstantDamage(windowDamage, core::DamageType::Physical, "missing the landing and hitting their head on the stone wall");
                     waitForEnter();
-                } else if (choiceDoor == "no" || choiceDoor == "n") {
+                } else if (choiceWindow == "no" || choiceWindow == "n") {
+                    std::cout << player.getDisplayName() << ": Too high up to see through...\n";
+                } else {
                     std::cout << player.getDisplayName() << ": Too high up to see through...\n";
                 }
-                doorChecked = true;
+                windowChecked = true;
             } else {
                 std::cout << player.getDisplayName() << ": I already checked here, nothing to see...\n";
             }
-            break;
         }
         // Do Nothing Option
         else if (choice == "do nothing") {
@@ -169,6 +186,10 @@ void loopUntilMirrorChoice(Character& player) {
             std::cout << "You find nothing else of note in the room...\n\n";
         }
 
+        else if (choice == "") {
+            std::cout << "Type something, silly...\n\n";
+        }
+
         // Invalid Input Option
         else {
             invalidCount++;
@@ -178,12 +199,12 @@ void loopUntilMirrorChoice(Character& player) {
                 std::cout << "(Hint: try typing 'bed', 'mirror', or 'do nothing')\n";
         }
     }
-    runCharacterSelection(player);
+    runCharacterSelection(player, damage_from_stupidity);
 
 }
 
 // Set Player Stats
-void runCharacterSelection(Character& player) {
+void runCharacterSelection(Character& player, int initialDamage) {
 
     // 1. Race selection
     const std::vector<std::string> validRaces = { "human", "elf", "beast" };
@@ -232,10 +253,10 @@ void runCharacterSelection(Character& player) {
 
     waitForEnter();
 
-    runProfessionSelection(player);
+    runProfessionSelection(player, initialDamage);
 }
 
-void runProfessionSelection(Character& player) {
+void runProfessionSelection(Character& player, int initialDamage) {
     // Dialogue 1
     std::cout << "You hear footsteps approaching your cell... knightly footsteps.\n\n";
 
@@ -304,9 +325,10 @@ void runProfessionSelection(Character& player) {
 
         // Now re-set health/mana based on new stats
         player.calculateVitals();
-        player.setHealth(player.getMaxHealth());
-        player.setMana(player.getMaxMana());
-        player.setAct(1);  
+        player.setCurrentHealth(player.getMaxHealth());
+        player.setCurrentMana(player.getMaxMana());
+        player.applyInstantDamage(initialDamage, core::DamageType::Physical, "their mishaps in the stone cell", true);
+        std::cout << player.getAct(); 
 
         waitForEnter();
             break;

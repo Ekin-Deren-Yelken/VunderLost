@@ -66,6 +66,9 @@ void Character::setProfession(const std::string& professionValue) { profession =
 void Character::setHealth(int delta) { currentHealth = std::clamp(currentHealth + delta, 0, maxHealth); }
 void Character::setMana(int delta) { currentMana = std::clamp(currentMana + delta, 0, maxMana); }
 
+void Character::setCurrentHealth(int health) { currentHealth = health; }
+void Character::setCurrentMana(int mana) { currentMana = mana; }
+
 // ─── Status Checks ───────────────────────────────────────────────────────────
 bool Character::isAlive() const { return currentHealth > 0; }
 
@@ -344,7 +347,7 @@ void Character::tickStatuses() {
         activeStatuses.end()
     );
 }
-void Character::applyInstantDamage(int dmg, core::DamageType type, const std::string& source) {
+void Character::applyInstantDamage(int dmg, core::DamageType type, const std::string& source, bool suppressPrint) {
     float finalDmg = static_cast<float>(dmg);
     for (const auto& node : activeStatuses)
         finalDmg *= node.dmgMultiplier;
@@ -352,9 +355,11 @@ void Character::applyInstantDamage(int dmg, core::DamageType type, const std::st
     int finalInt = static_cast<int>(finalDmg);
     currentHealth -= finalInt;
 
-    std::cout << name << " takes " << finalInt << " " 
-              << core::damage_toString(type) 
-              << " damage from " << source << "!\n";
+    if (!suppressPrint) {
+        std::cout << name << " takes " << finalDmg
+                  << " " << core::damage_toString(type)
+                  << " damage from " << source << ".\n";
+    }
 }
 
 

@@ -58,7 +58,7 @@ void CombatManager::loadAbilities() {
 void CombatManager::nextTurn() {
     Character* actor = allCombatants[activeIndex]; // Actor is the who has the turn and they are doing something
     if (!actor->isAlive()) {
-        std::cout << actor->getName() << "has been defeated, skipping...";
+        std::cout << actor->getName() << " has been defeated, skipping...";
         std::this_thread::sleep_for(std::chrono::seconds(1));
         // skip dead combatants, get next available player or enemy
     } else if (actor->isPlayer() || actor->getController()==ControllerType::Summoned) {

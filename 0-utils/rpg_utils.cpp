@@ -12,7 +12,7 @@ namespace {
     }
 }
 
-std::string runSentimentAnalysis(const std::string& sentence) {
+std::string RPGUtils::runSentimentAnalysis(const std::string& sentence) {
     std::string cmd = "python sentiment_check.py \"" + sentence + "\"";
 
     FILE* pipe = _popen(cmd.c_str(), "r");
