@@ -122,7 +122,7 @@ void loopUntilMirrorChoice(Character& player) {
             }
         }
         // Bed Option
-        else if (choice == "bed") {
+        else if (choice.find("bed") != std::string::npos) {
             if (!bedChecked) {
                 std::cout << "\nYou see poop stains on the mattress. What a mess you made, how embarassing... Shamefully, you walk back to where you woke up.";
                 bedChecked = true;
@@ -164,7 +164,7 @@ void loopUntilMirrorChoice(Character& player) {
             }
         }
         // Do Nothing Option
-        else if (choice == "do nothing") {
+        else if (choice.find("do nothing") != std::string::npos) {
             doNothingCount++;
             if (doNothingCount == 1)
                 std::cout << "You do nothing...\n";

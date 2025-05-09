@@ -201,54 +201,73 @@ std::string Character::getDisplayName() const {
 json Character::toJson() const {
     return {
         {"name", name},
+        {"currentTitle", currentTitle},
+        {"titles", titles},
+
+        {"profession", profession.value_or("")},
+        {"race", race.value_or("")},
+        {"sex", sex.value_or("")},
+        {"gender", gender.value_or("")},
+                
+        {"controller", static_cast<int>(controller)},
+
+        {"favour", favour},
+
         {"level", level},
         {"XP", XP},
-        {"armor", armour},
+        {"trainingPoints", trainingPoints},
+
+        {"act", act},
+
         {"maxHealth", maxHealth},
         {"currentHealth", currentHealth},
         {"maxMana", maxMana},
         {"currentMana", currentMana},
-        {"trainingPoints", trainingPoints},
-        {"currentTitle", currentTitle},
+        {"armor", armour},
+
         {"stats", stats},
-        {"titles", titles},
-        {"race", race.value_or("")},
-        {"sex", sex.value_or("")},
-        {"gender", gender.value_or("")},
-        {"act", act},
-        {"profession", profession.value_or("")},
-        {"controller", static_cast<int>(controller)}
+
+        {"companion", companion},
+        {"companion_list", companionList}
     };
 }
 
 void Character::loadFromJson(const json& j) {
     name = j.at("name");
-    level = j.at("level");
-    XP = j.at("XP");
-    armour = j.at("armor");
-    
-    maxHealth = j.at("maxHealth");
-    currentHealth = j.at("currentHealth");
-
-    maxMana = j.at("maxMana");
-    currentMana = j.at("currentMana");
-
-    trainingPoints = j.at("trainingPoints");
     currentTitle = j.at("currentTitle");
-    stats = j.at("stats").get<std::map<std::string, int>>();
     titles = j.at("titles").get<std::vector<std::string>>();
-    
-    race = j.at("race").get<std::string>();
-    sex = j.at("sex").get<std::string>();
-    gender = j.at("gender").get<std::string>();
-    act = j.at("act");
+
     if (j.contains("profession")) {
         profession = j.at("profession").get<std::string>();
     }
+    race = j.at("race").get<std::string>();
+    sex = j.at("sex").get<std::string>();
+    gender = j.at("gender").get<std::string>();
+
     if (j.contains("controller")) {
         int c = j.at("controller").get<int>();
         controller = static_cast<core::ControllerType>(c);
     }
+
+    favour = j.at("favour");
+
+    level = j.at("level");
+    XP = j.at("XP");
+    trainingPoints = j.at("trainingPoints");
+    
+    act = j.at("act");
+    if (j.contains("favour") && j["favour"].is_number_integer()) {
+        favour = j["favour"];
+    } else {favour = 0;}
+
+    maxHealth = j.at("maxHealth");
+    currentHealth = j.at("currentHealth");
+    maxMana = j.at("maxMana");
+    currentMana = j.at("currentMana");
+    armour = j.at("armor");
+
+    stats = j.at("stats").get<std::map<std::string, int>>();
+
     if (j.contains("abilities")) {
         auto const& dict = core::getAllAbilities();
         for (auto& idj : j.at("abilities")) {
@@ -260,6 +279,19 @@ void Character::loadFromJson(const json& j) {
             std::cerr << "Unknown ability ID: " << id << "\n";
         }
       }
+
+    if (j.contains("companion") && j["companion"].is_boolean()) {
+        companion = j["companion"];
+    }
+
+    if (j.contains("companion_list") && j["companion_list"].is_array()) {
+        companionList.clear();
+        for (const auto& entry : j["companion_list"]) {
+            if (entry.is_string()) {
+                companionList.push_back(entry.get<std::string>());
+            }
+        }
+    }
 }
 
 // ─── Combat Hooks ─────────────────────────────────────────────────────────────
@@ -363,7 +395,6 @@ void Character::applyInstantDamage(int dmg, core::DamageType type, const std::st
     }
 }
 
-
 // ─── Ability API ─────────────────────────────────────────────────────────────
 void Character::addAbility(const core::Ability& a) {
     abilities.push_back(a);
@@ -372,3 +403,16 @@ void Character::addAbility(const core::Ability& a) {
 const std::vector<core::Ability>& Character::getAbilities() const {
     return abilities;
 }
+
+// ─── Favour ──────────────────────────────────────────────────────────────────
+int Character::getFavour() const { return favour; }
+void Character::setFavour(int value) { favour = value; }
+bool Character::isNPC() const { return (controller == core::ControllerType::NPC); }
+
+
+// ─── Companions ──────────────────────────────────────────────────────────────
+bool Character::isCompanion() const { return companion; }
+void Character::setCompanion(bool value) { companion = value; }
+
+const std::vector<std::string>& Character::getCompanionList() const { return companionList; }
+void Character::setCompanionList(const std::vector<std::string>& list) { companionList = list; }

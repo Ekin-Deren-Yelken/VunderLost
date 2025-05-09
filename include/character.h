@@ -15,7 +15,8 @@ namespace core {
     enum class ControllerType {
         AI,           // fully automated
         Human,        // needs player input
-        Summoned      // “belongs” to another Character
+        Summoned,     // “belongs” to another Character
+        NPC           // can trade and possesses favour
     };
 }
 class Character {
@@ -38,9 +39,13 @@ protected:
     int                         level;
     int                         trainingPoints;
     int                         act;
+    int                         favour;
     std::map<std::string, int>  stats; // create a map called stats where a string is linked to some int
 
     core::ControllerType controller = core::ControllerType::AI; // player, enemy, or summonded/minion turn
+
+    bool companion = false;
+    std::vector<std::string> companionList;
 
     // Active status effects (damage-over-time or debuffs)
     // simple, numeric tweaks to combat
@@ -93,13 +98,13 @@ public:
     void setAct(int value);
     void addTitle(const std::string& title);
 
+    // Change Combat Stats
     void setHealth(int delta);
     void setMana(int delta);
-
     void setCurrentHealth(int health);
     void setCurrentMana(int mana);
 
-    //  Sttus Checks
+    //  Status Checks
     bool isAlive() const;
 
     // Stat and attribute getters
@@ -115,6 +120,7 @@ public:
     int getTrainingPoints() const;
     std::string getDisplayName() const;
     
+    // Get Combat Stats
     int getMaxHealth() const;
     int getMaxMana() const;
     int getCurrentHealth() const;
@@ -143,6 +149,18 @@ public:
     // Ability API
     void addAbility(const core::Ability& a);
     const std::vector<core::Ability>& getAbilities() const;
+
+    // Favour 
+    int getFavour() const;
+    void setFavour(int value);
+    bool isNPC() const;
+
+    // Companions
+    bool isCompanion() const;
+    void setCompanion(bool value);
+
+    const std::vector<std::string>& getCompanionList() const;
+    void setCompanionList(const std::vector<std::string>& list);
 
 };
 

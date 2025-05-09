@@ -51,6 +51,8 @@ private:
 
     // Applies end-of-turn effects (DoT, status decay)
     void endTurnCleanup();
+
+    std::vector<std::unique_ptr<Character>> loadCompanionParty(const Character& companionLeader);
 };
 
 } // namespace combat

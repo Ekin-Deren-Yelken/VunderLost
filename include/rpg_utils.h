@@ -1,5 +1,4 @@
-#ifndef RPG_UTILS_H
-#define RPG_UTILS_H
+#pragma once
 
 #include <random>
 #include <string>
@@ -15,6 +14,5 @@ namespace RPGUtils {
     int rollDice(std::initializer_list<int> sidesList);
     
     std::string runSentimentAnalysis(const std::string& sentence);
+    std::string findPythonInPath();
 }
-
-#endif

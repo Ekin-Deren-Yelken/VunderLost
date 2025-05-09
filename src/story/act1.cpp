@@ -4,7 +4,6 @@
 #include "../../include/rpg_utils.h"
 #include "../../JSON/json.hpp"
 #include "../../include/story.h"
-#include "../../include/NPC.h"
 
 #include <fstream>
 #include <iostream>
@@ -34,7 +33,7 @@ void runAct1(Character& player) {
     combat::combatManager cm;
 
     // Create enemies using smart pointer to avoid deleting later...
-    std::unique_ptr<Character> gregory = cm.loadMonster("assets/mobs/gregory.json");
+    std::unique_ptr<Character> gregory = cm.loadMonster("assets/mobs/NPC_GregoryLordOfGoo.json");
 
     // Dialogue 1
     std::cout << gregory->getDisplayName()
@@ -82,24 +81,32 @@ void runAct1(Character& player) {
 
     // Check Sentiment of response, loop till positive or negative answer given
     bool sentimentChecked = false;
+    int favour;
+
     while (!sentimentChecked) {
         std::string hechpersonChoice = getInput("what do you say > ", true);
-
-        // Connect to python function wrapped through C++ pipeline
-        std::string cmd = "python sentiment_check.py \"" + hechpersonChoice + "\"";
-        FILE* pipe = _popen(cmd.c_str(), "r");
-        if (!pipe) { std::cerr << "Failed to run sentiment check.\n"; return; }
         
         // Check Sentiment of response
         char buffer[128];
         std::string sentiment = RPGUtils::runSentimentAnalysis(hechpersonChoice);
 
+        int favourRoll_gregory = RPGUtils::rollDie(10);
+
         // depending on sentiment, change response
         if (sentiment == "hostile") {
             std::cout << gregory->getName() << "recoils in gooey anger.\n";
+            
+            // Calculate Favour
+            favour = player.getStat("CHARM") - favourRoll_gregory;
+
+            gregory->setStat("favour", favour);
             sentimentChecked = true;
         } else if (sentiment == "friendly") {
             std::cout << gregory->getName() << "bounces happily.\n";
+
+            // Calculate Favour
+            favour = player.getStat("CHARM") + favourRoll_gregory;
+
             std::cout <<  gregory->getDisplayName() << " has joined your team...\n";
             sentimentChecked = true;
         } else {

@@ -8,61 +8,8 @@
 #include <thread>
 #include <fstream>
 
-
 using namespace combat;
 using namespace core;
-
-std::unique_ptr<Character> combatManager::loadMonster(const std::string& relPath) {
-    using json = nlohmann::json;
-
-    auto fullPath = std::filesystem::current_path() / relPath;
-    std::ifstream in(fullPath);
-
-    // Check if JSON open
-    if (!in.is_open()) {
-        std::cerr << "Failed to open file: " << fullPath << "\n";
-        return nullptr;
-    }
-
-    // Create JSON Stream buffer to protect data
-    std::stringstream buffer;
-    buffer << in.rdbuf();
-    std::string jsonStr = buffer.str();
-
-    // Check if empty
-    if (jsonStr.empty()) {
-        std::cerr << "ERROR: File content is empty.\n";
-        return nullptr;
-    }
-
-    // Remove BOM chars if present
-    if (jsonStr.size() >= 3 &&
-        (unsigned char)jsonStr[0] == 0xEF &&
-        (unsigned char)jsonStr[1] == 0xBB &&
-        (unsigned char)jsonStr[2] == 0xBF) {
-        jsonStr.erase(0, 3);
-    }
-
-    // Parse JSON
-    json monster_json;
-    try {
-            monster_json = json::parse(jsonStr);
-    }
-    catch (const json::exception& e) {
-        std::cerr << "JSON parse error: " << e.what() << std::endl;
-        return nullptr;
-    }
-
-    // Assign data from JSON to Monster Character, using unique pointer
-    auto monster = std::make_unique<Character>();
-    try {
-        monster->loadFromJson(monster_json);
-    } catch (const json::exception& e) {
-        std::cerr << "Failed to load character from JSON: " << e.what() << std::endl;
-        return nullptr;
-    }
-    return monster;
-}
 
 bool combatManager::startEncounter(std::vector<Character*>& players,
                                    std::vector<Character*>& enemies) {
@@ -126,7 +73,7 @@ void combatManager::nextTurn() {
         std::cout << actor->getName() << " has been defeated, skipping...";
         std::this_thread::sleep_for(std::chrono::seconds(1));
         // skip dead combatants, get next available player or enemy
-    } else if (actor->isPlayer() || actor->getController()==ControllerType::Summoned) {
+    } else if (actor->isPlayer() || actor->getController()==ControllerType::Summoned || actor->getController()==ControllerType::NPC) {
         playerTurn(*actor);
     } else {
         enemyTurn(*actor);
@@ -263,7 +210,7 @@ Character* combatManager::chooseAITarget() {
     int minHP = INT_MAX;
 
     for (Character* c : allCombatants) {
-        if ((c->getController() == ControllerType::Human || c->getController() == ControllerType::Summoned) && c->isAlive()) {
+        if ((c->getController() == ControllerType::Human || c->getController() == ControllerType::Summoned || c->getController()==ControllerType::NPC) && c->isAlive()) {
             // Track lowest HP target
             if (c->getCurrentHealth() < minHP) {
                 minHP = c->getCurrentHealth();
@@ -271,7 +218,7 @@ Character* combatManager::chooseAITarget() {
             }
 
             // Track first summoned
-            if (!firstSummoned && c->getController() == ControllerType::Summoned) {
+            if (!firstSummoned && (c->getController() == ControllerType::Summoned || c->getController()==ControllerType::NPC)) {
                 firstSummoned = c;
             }
         }
@@ -339,4 +286,71 @@ void combatManager::resolveAbility(Character& user, Character& target, const cor
 void combatManager::endTurnCleanup() {
     for (auto* c : allCombatants)         c->tickStatuses();
 
+}
+
+std::unique_ptr<Character> combatManager::loadMonster(const std::string& relPath) {
+    using json = nlohmann::json;
+
+    auto fullPath = std::filesystem::current_path() / relPath;
+    std::ifstream in(fullPath);
+
+    // Check if JSON open
+    if (!in.is_open()) {
+        std::cerr << "Failed to open file: " << fullPath << "\n";
+        return nullptr;
+    }
+
+    // Create JSON Stream buffer to protect data
+    std::stringstream buffer;
+    buffer << in.rdbuf();
+    std::string jsonStr = buffer.str();
+
+    // Check if empty
+    if (jsonStr.empty()) {
+        std::cerr << "ERROR: File content is empty.\n";
+        return nullptr;
+    }
+
+    // Remove BOM chars if present
+    if (jsonStr.size() >= 3 &&
+        (unsigned char)jsonStr[0] == 0xEF &&
+        (unsigned char)jsonStr[1] == 0xBB &&
+        (unsigned char)jsonStr[2] == 0xBF) {
+        jsonStr.erase(0, 3);
+    }
+
+    // Parse JSON
+    json monster_json;
+    try {
+            monster_json = json::parse(jsonStr);
+    }
+    catch (const json::exception& e) {
+        std::cerr << "JSON parse error: " << e.what() << std::endl;
+        return nullptr;
+    }
+
+    // Assign data from JSON to Monster Character, using unique pointer
+    auto monster = std::make_unique<Character>();
+    try {
+        monster->loadFromJson(monster_json);
+    } catch (const json::exception& e) {
+        std::cerr << "Failed to load character from JSON: " << e.what() << std::endl;
+        return nullptr;
+    }
+    return monster;
+}
+
+std::vector<std::unique_ptr<Character>> combatManager::loadCompanionParty(const Character& companionLeader) {
+    std::vector<std::unique_ptr<Character>> companions;
+
+    if (!companionLeader.isCompanion()) return companions;
+
+    for (const auto& id : companionLeader.getCompanionList()) {
+        std::string filename = "assets/mobs/" + id + ".json";
+        auto c = loadMonster(filename);  // your existing loader
+        if (c) companions.push_back(std::move(c));
+        else std::cerr << "[ERROR] Failed to load companion: " << filename << "\n";
+    }
+
+    return companions;
 }

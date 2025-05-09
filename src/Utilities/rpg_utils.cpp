@@ -6,7 +6,7 @@
 #include <sstream>
 #include <map>
 #include <algorithm>
-
+#include <filesystem>
 
 namespace {
     std::mt19937& getRng() {
@@ -33,17 +33,48 @@ namespace RPGUtils {
         return "";
     }
 
-    std::string runSentimentAnalysis(const std::string& sentence) {
-        std::string pythonPath = getConfigValue("PYTHON_PATH");
-        if (pythonPath.empty()) {
-            std::cerr << "[ERROR] PYTHON_PATH not found in config.txt\n";
-            return "error";
+    std::string findPythonInPath() {
+        const char* pathEnv = std::getenv("PATH");
+        if (!pathEnv) return "";
+
+        std::stringstream ss(pathEnv);
+        std::string segment;
+        while (std::getline(ss, segment, ';')) {
+            std::filesystem::path potential = segment;
+            potential /= "python.exe";
+            if (std::filesystem::exists(potential)) {
+                return potential.string();
+            }
         }
 
-        std::string cmd = "\"" + pythonPath + "\" sentiment_check.py \"" + sentence + "\"";
+        return "";
+    }
+
+    std::string runSentimentAnalysis(const std::string& sentence) {
+        std::string pythonPath = getConfigValue("PYTHON_PATH");
+
+        // Fallback: use PATH environment variable
+        if (pythonPath.empty()) {
+            pythonPath = findPythonInPath();
+
+            if (pythonPath.empty()) {
+                std::cerr << "[ERROR] Could not locate Python via config or PATH.\n";
+                return "error";
+            }
+        }
+
+        // Sanitize input
+        std::string cleanSentence = sentence;
+        std::replace(cleanSentence.begin(), cleanSentence.end(), '"', '\''); // Avoid breaking quotes
+
+        // Compose command
+        std::string cmd = "\"" + pythonPath + "\" sentiment_check.py \"" + cleanSentence + "\"";
 
         FILE* pipe = _popen(cmd.c_str(), "r");
-        if (!pipe) return "error";
+        if (!pipe) {
+            std::cerr << "[ERROR] Failed to run sentiment analysis command.\n";
+            return "error";
+        }
 
         char buffer[128];
         std::string result;
@@ -53,7 +84,13 @@ namespace RPGUtils {
         _pclose(pipe);
 
         result.erase(result.find_last_not_of(" \n\r\t") + 1);
-        return result.empty() ? "error" : result;
+
+        if (result.empty()) {
+            std::cerr << "[ERROR] Sentiment analysis returned no output.\n";
+            return "error";
+        }
+
+        return result;
     }
 }
 
