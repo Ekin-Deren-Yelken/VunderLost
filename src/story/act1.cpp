@@ -4,6 +4,7 @@
 #include "../../include/rpg_utils.h"
 #include "../../JSON/json.hpp"
 #include "../../include/story.h"
+#include "../../include/NPC.h"
 
 #include <fstream>
 #include <iostream>
@@ -11,146 +12,103 @@
 #include <iterator>
 #include <string>
 #include <cstdio>
+#include <memory>
 
 using json = nlohmann::json;
-
-Character* loadMonster(const std::string& relPath) {
-    using json = nlohmann::json;
-
-    auto fullPath = std::filesystem::current_path() / relPath;
-    std::ifstream in(fullPath);
-
-    // Check if JSON open
-    if (!in.is_open()) {
-        std::cerr << "Failed to open file: " << fullPath << "\n";
-        return nullptr;
-    }
-
-    // Create JSON Stream buffer to protect data
-    std::stringstream buffer;
-    buffer << in.rdbuf();
-    std::string jsonStr = buffer.str();
-
-    // Check if empty
-    if (jsonStr.empty()) {
-        std::cerr << "ERROR: File content is empty.\n";
-        return nullptr;
-    }
-
-    // Remove BOM chars if present
-    if (jsonStr.size() >= 3 &&
-        (unsigned char)jsonStr[0] == 0xEF &&
-        (unsigned char)jsonStr[1] == 0xBB &&
-        (unsigned char)jsonStr[2] == 0xBF) {
-        jsonStr.erase(0, 3);
-    }
-
-    // Parse JSON
-    json monster_json;
-    try {
-        monster_json = json::parse(jsonStr);
-    } catch (const json::exception& e) {
-        std::cerr << "JSON parse error: " << e.what() << std::endl;
-        return nullptr;
-    }
-
-    // Assign data from JSON to Monster Character, using pointer
-    Character* monster = new Character();
-    try {
-        monster->loadFromJson(monster_json);
-    } catch (const json::exception& e) {
-        std::cerr << "Failed to load character from JSON: " << e.what() << std::endl;
-        delete monster;
-        return nullptr;
-    }
-    return monster;
-}
 
 void runAct1(Character& player) {
 
     std::cout << "\n[ACT 1 begins for " << player.getDisplayName() << "]\n";
     waitForEnter();
 
+    // Narrator
     std::cout << "\nYou slowly regain consciousness as distant screams echo in the corridors.\n";
     std::cout << player.getName() << " blinks and realizes their cell door stands ajar as you hear movement in the dimly lit hall...\n";
     waitForEnter();
 
     std::cout << "Before you can step forward, a hideous SLIME lunges from the shadows!\n";
     std::cout << "It oozes toward you, with confidence and style!\n\n";
-
-    auto* slime = loadMonster("assets/mobs/slime.json");
-
     waitForEnter();
 
-    std::cout << slime->getDisplayName()
+    // Initialize combat manager
+    combat::combatManager cm;
+
+    // Create enemies using smart pointer to avoid deleting later...
+    std::unique_ptr<Character> gregory = cm.loadMonster("assets/mobs/gregory.json");
+
+    // Dialogue 1
+    std::cout << gregory->getDisplayName()
               << ":\n\n"
               << "\"Humpty dum, humpty dee,\n"
               << "Who dares disturb the slimey me?\n"
               << "Flesh and bone don't stand a chance-\n"
               << "Come now, stranger, let us DANCE!\"\n\n";
     waitForEnter();
-
-        // Your party is just the player
-        std::vector<Character*> players = { &player };
-        std::vector<Character*> enemies;
     
-        if (slime) enemies.push_back(slime);
-        
-        combat::CombatManager cm;
-        bool gregoryBattle = cm.startEncounter(players, enemies);
-        waitForEnter();
+    // use characters for combat
+    std::vector<Character*> players = { &player };
+    std::vector<Character*> enemies;
 
+    // build enemies vector
+    if (gregory) enemies.push_back(gregory.get());
+    
+    // Start Combat
+    bool gregoryBattle = cm.startEncounter(players, enemies);
+    waitForEnter();
+
+    // Based on Combat Outcome, pick dialogue
     if (gregoryBattle) {
         // Greg Won
-        std::cout << "\n"  << slime->getDisplayName() << ": \"Another one bites the goo!\"\n";
-        std::cout<< slime->getDisplayName() << ": Honestly, I expected more from you. Someone with limbs lost to me; sadly true.\"\n";
+        std::cout << "\n"  << gregory->getDisplayName() << ": \"Another one bites the goo!\"\n";
+        std::cout<< gregory->getDisplayName() << ": Honestly, I expected more from you. Someone with limbs lost to me; sadly true.\"\n";
         waitForEnter();
-        std::cout << slime->getDisplayName() << ": Now if you'll excuse me, I must moonwalk into the abyss. *squelch*\"\n";
+        std::cout << gregory->getDisplayName() << ": Now if you'll excuse me, I must moonwalk into the abyss. *squelch*\"\n";
         waitForEnter();
-        std::cout << slime->getDisplayName() << "As you lie in defeat that you just lost to a rhymin', dancin' ball of goo, you hear a familiar voice...\n";
+        std::cout << gregory->getDisplayName() << "As you lie in defeat that you just lost to a rhymin', dancin' ball of goo, you hear a familiar voice...\n";
     } else {
         // player won
-        std::cout << "\n" << slime->getDisplayName() << ": \"No... my rhythm, my groove... this can't be true!\"\n";
+        std::cout << "\n" << gregory->getDisplayName() << ": \"No... my rhythm, my groove... this can't be true!\"\n";
         waitForEnter();
-        std::cout << slime->getDisplayName() << ": \"I did't even *try*. You could never handle the slimey style!\"\n";
+        std::cout << gregory->getDisplayName() << ": \"I did't even *try*. You could never handle the slimey style!\"\n";
         waitForEnter();
     }
-    for (auto* enemy : enemies) delete enemy;
 
+    // Dialogue 2
     bool gainGreg = false;
-
-    std::string henchSex;
-    if (player.getSex() == "Male") {henchSex="man"; } else {henchSex="woman";}
-
-    std::cout << slime->getDisplayName() << ": How about we team up, you could be my hench" << henchSex
+    std::string playerSex;
+    if (player.getSex() == "male") {playerSex="man"; } else {playerSex="woman";}
+    std::cout << gregory->getDisplayName() << ": How about we team up, you could be my hench" << playerSex
                                          <<  ". As a poet and dancer, far superior to you, I demand a lengthy and detailed acceptance to my offer...\n";
 
+    // Check Sentiment of response, loop till positive or negative answer given
     bool sentimentChecked = false;
-
     while (!sentimentChecked) {
-        std::string hechmenChoice = getInput("what do you say > ", true);
-        //std::string cmd = "C:\\Users\\14168\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" + "C:\\Users\\14168\\Documents\\Video Game\\sentiment_check.py" + hechmenChoice + "\"";
+        std::string hechpersonChoice = getInput("what do you say > ", true);
 
-        std::string cmd = "python sentiment_check.py \"" + hechmenChoice + "\"";
-    
+        // Connect to python function wrapped through C++ pipeline
+        std::string cmd = "python sentiment_check.py \"" + hechpersonChoice + "\"";
         FILE* pipe = _popen(cmd.c_str(), "r");
         if (!pipe) { std::cerr << "Failed to run sentiment check.\n"; return; }
-    
+        
+        // Check Sentiment of response
         char buffer[128];
-        std::string sentiment = RPGUtils::runSentimentAnalysis(hechmenChoice);
+        std::string sentiment = RPGUtils::runSentimentAnalysis(hechpersonChoice);
+
+        // depending on sentiment, change response
         if (sentiment == "hostile") {
-            std::cout << slime->getName() << "recoils in gooey anger.\n";
+            std::cout << gregory->getName() << "recoils in gooey anger.\n";
             sentimentChecked = true;
         } else if (sentiment == "friendly") {
-            std::cout << slime->getName() << "bounces happily.\n";
-            std::cout <<  slime->getDisplayName() << " has joined your team...\n";
+            std::cout << gregory->getName() << "bounces happily.\n";
+            std::cout <<  gregory->getDisplayName() << " has joined your team...\n";
             sentimentChecked = true;
         } else {
-            std::cout << slime->getName() << "... is confused.\n";
-            std::cout << slime->getDisplayName() << ": speak clearly fool, be as descriptive as you like,"
+            std::cout << gregory->getName() << "... is confused.\n";
+            std::cout << gregory->getDisplayName() << ": speak clearly fool, be as descriptive as you like,"
                      << " a poet and artist of my calibre, far outside your liguistic capabilities, can "
                      << "take any length of answer you decide is necessary\n";
         }
     }
+        std::cout << "\nHONK HONK";
 
 }

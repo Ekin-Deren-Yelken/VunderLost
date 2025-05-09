@@ -183,7 +183,6 @@ void Character::printStats() const {
         std::cout << stat.first << ": " << stat.second << "\n";
     }
 }
-
 void Character::printCombatStats() const {
     std::cout << "\nHealth: " << currentHealth << "/" << maxHealth << "\n"
               << "Mana: " << currentMana << "/" << maxMana << "\n";

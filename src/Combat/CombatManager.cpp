@@ -6,25 +6,89 @@
 #include <algorithm>
 #include <chrono>
 #include <thread>
+#include <fstream>
+
 
 using namespace combat;
 using namespace core;
 
-bool CombatManager::startEncounter(std::vector<Character*>& players, std::vector<Character*>& enemies) {
+std::unique_ptr<Character> combatManager::loadMonster(const std::string& relPath) {
+    using json = nlohmann::json;
+
+    auto fullPath = std::filesystem::current_path() / relPath;
+    std::ifstream in(fullPath);
+
+    // Check if JSON open
+    if (!in.is_open()) {
+        std::cerr << "Failed to open file: " << fullPath << "\n";
+        return nullptr;
+    }
+
+    // Create JSON Stream buffer to protect data
+    std::stringstream buffer;
+    buffer << in.rdbuf();
+    std::string jsonStr = buffer.str();
+
+    // Check if empty
+    if (jsonStr.empty()) {
+        std::cerr << "ERROR: File content is empty.\n";
+        return nullptr;
+    }
+
+    // Remove BOM chars if present
+    if (jsonStr.size() >= 3 &&
+        (unsigned char)jsonStr[0] == 0xEF &&
+        (unsigned char)jsonStr[1] == 0xBB &&
+        (unsigned char)jsonStr[2] == 0xBF) {
+        jsonStr.erase(0, 3);
+    }
+
+    // Parse JSON
+    json monster_json;
+    try {
+            monster_json = json::parse(jsonStr);
+    }
+    catch (const json::exception& e) {
+        std::cerr << "JSON parse error: " << e.what() << std::endl;
+        return nullptr;
+    }
+
+    // Assign data from JSON to Monster Character, using unique pointer
+    auto monster = std::make_unique<Character>();
+    try {
+        monster->loadFromJson(monster_json);
+    } catch (const json::exception& e) {
+        std::cerr << "Failed to load character from JSON: " << e.what() << std::endl;
+        return nullptr;
+    }
+    return monster;
+}
+
+bool combatManager::startEncounter(std::vector<Character*>& players,
+                                   std::vector<Character*>& enemies) {
     // build turn order: players then enemies
-    allCombatants = players;
-    allCombatants.insert(allCombatants.end(), enemies.begin(), enemies.end());
+    allCombatants.clear();
+    for (auto* p : players) allCombatants.push_back(p);
+    for (auto* e : enemies) allCombatants.push_back(e);
+
+    // Load abilities of all the combatants
     loadAbilities();
     activeIndex = 0;
+
     // loop until one side is wiped out, all players or enemies health is reduced to zero
     while (true) {
+
+        // Run Next Turn
         nextTurn();
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        bool anyPlayerAlive = std::any_of(
-            players.begin(), players.end(), [](Character* c){ return c->isAlive(); });
-            bool anyEnemyAlive  = std::any_of(
-            enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
+
+        // Check if players or enemies are all dead
+        bool anyPlayerAlive = std::any_of(players.begin(), players.end(), [](Character* c){ return c->isAlive(); });
+        bool anyEnemyAlive = std::any_of(enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
+
+        // If there are both enemies and players to battle, next turn
         if (!anyPlayerAlive || !anyEnemyAlive) break;
+
         std::cout << "\n-Next Combatant's Turn-\n";
         std::this_thread::sleep_for(std::chrono::seconds(2));
     }
@@ -36,7 +100,7 @@ bool CombatManager::startEncounter(std::vector<Character*>& players, std::vector
     return victory;
 }
 
-void CombatManager::loadAbilities() {
+void combatManager::loadAbilities() {
     characterAbilities.clear();
     // Pull in the static map that was built once from your JSON file
     const auto& dict = getAllAbilities();
@@ -56,7 +120,7 @@ void CombatManager::loadAbilities() {
     
 }
 
-void CombatManager::nextTurn() {
+void combatManager::nextTurn() {
     Character* actor = allCombatants[activeIndex]; // Actor is the who has the turn and they are doing something
     if (!actor->isAlive()) {
         std::cout << actor->getName() << " has been defeated, skipping...";
@@ -71,7 +135,7 @@ void CombatManager::nextTurn() {
     activeIndex = (activeIndex + 1) % allCombatants.size();
 }
 
-void CombatManager::playerTurn(Character& p) {
+void combatManager::playerTurn(Character& p) {
     std::cout << "\n-- " << p.getName() << "'s turn --";
     p.printCombatStats();
     std::cout << "\n";
@@ -148,7 +212,7 @@ void CombatManager::playerTurn(Character& p) {
 
 }
 
-void CombatManager::enemyTurn(Character& e) {
+void combatManager::enemyTurn(Character& e) {
     // Simple AI: use first ability on first alive player or summoned ally
     
     // Find abilities corresponding to the enemy. Each entry in character Abilities is specific to that character.
@@ -193,7 +257,7 @@ void CombatManager::enemyTurn(Character& e) {
     
 }
 
-Character* CombatManager::chooseAITarget() {
+Character* combatManager::chooseAITarget() {
     Character* lowestHP = nullptr;
     Character* firstSummoned = nullptr;
     int minHP = INT_MAX;
@@ -225,7 +289,7 @@ Character* CombatManager::chooseAITarget() {
     return firstSummoned ? firstSummoned : lowestHP;
 }
 
-void CombatManager::resolveAbility(Character& user, Character& target, const core::Ability& a) {
+void combatManager::resolveAbility(Character& user, Character& target, const core::Ability& a) {
     std::cout << user.getName() << " uses " << a.name << " on " << target.getName() << std::endl;
     
     //Spend Mana
@@ -272,7 +336,7 @@ void CombatManager::resolveAbility(Character& user, Character& target, const cor
     // (Optional) QTE hook here for bonus
 }
 
-void CombatManager::endTurnCleanup() {
+void combatManager::endTurnCleanup() {
     for (auto* c : allCombatants)         c->tickStatuses();
 
 }

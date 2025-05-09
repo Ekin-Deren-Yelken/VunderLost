@@ -7,16 +7,17 @@
 
 namespace combat {
 
-class CombatManager {
+class combatManager {
 public:
     /**
      * Starts a turn-based encounter between player characters and enemies.
      * @param players Vector of pointers to player-controlled Characters
      * @param enemies Vector of pointers to enemy Characters
      */
-    bool startEncounter(std::vector<Character*>& players,
-                        std::vector<Character*>& enemies);
+    bool startEncounter(std::vector<Character*>& enemies, std::vector<Character*>& players);
 
+    std::unique_ptr<Character> loadMonster(const std::string& relPath);
+    
 private:
     std::vector<Character*>      allCombatants;   // combined turn order
     std::map<Character*, std::vector<core::Ability>> characterAbilities;       // list of available abilities by character

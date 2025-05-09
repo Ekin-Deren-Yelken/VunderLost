@@ -133,7 +133,7 @@ public:
     
     // Serialization
     json toJson() const;
-    void loadFromJson(const json& j);
+    virtual void loadFromJson(const json& j);
 
     // Combat hooks
     void applyEffect(const core::Effect& e, const std::string& sourceName);

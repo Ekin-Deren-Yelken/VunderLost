@@ -10,6 +10,7 @@
   "maxMana": 20,
   "currentMana": 20,
   "level": 1,
+  "favour": 0,
   "name": "Gregory, Lord of Goo",
   "race": "Beast",
   "sex": "Male",
