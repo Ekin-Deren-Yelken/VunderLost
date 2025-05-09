@@ -1,22 +1,21 @@
 @echo off
 g++ ^
   main.cpp ^
-  0-utils/rpg_utils.cpp ^
-  1-Characters/character.cpp ^
-  1-Characters/stat_utils.cpp ^
-  1-Characters/npc_factory.cpp ^
-  3-Story/story.cpp ^
-  3-Story/act1.cpp ^
-  3-Story/act2.cpp ^
-  3-Story/act3.cpp ^
-  3-Story/act4.cpp ^
-  4-Saves/save_system.cpp ^
-  5-Combat/CombatManager.cpp ^
-  core/status_util.cpp ^
-  core/Effect.cpp ^
-  core/Ability.cpp ^
-  core/AbilityLoader.cpp ^
-  -std=c++17 -o game
+  src/Characters/character.cpp ^
+  src/Characters/npc_factory.cpp ^
+  src/Combat/Ability.cpp ^
+  src/Combat/AbilityLoader.cpp ^
+  src/Combat/CombatManager.cpp ^
+  src/Combat/Effect.cpp ^
+  src/Combat/Status.cpp ^
+  src/Utilities/rpg_utils.cpp ^
+  src/Utilities/save_system.cpp ^
+  src/Utilities/stat_utils.cpp ^
+  src/Utilities/trade.cpp ^
+  src/enemies.cpp ^
+  src/story/act1.cpp ^
+  src/story/story.cpp ^
+  -std=c++17 -Iinclude -o game.exe
 
 if %errorlevel% neq 0 (
     echo Build failed.

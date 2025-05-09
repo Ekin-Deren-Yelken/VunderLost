@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../character.h"
+#include "character.h"
 
 // Runs the full intro story sequence
 void runIntroScene();

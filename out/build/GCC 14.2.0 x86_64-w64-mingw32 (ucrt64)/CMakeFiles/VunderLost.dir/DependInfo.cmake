@@ -8,16 +8,20 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/14168/Documents/Video Game/0-utils/rpg_utils.cpp" "CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/1-Characters/character.cpp" "CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/3-Story/act1.cpp" "CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/3-Story/act2.cpp" "CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/3-Story/act3.cpp" "CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/3-Story/act4.cpp" "CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/3-Story/story.cpp" "CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/4-Saves/save_system.cpp" "CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/5-Combat/CombatManager.cpp" "CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/main.cpp" "CMakeFiles/VunderLost.dir/main.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/main.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Characters/character.cpp" "CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Characters/npc_factory.cpp" "CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Combat/Ability.cpp" "CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Combat/AbilityLoader.cpp" "CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Combat/CombatManager.cpp" "CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Combat/Effect.cpp" "CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Combat/Status.cpp" "CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Utilities/rpg_utils.cpp" "CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Utilities/save_system.cpp" "CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Utilities/stat_utils.cpp" "CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/Utilities/trade.cpp" "CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/enemies.cpp" "CMakeFiles/VunderLost.dir/src/enemies.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/enemies.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/story/act1.cpp" "CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/story/story.cpp" "CMakeFiles/VunderLost.dir/src/story/story.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/story/story.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

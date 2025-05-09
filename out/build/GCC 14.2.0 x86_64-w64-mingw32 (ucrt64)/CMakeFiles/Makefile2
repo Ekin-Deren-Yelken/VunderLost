@@ -84,12 +84,12 @@ clean: CMakeFiles/VunderLost.dir/clean
 CMakeFiles/VunderLost.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target VunderLost"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target VunderLost"
 .PHONY : CMakeFiles/VunderLost.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/VunderLost.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" 11
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/VunderLost.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" 0
 .PHONY : CMakeFiles/VunderLost.dir/rule
@@ -101,7 +101,7 @@ VunderLost: CMakeFiles/VunderLost.dir/rule
 # codegen rule for target.
 CMakeFiles/VunderLost.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Finished codegen for target VunderLost"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target VunderLost"
 .PHONY : CMakeFiles/VunderLost.dir/codegen
 
 # clean rule for target.

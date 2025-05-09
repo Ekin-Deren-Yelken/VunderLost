@@ -31,7 +31,7 @@ bool CombatManager::startEncounter(std::vector<Character*>& players, std::vector
 
     bool victory = std::any_of(enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
 
-    std::cout << (victory? "Defeat..." : "Victory!") << std::endl;
+    std::cout << (victory? "Defeat...\n\n" : "Victory!\n\n") << std::endl;
     
     return victory;
 }
@@ -235,7 +235,7 @@ void CombatManager::resolveAbility(Character& user, Character& target, const cor
     int toHit = RPGUtils::rollDice(a.hitRoll.count, a.hitRoll.sides)
                 + a.hitRoll.bonus;
 
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::this_thread::sleep_for(std::chrono::seconds(3));
     std::cout << "Roll to hit:" << " you need " << a.hitThreshold << "\n\n Rolling Dice..."; // TLDR; DISPLAY ODDS HERE
     std::this_thread::sleep_for(std::chrono::seconds(1));
 

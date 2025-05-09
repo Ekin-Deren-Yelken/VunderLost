@@ -128,245 +128,341 @@ VunderLost/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/build
 .PHONY : VunderLost/fast
 
-0-utils/rpg_utils.obj: 0-utils/rpg_utils.cpp.obj
-.PHONY : 0-utils/rpg_utils.obj
+src/Characters/character.obj: src/Characters/character.cpp.obj
+.PHONY : src/Characters/character.obj
 
 # target to build an object file
-0-utils/rpg_utils.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj
-.PHONY : 0-utils/rpg_utils.cpp.obj
+src/Characters/character.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj
+.PHONY : src/Characters/character.cpp.obj
 
-0-utils/rpg_utils.i: 0-utils/rpg_utils.cpp.i
-.PHONY : 0-utils/rpg_utils.i
+src/Characters/character.i: src/Characters/character.cpp.i
+.PHONY : src/Characters/character.i
 
 # target to preprocess a source file
-0-utils/rpg_utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.i
-.PHONY : 0-utils/rpg_utils.cpp.i
+src/Characters/character.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/character.cpp.i
+.PHONY : src/Characters/character.cpp.i
 
-0-utils/rpg_utils.s: 0-utils/rpg_utils.cpp.s
-.PHONY : 0-utils/rpg_utils.s
+src/Characters/character.s: src/Characters/character.cpp.s
+.PHONY : src/Characters/character.s
 
 # target to generate assembly for a file
-0-utils/rpg_utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.s
-.PHONY : 0-utils/rpg_utils.cpp.s
+src/Characters/character.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/character.cpp.s
+.PHONY : src/Characters/character.cpp.s
 
-1-Characters/character.obj: 1-Characters/character.cpp.obj
-.PHONY : 1-Characters/character.obj
+src/Characters/npc_factory.obj: src/Characters/npc_factory.cpp.obj
+.PHONY : src/Characters/npc_factory.obj
 
 # target to build an object file
-1-Characters/character.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj
-.PHONY : 1-Characters/character.cpp.obj
+src/Characters/npc_factory.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj
+.PHONY : src/Characters/npc_factory.cpp.obj
 
-1-Characters/character.i: 1-Characters/character.cpp.i
-.PHONY : 1-Characters/character.i
+src/Characters/npc_factory.i: src/Characters/npc_factory.cpp.i
+.PHONY : src/Characters/npc_factory.i
 
 # target to preprocess a source file
-1-Characters/character.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/1-Characters/character.cpp.i
-.PHONY : 1-Characters/character.cpp.i
+src/Characters/npc_factory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.i
+.PHONY : src/Characters/npc_factory.cpp.i
 
-1-Characters/character.s: 1-Characters/character.cpp.s
-.PHONY : 1-Characters/character.s
+src/Characters/npc_factory.s: src/Characters/npc_factory.cpp.s
+.PHONY : src/Characters/npc_factory.s
 
 # target to generate assembly for a file
-1-Characters/character.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/1-Characters/character.cpp.s
-.PHONY : 1-Characters/character.cpp.s
+src/Characters/npc_factory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.s
+.PHONY : src/Characters/npc_factory.cpp.s
 
-3-Story/act1.obj: 3-Story/act1.cpp.obj
-.PHONY : 3-Story/act1.obj
+src/Combat/Ability.obj: src/Combat/Ability.cpp.obj
+.PHONY : src/Combat/Ability.obj
 
 # target to build an object file
-3-Story/act1.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj
-.PHONY : 3-Story/act1.cpp.obj
+src/Combat/Ability.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj
+.PHONY : src/Combat/Ability.cpp.obj
 
-3-Story/act1.i: 3-Story/act1.cpp.i
-.PHONY : 3-Story/act1.i
+src/Combat/Ability.i: src/Combat/Ability.cpp.i
+.PHONY : src/Combat/Ability.i
 
 # target to preprocess a source file
-3-Story/act1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act1.cpp.i
-.PHONY : 3-Story/act1.cpp.i
+src/Combat/Ability.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.i
+.PHONY : src/Combat/Ability.cpp.i
 
-3-Story/act1.s: 3-Story/act1.cpp.s
-.PHONY : 3-Story/act1.s
+src/Combat/Ability.s: src/Combat/Ability.cpp.s
+.PHONY : src/Combat/Ability.s
 
 # target to generate assembly for a file
-3-Story/act1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act1.cpp.s
-.PHONY : 3-Story/act1.cpp.s
+src/Combat/Ability.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.s
+.PHONY : src/Combat/Ability.cpp.s
 
-3-Story/act2.obj: 3-Story/act2.cpp.obj
-.PHONY : 3-Story/act2.obj
+src/Combat/AbilityLoader.obj: src/Combat/AbilityLoader.cpp.obj
+.PHONY : src/Combat/AbilityLoader.obj
 
 # target to build an object file
-3-Story/act2.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj
-.PHONY : 3-Story/act2.cpp.obj
+src/Combat/AbilityLoader.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj
+.PHONY : src/Combat/AbilityLoader.cpp.obj
 
-3-Story/act2.i: 3-Story/act2.cpp.i
-.PHONY : 3-Story/act2.i
+src/Combat/AbilityLoader.i: src/Combat/AbilityLoader.cpp.i
+.PHONY : src/Combat/AbilityLoader.i
 
 # target to preprocess a source file
-3-Story/act2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act2.cpp.i
-.PHONY : 3-Story/act2.cpp.i
+src/Combat/AbilityLoader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.i
+.PHONY : src/Combat/AbilityLoader.cpp.i
 
-3-Story/act2.s: 3-Story/act2.cpp.s
-.PHONY : 3-Story/act2.s
+src/Combat/AbilityLoader.s: src/Combat/AbilityLoader.cpp.s
+.PHONY : src/Combat/AbilityLoader.s
 
 # target to generate assembly for a file
-3-Story/act2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act2.cpp.s
-.PHONY : 3-Story/act2.cpp.s
+src/Combat/AbilityLoader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.s
+.PHONY : src/Combat/AbilityLoader.cpp.s
 
-3-Story/act3.obj: 3-Story/act3.cpp.obj
-.PHONY : 3-Story/act3.obj
+src/Combat/CombatManager.obj: src/Combat/CombatManager.cpp.obj
+.PHONY : src/Combat/CombatManager.obj
 
 # target to build an object file
-3-Story/act3.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj
-.PHONY : 3-Story/act3.cpp.obj
+src/Combat/CombatManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj
+.PHONY : src/Combat/CombatManager.cpp.obj
 
-3-Story/act3.i: 3-Story/act3.cpp.i
-.PHONY : 3-Story/act3.i
+src/Combat/CombatManager.i: src/Combat/CombatManager.cpp.i
+.PHONY : src/Combat/CombatManager.i
 
 # target to preprocess a source file
-3-Story/act3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act3.cpp.i
-.PHONY : 3-Story/act3.cpp.i
+src/Combat/CombatManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.i
+.PHONY : src/Combat/CombatManager.cpp.i
 
-3-Story/act3.s: 3-Story/act3.cpp.s
-.PHONY : 3-Story/act3.s
+src/Combat/CombatManager.s: src/Combat/CombatManager.cpp.s
+.PHONY : src/Combat/CombatManager.s
 
 # target to generate assembly for a file
-3-Story/act3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act3.cpp.s
-.PHONY : 3-Story/act3.cpp.s
+src/Combat/CombatManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.s
+.PHONY : src/Combat/CombatManager.cpp.s
 
-3-Story/act4.obj: 3-Story/act4.cpp.obj
-.PHONY : 3-Story/act4.obj
+src/Combat/Effect.obj: src/Combat/Effect.cpp.obj
+.PHONY : src/Combat/Effect.obj
 
 # target to build an object file
-3-Story/act4.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj
-.PHONY : 3-Story/act4.cpp.obj
+src/Combat/Effect.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj
+.PHONY : src/Combat/Effect.cpp.obj
 
-3-Story/act4.i: 3-Story/act4.cpp.i
-.PHONY : 3-Story/act4.i
+src/Combat/Effect.i: src/Combat/Effect.cpp.i
+.PHONY : src/Combat/Effect.i
 
 # target to preprocess a source file
-3-Story/act4.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act4.cpp.i
-.PHONY : 3-Story/act4.cpp.i
+src/Combat/Effect.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.i
+.PHONY : src/Combat/Effect.cpp.i
 
-3-Story/act4.s: 3-Story/act4.cpp.s
-.PHONY : 3-Story/act4.s
+src/Combat/Effect.s: src/Combat/Effect.cpp.s
+.PHONY : src/Combat/Effect.s
 
 # target to generate assembly for a file
-3-Story/act4.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/act4.cpp.s
-.PHONY : 3-Story/act4.cpp.s
+src/Combat/Effect.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.s
+.PHONY : src/Combat/Effect.cpp.s
 
-3-Story/story.obj: 3-Story/story.cpp.obj
-.PHONY : 3-Story/story.obj
+src/Combat/Status.obj: src/Combat/Status.cpp.obj
+.PHONY : src/Combat/Status.obj
 
 # target to build an object file
-3-Story/story.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj
-.PHONY : 3-Story/story.cpp.obj
+src/Combat/Status.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj
+.PHONY : src/Combat/Status.cpp.obj
 
-3-Story/story.i: 3-Story/story.cpp.i
-.PHONY : 3-Story/story.i
+src/Combat/Status.i: src/Combat/Status.cpp.i
+.PHONY : src/Combat/Status.i
 
 # target to preprocess a source file
-3-Story/story.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/story.cpp.i
-.PHONY : 3-Story/story.cpp.i
+src/Combat/Status.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.i
+.PHONY : src/Combat/Status.cpp.i
 
-3-Story/story.s: 3-Story/story.cpp.s
-.PHONY : 3-Story/story.s
+src/Combat/Status.s: src/Combat/Status.cpp.s
+.PHONY : src/Combat/Status.s
 
 # target to generate assembly for a file
-3-Story/story.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/3-Story/story.cpp.s
-.PHONY : 3-Story/story.cpp.s
+src/Combat/Status.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.s
+.PHONY : src/Combat/Status.cpp.s
 
-4-Saves/save_system.obj: 4-Saves/save_system.cpp.obj
-.PHONY : 4-Saves/save_system.obj
+src/Utilities/rpg_utils.obj: src/Utilities/rpg_utils.cpp.obj
+.PHONY : src/Utilities/rpg_utils.obj
 
 # target to build an object file
-4-Saves/save_system.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj
-.PHONY : 4-Saves/save_system.cpp.obj
+src/Utilities/rpg_utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj
+.PHONY : src/Utilities/rpg_utils.cpp.obj
 
-4-Saves/save_system.i: 4-Saves/save_system.cpp.i
-.PHONY : 4-Saves/save_system.i
+src/Utilities/rpg_utils.i: src/Utilities/rpg_utils.cpp.i
+.PHONY : src/Utilities/rpg_utils.i
 
 # target to preprocess a source file
-4-Saves/save_system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.i
-.PHONY : 4-Saves/save_system.cpp.i
+src/Utilities/rpg_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.i
+.PHONY : src/Utilities/rpg_utils.cpp.i
 
-4-Saves/save_system.s: 4-Saves/save_system.cpp.s
-.PHONY : 4-Saves/save_system.s
+src/Utilities/rpg_utils.s: src/Utilities/rpg_utils.cpp.s
+.PHONY : src/Utilities/rpg_utils.s
 
 # target to generate assembly for a file
-4-Saves/save_system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.s
-.PHONY : 4-Saves/save_system.cpp.s
+src/Utilities/rpg_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.s
+.PHONY : src/Utilities/rpg_utils.cpp.s
 
-5-Combat/CombatManager.obj: 5-Combat/CombatManager.cpp.obj
-.PHONY : 5-Combat/CombatManager.obj
+src/Utilities/save_system.obj: src/Utilities/save_system.cpp.obj
+.PHONY : src/Utilities/save_system.obj
 
 # target to build an object file
-5-Combat/CombatManager.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj
-.PHONY : 5-Combat/CombatManager.cpp.obj
+src/Utilities/save_system.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj
+.PHONY : src/Utilities/save_system.cpp.obj
 
-5-Combat/CombatManager.i: 5-Combat/CombatManager.cpp.i
-.PHONY : 5-Combat/CombatManager.i
+src/Utilities/save_system.i: src/Utilities/save_system.cpp.i
+.PHONY : src/Utilities/save_system.i
 
 # target to preprocess a source file
-5-Combat/CombatManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.i
-.PHONY : 5-Combat/CombatManager.cpp.i
+src/Utilities/save_system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.i
+.PHONY : src/Utilities/save_system.cpp.i
 
-5-Combat/CombatManager.s: 5-Combat/CombatManager.cpp.s
-.PHONY : 5-Combat/CombatManager.s
+src/Utilities/save_system.s: src/Utilities/save_system.cpp.s
+.PHONY : src/Utilities/save_system.s
 
 # target to generate assembly for a file
-5-Combat/CombatManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.s
-.PHONY : 5-Combat/CombatManager.cpp.s
+src/Utilities/save_system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.s
+.PHONY : src/Utilities/save_system.cpp.s
 
-main.obj: main.cpp.obj
-.PHONY : main.obj
+src/Utilities/stat_utils.obj: src/Utilities/stat_utils.cpp.obj
+.PHONY : src/Utilities/stat_utils.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+src/Utilities/stat_utils.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj
+.PHONY : src/Utilities/stat_utils.cpp.obj
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/Utilities/stat_utils.i: src/Utilities/stat_utils.cpp.i
+.PHONY : src/Utilities/stat_utils.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/Utilities/stat_utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.i
+.PHONY : src/Utilities/stat_utils.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/Utilities/stat_utils.s: src/Utilities/stat_utils.cpp.s
+.PHONY : src/Utilities/stat_utils.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/Utilities/stat_utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.s
+.PHONY : src/Utilities/stat_utils.cpp.s
+
+src/Utilities/trade.obj: src/Utilities/trade.cpp.obj
+.PHONY : src/Utilities/trade.obj
+
+# target to build an object file
+src/Utilities/trade.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj
+.PHONY : src/Utilities/trade.cpp.obj
+
+src/Utilities/trade.i: src/Utilities/trade.cpp.i
+.PHONY : src/Utilities/trade.i
+
+# target to preprocess a source file
+src/Utilities/trade.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.i
+.PHONY : src/Utilities/trade.cpp.i
+
+src/Utilities/trade.s: src/Utilities/trade.cpp.s
+.PHONY : src/Utilities/trade.s
+
+# target to generate assembly for a file
+src/Utilities/trade.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.s
+.PHONY : src/Utilities/trade.cpp.s
+
+src/enemies.obj: src/enemies.cpp.obj
+.PHONY : src/enemies.obj
+
+# target to build an object file
+src/enemies.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/enemies.cpp.obj
+.PHONY : src/enemies.cpp.obj
+
+src/enemies.i: src/enemies.cpp.i
+.PHONY : src/enemies.i
+
+# target to preprocess a source file
+src/enemies.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/enemies.cpp.i
+.PHONY : src/enemies.cpp.i
+
+src/enemies.s: src/enemies.cpp.s
+.PHONY : src/enemies.s
+
+# target to generate assembly for a file
+src/enemies.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/enemies.cpp.s
+.PHONY : src/enemies.cpp.s
+
+src/story/act1.obj: src/story/act1.cpp.obj
+.PHONY : src/story/act1.obj
+
+# target to build an object file
+src/story/act1.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj
+.PHONY : src/story/act1.cpp.obj
+
+src/story/act1.i: src/story/act1.cpp.i
+.PHONY : src/story/act1.i
+
+# target to preprocess a source file
+src/story/act1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/story/act1.cpp.i
+.PHONY : src/story/act1.cpp.i
+
+src/story/act1.s: src/story/act1.cpp.s
+.PHONY : src/story/act1.s
+
+# target to generate assembly for a file
+src/story/act1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/story/act1.cpp.s
+.PHONY : src/story/act1.cpp.s
+
+src/story/story.obj: src/story/story.cpp.obj
+.PHONY : src/story/story.obj
+
+# target to build an object file
+src/story/story.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/story/story.cpp.obj
+.PHONY : src/story/story.cpp.obj
+
+src/story/story.i: src/story/story.cpp.i
+.PHONY : src/story/story.i
+
+# target to preprocess a source file
+src/story/story.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/story/story.cpp.i
+.PHONY : src/story/story.cpp.i
+
+src/story/story.s: src/story/story.cpp.s
+.PHONY : src/story/story.s
+
+# target to generate assembly for a file
+src/story/story.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/story/story.cpp.s
+.PHONY : src/story/story.cpp.s
 
 # Help Target
 help:
@@ -377,36 +473,48 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... VunderLost
-	@echo ... 0-utils/rpg_utils.obj
-	@echo ... 0-utils/rpg_utils.i
-	@echo ... 0-utils/rpg_utils.s
-	@echo ... 1-Characters/character.obj
-	@echo ... 1-Characters/character.i
-	@echo ... 1-Characters/character.s
-	@echo ... 3-Story/act1.obj
-	@echo ... 3-Story/act1.i
-	@echo ... 3-Story/act1.s
-	@echo ... 3-Story/act2.obj
-	@echo ... 3-Story/act2.i
-	@echo ... 3-Story/act2.s
-	@echo ... 3-Story/act3.obj
-	@echo ... 3-Story/act3.i
-	@echo ... 3-Story/act3.s
-	@echo ... 3-Story/act4.obj
-	@echo ... 3-Story/act4.i
-	@echo ... 3-Story/act4.s
-	@echo ... 3-Story/story.obj
-	@echo ... 3-Story/story.i
-	@echo ... 3-Story/story.s
-	@echo ... 4-Saves/save_system.obj
-	@echo ... 4-Saves/save_system.i
-	@echo ... 4-Saves/save_system.s
-	@echo ... 5-Combat/CombatManager.obj
-	@echo ... 5-Combat/CombatManager.i
-	@echo ... 5-Combat/CombatManager.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... src/Characters/character.obj
+	@echo ... src/Characters/character.i
+	@echo ... src/Characters/character.s
+	@echo ... src/Characters/npc_factory.obj
+	@echo ... src/Characters/npc_factory.i
+	@echo ... src/Characters/npc_factory.s
+	@echo ... src/Combat/Ability.obj
+	@echo ... src/Combat/Ability.i
+	@echo ... src/Combat/Ability.s
+	@echo ... src/Combat/AbilityLoader.obj
+	@echo ... src/Combat/AbilityLoader.i
+	@echo ... src/Combat/AbilityLoader.s
+	@echo ... src/Combat/CombatManager.obj
+	@echo ... src/Combat/CombatManager.i
+	@echo ... src/Combat/CombatManager.s
+	@echo ... src/Combat/Effect.obj
+	@echo ... src/Combat/Effect.i
+	@echo ... src/Combat/Effect.s
+	@echo ... src/Combat/Status.obj
+	@echo ... src/Combat/Status.i
+	@echo ... src/Combat/Status.s
+	@echo ... src/Utilities/rpg_utils.obj
+	@echo ... src/Utilities/rpg_utils.i
+	@echo ... src/Utilities/rpg_utils.s
+	@echo ... src/Utilities/save_system.obj
+	@echo ... src/Utilities/save_system.i
+	@echo ... src/Utilities/save_system.s
+	@echo ... src/Utilities/stat_utils.obj
+	@echo ... src/Utilities/stat_utils.i
+	@echo ... src/Utilities/stat_utils.s
+	@echo ... src/Utilities/trade.obj
+	@echo ... src/Utilities/trade.i
+	@echo ... src/Utilities/trade.s
+	@echo ... src/enemies.obj
+	@echo ... src/enemies.i
+	@echo ... src/enemies.s
+	@echo ... src/story/act1.obj
+	@echo ... src/story/act1.i
+	@echo ... src/story/act1.s
+	@echo ... src/story/story.obj
+	@echo ... src/story/story.i
+	@echo ... src/story/story.s
 .PHONY : help
 
 

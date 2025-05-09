@@ -78,7 +78,7 @@ void runAct1(Character& player) {
     std::cout << "Before you can step forward, a hideous SLIME lunges from the shadows!\n";
     std::cout << "It oozes toward you, with confidence and style!\n\n";
 
-    auto* slime = loadMonster("5-Combat/data/slime.json");
+    auto* slime = loadMonster("assets/mobs/slime.json");
 
     waitForEnter();
 
@@ -102,7 +102,7 @@ void runAct1(Character& player) {
 
     if (gregoryBattle) {
         // Greg Won
-        std::cout << slime->getDisplayName() << ": \"Another one bites the goo!\"\n";
+        std::cout << "\n"  << slime->getDisplayName() << ": \"Another one bites the goo!\"\n";
         std::cout<< slime->getDisplayName() << ": Honestly, I expected more from you. Someone with limbs lost to me; sadly true.\"\n";
         waitForEnter();
         std::cout << slime->getDisplayName() << ": Now if you'll excuse me, I must moonwalk into the abyss. *squelch*\"\n";
@@ -110,7 +110,7 @@ void runAct1(Character& player) {
         std::cout << slime->getDisplayName() << "As you lie in defeat that you just lost to a rhymin', dancin' ball of goo, you hear a familiar voice...\n";
     } else {
         // player won
-        std::cout << slime->getDisplayName() << ": \"No... my rhythm, my groove... this can't be true!\"\n";
+        std::cout << "\n" << slime->getDisplayName() << ": \"No... my rhythm, my groove... this can't be true!\"\n";
         waitForEnter();
         std::cout << slime->getDisplayName() << ": \"I did't even *try*. You could never handle the slimey style!\"\n";
         waitForEnter();

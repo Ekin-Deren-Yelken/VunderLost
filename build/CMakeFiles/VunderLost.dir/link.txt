@@ -1,3 +1,3 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\VunderLost.dir/objects.a
+C:\msys64\ucrt64\bin\cmake.exe -E rm -f CMakeFiles\VunderLost.dir/objects.a
 C:\msys64\ucrt64\bin\ar.exe qc CMakeFiles\VunderLost.dir/objects.a @CMakeFiles\VunderLost.dir\objects1.rsp
-C:\msys64\ucrt64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\VunderLost.dir/objects.a -Wl,--no-whole-archive -o VunderLost.exe -Wl,--out-implib,libVunderLost.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\VunderLost.dir\linkLibs.rsp
+C:\msys64\ucrt64\bin\c++.exe -g -Wl,--whole-archive CMakeFiles\VunderLost.dir/objects.a -Wl,--no-whole-archive -o VunderLost.exe -Wl,--out-implib,libVunderLost.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\VunderLost.dir\linkLibs.rsp

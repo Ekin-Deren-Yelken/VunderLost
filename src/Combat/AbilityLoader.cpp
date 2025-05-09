@@ -11,10 +11,10 @@ namespace core {
     const std::unordered_map<std::string, Ability>& getAllAbilities() {
         static auto map = [](){
             // Check try to open abilities.json
-            std::ifstream in("5-Combat/data/abilities.json");
+            std::ifstream in("assets/abilities.json");
             if (!in.is_open()) {
                 std::cerr << "Failed to open abilities.json at: "
-                          << std::filesystem::current_path() / "data/abilities.json" << "\n";
+                          << std::filesystem::current_path() / "assets/abilities.json" << "\n";
                 std::exit(1);
             }
             

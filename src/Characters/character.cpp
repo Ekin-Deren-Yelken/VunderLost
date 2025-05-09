@@ -171,7 +171,7 @@ void Character::levelUp() {
 
 // ───  Display Stats ──────────────────────────────────────────────────────────
 void Character::printStats() const {
-    std::cout << "Health: " << currentHealth << "/" << maxHealth << "\n"
+    std::cout << "\nHealth: " << currentHealth << "/" << maxHealth << "\n"
               << "Mana: " << currentMana << "/" << maxMana << "\n"
               << "Armor: " << armour << "\n"
               << "XP: " << XP << "\n"

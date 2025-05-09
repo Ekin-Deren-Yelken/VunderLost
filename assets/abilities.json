@@ -1,0 +1,734 @@
+[
+  {
+    "id": "ice_crash",
+    "name": "Ice Crash",
+    "profession": "Knight",
+    "abilityTarget": "enemy",
+    "cost": 4,
+    "hitRoll": {
+      "count": 1,
+      "sides": 20,
+      "bonus": 0
+    },
+    "hitThreshold": 8,
+    "damageRoll": {
+      "count": 2,
+      "sides": 6,
+      "bonus": 1
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Frost",
+    "effects": [
+      {
+        "status": "Frostbitten",
+        "duration": 2,
+        "dotValue": 3
+      }
+    ],
+    "comment": "Slowly grinds down enemies with cold force."
+  },
+  {
+    "id": "shield_bash",
+    "name": "Shield Bash",
+    "profession": "Knight",
+    "abilityTarget": "enemy",
+    "cost": 3,
+    "hitRoll": {
+      "count": 1,
+      "sides": 6,
+      "bonus": 2
+    },
+    "hitThreshold": 2,
+    "damageRoll": {
+      "count": 2,
+      "sides": 3,
+      "bonus": 2
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Shocked",
+        "duration": 1,
+        "dotValue": 4
+      }
+    ],
+    "comment": "A crushing blow to stun your foes for a turn."
+  },
+  {
+    "id": "iron_will",
+    "name": "Iron Will (self target)",
+    "profession": "Knight",
+    "abilityTarget": "self",
+    "cost": 3,
+    "hitRoll": {
+      "count": 1,
+      "sides": 1,
+      "bonus": 0
+    },
+    "hitThreshold": 1,
+    "damageRoll": {
+      "count": 0,
+      "sides": 0,
+      "bonus": 0
+    },
+    "range": 0,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Frost",
+    "effects": [
+      {
+        "status": "Fortified",
+        "duration": 2,
+        "dotValue": 3
+      }
+    ],
+    "comment": "Persevere. Enahnce your defences by 30% for 2 turns."
+  },
+  {
+    "id": "brutal_cleave",
+    "name": "Brutal Cleave",
+    "profession": "Knight",
+    "abilityTarget": "enemy",
+    "cost": 4,
+    "hitRoll": {
+      "count": 1,
+      "sides": 20,
+      "bonus": 1
+    },
+    "hitThreshold": 6,
+    "damageRoll": {
+      "count": 2,
+      "sides": 4,
+      "bonus": 2
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Bleed",
+        "duration": 2,
+        "dotValue": 2
+      }
+    ],
+    "comment": "Classic knight Move."
+  },
+  {
+    "id": "winters_endurance",
+    "name": "Winter's Endurance",
+    "profession": "Knight",
+    "abilityTarget": "enemy",
+    "cost": 6,
+    "hitRoll": {
+      "count": 1,
+      "sides": 20,
+      "bonus": 1
+    },
+    "hitThreshold": 6,
+    "damageRoll": {
+      "count": 1,
+      "sides": 4,
+      "bonus": 1
+    },
+    "range": 2,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Frost",
+    "effects": [
+      {
+        "status": "Frostbitten",
+        "duration": 4,
+        "dotValue": 2
+      }
+    ],
+    "comment": "Sap your enemies' initiative."
+  },
+  {
+    "id": "fireball",
+    "name": "Fireball",
+    "profession": "Mage",
+    "abilityTarget": "enemy",
+    "cost": 5,
+    "hitRoll": {
+      "count": 2,
+      "sides": 10,
+      "bonus": 0
+    },
+    "hitThreshold": 7,
+    "damageRoll": {
+      "count": 2,
+      "sides": 4,
+      "bonus": 0
+    },
+    "range": 3,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Fire",
+    "effects": [
+      {
+        "status": "Scorched",
+        "duration": 3,
+        "dotValue": 1
+      }
+    ],
+    "comment": "Classic big boom and burn."
+  },
+  {
+    "id": "lightning_strike",
+    "name": "Lightning Strike",
+    "profession": "Mage",
+    "abilityTarget": "enemy",
+    "cost": 9,
+    "hitRoll": {
+      "count": 2,
+      "sides": 10,
+      "bonus": 0
+    },
+    "hitThreshold": 15,
+    "damageRoll": {
+      "count": 2,
+      "sides": 8,
+      "bonus": 0
+    },
+    "range": 3,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Lightning",
+    "effects": [
+      {
+        "status": "Shocked",
+        "duration": 2,
+        "dotValue": 1
+      }
+    ],
+    "comment": "Absolute Chaos and Destruction."
+  },
+  {
+    "id": "frost_nova",
+    "name": "Frost Nova",
+    "profession": "Mage",
+    "abilityTarget": "enemy",
+    "cost": 3,
+    "hitRoll": {
+      "count": 3,
+      "sides": 6,
+      "bonus": 0
+    },
+    "hitThreshold": 10,
+    "damageRoll": {
+      "count": 1,
+      "sides": 4,
+      "bonus": 0
+    },
+    "range": 2,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Frost",
+    "effects": [
+      {
+        "status": "Frostbitten",
+        "duration": 3,
+        "dotValue": 1
+      }
+    ],
+    "comment": "Control the Room, Frostbite your Enemies."
+  },
+  {
+    "id": "pyroclasm",
+    "name": "Pyroclasm",
+    "profession": "Mage",
+    "abilityTarget": "enemy",
+    "cost": 6,
+    "hitRoll": {
+      "count": 3,
+      "sides": 7,
+      "bonus": 0
+    },
+    "hitThreshold": 9,
+    "damageRoll": {
+      "count": 1,
+      "sides": 6,
+      "bonus": 0
+    },
+    "range": 4,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Fire",
+    "effects": [
+      {
+        "status": "Scorched",
+        "duration": 4,
+        "dotValue": 5
+      }
+    ],
+    "comment": "Scorch the earth and apply damage over time."
+  },
+  {
+    "id": "arcane_focus",
+    "name": "Arcane Focus",
+    "profession": "Mage",
+    "abilityTarget": "enemy",
+    "cost": 4,
+    "hitRoll": {
+      "count": 0,
+      "sides": 0,
+      "bonus": 0
+    },
+    "hitThreshold": 0,
+    "damageRoll": {
+      "count": 0,
+      "sides": 0,
+      "bonus": 0
+    },
+    "range": 0,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Lighnting",
+    "effects": [
+      {
+        "status": "DMG",
+        "duration": 2,
+        "dotValue": 3
+      }
+    ],
+    "comment": "Focus your Spirit and gain 30% more damage for 3 turns."
+  },
+  {
+    "id": "piercing_shot",
+    "name": "Piercing Shot",
+    "profession": "Archer",
+    "abilityTarget": "enemy",
+    "cost": 4,
+    "hitRoll": {
+      "count": 3,
+      "sides": 5,
+      "bonus": 1
+    },
+    "hitThreshold": 6,
+    "damageRoll": {
+      "count": 2,
+      "sides": 4,
+      "bonus": 0
+    },
+    "range": 4,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "DMG",
+        "duration": 2,
+        "dotValue": 5
+      }
+    ],
+    "comment": "A chance to pierce your foes defences, and increase your next attack's power."
+  },
+  {
+    "id": "poison_arrow",
+    "name": "Poison Arrow",
+    "profession": "Archer",
+    "abilityTarget": "enemy",
+    "cost": 5,
+    "hitRoll": {
+      "count": 2,
+      "sides": 6,
+      "bonus": 1
+    },
+    "hitThreshold": 4,
+    "damageRoll": {
+      "count": 1,
+      "sides": 3,
+      "bonus": 1
+    },
+    "range": 4,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Poison",
+    "effects": [
+      {
+        "status": "Poisoned",
+        "duration": 5,
+        "dotValue": 2
+      }
+    ],
+    "comment": "Perfect for a long fight, sustained damage."
+  },
+  {
+    "id": "frost_trap",
+    "name": "Frost Trap",
+    "profession": "Archer",
+    "abilityTarget": "enemy",
+    "cost": 5,
+    "hitRoll": {
+      "count": 3,
+      "sides": 4,
+      "bonus": 1
+    },
+    "hitThreshold": 8,
+    "damageRoll": {
+      "count": 0,
+      "sides": 0,
+      "bonus": 0
+    },
+    "range": 2,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Frost",
+    "effects": [
+      {
+        "status": "Frostbitten",
+        "duration": 5,
+        "dotValue": 2
+      }
+    ],
+    "comment": "Stay icy over time."
+  },
+  {
+    "id": "rapid_volley",
+    "name": "Rapid Volley",
+    "profession": "Archer",
+    "abilityTarget": "enemy",
+    "cost": 6,
+    "hitRoll": {
+      "count": 3,
+      "sides": 6,
+      "bonus": 0
+    },
+    "hitThreshold": 5,
+    "damageRoll": {
+      "count": 3,
+      "sides": 3,
+      "bonus": 0
+    },
+    "range": 3,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [],
+    "comment": "A rapid volley of arrows."
+  },
+  {
+    "id": "toxic_rain",
+    "name": "Toxic Rain",
+    "profession": "Archer",
+    "abilityTarget": "enemy",
+    "cost": 6,
+    "hitRoll": {
+      "count": 2,
+      "sides": 8,
+      "bonus": 2
+    },
+    "hitThreshold": 7,
+    "damageRoll": {
+      "count": 2,
+      "sides": 3,
+      "bonus": 0
+    },
+    "range": 4,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Poisoned",
+        "duration": 2,
+        "dotValue": 3
+      }
+    ],
+    "comment": "deadly in a clustered battlefield."
+  },
+  {
+    "id": "backstab",
+    "name": "Backstab",
+    "profession": "Thief",
+    "abilityTarget": "enemy",
+    "cost": 8,
+    "hitRoll": {
+      "count": 3,
+      "sides": 7,
+      "bonus": 3
+    },
+    "hitThreshold": 17,
+    "damageRoll": {
+      "count": 3,
+      "sides": 6,
+      "bonus": 2
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [],
+    "comment": "High risk, high reward."
+  },
+  {
+    "id": "smoke_bomb",
+    "name": "Smoke Bomb (self target)",
+    "profession": "Thief",
+    "abilityTarget": "self",
+    "cost": 6,
+    "hitRoll": {
+      "count": 2,
+      "sides": 6,
+      "bonus": 1
+    },
+    "hitThreshold": 9,
+    "damageRoll": {
+      "count": 0,
+      "sides": 0,
+      "bonus": 0
+    },
+    "range": 2,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Fortified",
+        "duration": 2,
+        "dotValue": 10
+      }
+    ],
+    "comment": "Quick. This is your get-away."
+  },
+  {
+    "id": "crippling_cut",
+    "name": "Crippling Cut",
+    "profession": "Thief",
+    "abilityTarget": "enemy",
+    "cost": 2,
+    "hitRoll": {
+      "count": 13,
+      "sides": 5,
+      "bonus": 2
+    },
+    "hitThreshold": 11,
+    "damageRoll": {
+      "count": 1,
+      "sides": 6,
+      "bonus": 1
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Bleed",
+        "duration": 4,
+        "dotValue": 2
+      }
+    ],
+    "comment": "Wear down targets as they bleed."
+  },
+  {
+    "id": "viper_blade",
+    "name": "Viper Blade",
+    "profession": "Thief",
+    "abilityTarget": "enemy",
+    "cost": 4,
+    "hitRoll": {
+      "count": 2,
+      "sides": 5,
+      "bonus": 1
+    },
+    "hitThreshold": 7,
+    "damageRoll": {
+      "count": 1,
+      "sides": 4,
+      "bonus": 0
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Poisoned",
+        "duration": 3,
+        "dotValue": 3
+      }
+    ],
+    "comment": "Strike like a cobra and let they feel your venom."
+  },
+  {
+    "id": "silent_step",
+    "name": "Silent Step",
+    "profession": "Thief",
+    "abilityTarget": "enemy",
+    "cost": 3,
+    "hitRoll": {
+      "count": 1,
+      "sides": 6,
+      "bonus": 0
+    },
+    "hitThreshold": 2,
+    "damageRoll": {
+      "count": 0,
+      "sides": 0,
+      "bonus": 0
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Lightning",
+    "effects": [
+      {
+        "status": "DMG",
+        "duration": 2,
+        "dotValue": 5
+      }
+    ],
+    "comment": "Step into the shadow and emerge with a massive boost to your next attack."
+  },
+  {
+    "id": "banana_peel",
+    "name": "Banana Peel",
+    "profession": "Clown",
+    "abilityTarget": "enemy",
+    "cost": 2,
+    "hitRoll": {
+      "count": 2,
+      "sides": 4,
+      "bonus": 1
+    },
+    "hitThreshold": 4,
+    "damageRoll": {
+      "count": 1,
+      "sides": 3,
+      "bonus": 0
+    },
+    "range": 2,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Shocked",
+        "duration": 2,
+        "dotValue": 4
+      }
+    ],
+    "comment": "Why do you keep falling, Bozo?."
+  },
+  {
+    "id": "seltzer_spray",
+    "name": "Seltzer Spray",
+    "profession": "Clown",
+    "abilityTarget": "enemy",
+    "cost": 3,
+    "hitRoll": {
+      "count": 2,
+      "sides": 4,
+      "bonus": 1
+    },
+    "hitThreshold": 3,
+    "damageRoll": {
+      "count": 1,
+      "sides": 6,
+      "bonus": 0
+    },
+    "range": 2,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Shocked",
+        "duration": 2,
+        "dotValue": 2
+      }
+    ],
+    "comment": "Annoying little prick."
+  },
+  {
+    "id": "poison_pie",
+    "name": "Poison Pie",
+    "profession": "Clown",
+    "abilityTarget": "enemy",
+    "cost": 5,
+    "hitRoll": {
+      "count": 3,
+      "sides": 6,
+      "bonus": 1
+    },
+    "hitThreshold": 9,
+    "damageRoll": {
+      "count": 2,
+      "sides": 3,
+      "bonus": 1
+    },
+    "range": 3,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [
+      {
+        "status": "Poisoned",
+        "duration": 4,
+        "dotValue": 2
+      }
+    ],
+    "comment": "Honk Honk. Your face is full of cream, and it's poisonous."
+  },
+  {
+    "id": "balloon_barrage",
+    "name": "Balloon Barrage",
+    "profession": "Clown",
+    "abilityTarget": "enemy",
+    "cost": 3,
+    "hitRoll": {
+      "count": 3,
+      "sides": 4,
+      "bonus": 0
+    },
+    "hitThreshold": 5,
+    "damageRoll": {
+      "count": 3,
+      "sides": 3,
+      "bonus": 0
+    },
+    "range": 1,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Physical",
+    "effects": [],
+    "comment": "Absolutely Rekt."
+  },
+  {
+    "id": "laugh_riot",
+    "name": "Laugh Riot",
+    "profession": "Clown",
+    "abilityTarget": "enemy",
+    "cost": 4,
+    "hitRoll": {
+      "count": 1,
+      "sides": 20,
+      "bonus": 1
+    },
+    "hitThreshold": 10,
+    "damageRoll": {
+      "count": 0,
+      "sides": 0,
+      "bonus": 0
+    },
+    "range": 3,
+    "requiresQTE": false,
+    "qteWindowMs": 0,
+    "instDType": "Frost",
+    "effects": [
+      {
+        "status": "Frostbitten",
+        "duration": 2,
+        "dotValue": 3
+      }
+    ],
+    "comment": "You made a funny, now their Frostbitten soul cannot stop laughing."
+  }
+]

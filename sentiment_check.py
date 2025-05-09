@@ -1,13 +1,13 @@
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import sys
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer # type: ignore
 
-analyzer = SentimentIntensityAnalyzer()
 text = " ".join(sys.argv[1:])
-score = analyzer.polarity_scores(text)
+analyzer = SentimentIntensityAnalyzer()
+score = analyzer.polarity_scores(text)['compound']
 
-if score['compound'] > 0:
-    print("friendly")
-elif score['compound'] < 0:
-    print("hostile")
+if score >= 0.4:
+    print("agree")
+elif score <= -0.4:
+    print("disagree")
 else:
     print("neutral")

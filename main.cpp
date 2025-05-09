@@ -1,16 +1,11 @@
 #include <iostream>
 
-#include "1-Characters/character.h"
+#include "include/character.h"
+#include "include/story.h"
+#include "include/act1.h"
+#include "include/save_system.h"
 
-#include "3-story/story.h"
-#include "3-story/act1.h"
-#include "3-story/act2.h"
-#include "3-story/act3.h"
-#include "3-story/act4.h"
-
-#include "4-Saves/save_system.h"
-
-#include "0-utils/json.hpp"
+#include "JSON/json.hpp"
 using json = nlohmann::json;
 
 int main() {

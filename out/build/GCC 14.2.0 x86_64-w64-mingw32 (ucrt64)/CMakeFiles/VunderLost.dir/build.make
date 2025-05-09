@@ -71,187 +71,255 @@ include CMakeFiles/VunderLost.dir/flags.make
 CMakeFiles/VunderLost.dir/codegen:
 .PHONY : CMakeFiles/VunderLost.dir/codegen
 
-CMakeFiles/VunderLost.dir/main.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/main.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/main.cpp.obj: C:/Users/14168/Documents/Video\ Game/main.cpp
-CMakeFiles/VunderLost.dir/main.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/VunderLost.dir/main.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/main.cpp.obj -MF CMakeFiles\VunderLost.dir\main.cpp.obj.d -o CMakeFiles\VunderLost.dir\main.cpp.obj -c "C:\Users\14168\Documents\Video Game\main.cpp"
+CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Characters/character.cpp
+CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Characters\character.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Characters\character.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Characters\character.cpp"
 
-CMakeFiles/VunderLost.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/main.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\main.cpp" > CMakeFiles\VunderLost.dir\main.cpp.i
+CMakeFiles/VunderLost.dir/src/Characters/character.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Characters/character.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Characters\character.cpp" > CMakeFiles\VunderLost.dir\src\Characters\character.cpp.i
 
-CMakeFiles/VunderLost.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/main.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\main.cpp" -o CMakeFiles\VunderLost.dir\main.cpp.s
+CMakeFiles/VunderLost.dir/src/Characters/character.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Characters/character.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Characters\character.cpp" -o CMakeFiles\VunderLost.dir\src\Characters\character.cpp.s
 
-CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj: C:/Users/14168/Documents/Video\ Game/0-utils/rpg_utils.cpp
-CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj -MF CMakeFiles\VunderLost.dir\0-utils\rpg_utils.cpp.obj.d -o CMakeFiles\VunderLost.dir\0-utils\rpg_utils.cpp.obj -c "C:\Users\14168\Documents\Video Game\0-utils\rpg_utils.cpp"
+CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Characters/npc_factory.cpp
+CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Characters\npc_factory.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Characters\npc_factory.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Characters\npc_factory.cpp"
 
-CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\0-utils\rpg_utils.cpp" > CMakeFiles\VunderLost.dir\0-utils\rpg_utils.cpp.i
+CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Characters\npc_factory.cpp" > CMakeFiles\VunderLost.dir\src\Characters\npc_factory.cpp.i
 
-CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\0-utils\rpg_utils.cpp" -o CMakeFiles\VunderLost.dir\0-utils\rpg_utils.cpp.s
+CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Characters\npc_factory.cpp" -o CMakeFiles\VunderLost.dir\src\Characters\npc_factory.cpp.s
 
-CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj: C:/Users/14168/Documents/Video\ Game/1-Characters/character.cpp
-CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj -MF CMakeFiles\VunderLost.dir\1-Characters\character.cpp.obj.d -o CMakeFiles\VunderLost.dir\1-Characters\character.cpp.obj -c "C:\Users\14168\Documents\Video Game\1-Characters\character.cpp"
+CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Combat/Ability.cpp
+CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Combat\Ability.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Combat\Ability.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Combat\Ability.cpp"
 
-CMakeFiles/VunderLost.dir/1-Characters/character.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/1-Characters/character.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\1-Characters\character.cpp" > CMakeFiles\VunderLost.dir\1-Characters\character.cpp.i
+CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Combat\Ability.cpp" > CMakeFiles\VunderLost.dir\src\Combat\Ability.cpp.i
 
-CMakeFiles/VunderLost.dir/1-Characters/character.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/1-Characters/character.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\1-Characters\character.cpp" -o CMakeFiles\VunderLost.dir\1-Characters\character.cpp.s
+CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Combat\Ability.cpp" -o CMakeFiles\VunderLost.dir\src\Combat\Ability.cpp.s
 
-CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj: C:/Users/14168/Documents/Video\ Game/3-Story/story.cpp
-CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj -MF CMakeFiles\VunderLost.dir\3-Story\story.cpp.obj.d -o CMakeFiles\VunderLost.dir\3-Story\story.cpp.obj -c "C:\Users\14168\Documents\Video Game\3-Story\story.cpp"
+CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Combat/AbilityLoader.cpp
+CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Combat\AbilityLoader.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Combat\AbilityLoader.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Combat\AbilityLoader.cpp"
 
-CMakeFiles/VunderLost.dir/3-Story/story.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/3-Story/story.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\3-Story\story.cpp" > CMakeFiles\VunderLost.dir\3-Story\story.cpp.i
+CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Combat\AbilityLoader.cpp" > CMakeFiles\VunderLost.dir\src\Combat\AbilityLoader.cpp.i
 
-CMakeFiles/VunderLost.dir/3-Story/story.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/3-Story/story.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\3-Story\story.cpp" -o CMakeFiles\VunderLost.dir\3-Story\story.cpp.s
+CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Combat\AbilityLoader.cpp" -o CMakeFiles\VunderLost.dir\src\Combat\AbilityLoader.cpp.s
 
-CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj: C:/Users/14168/Documents/Video\ Game/3-Story/act1.cpp
-CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj -MF CMakeFiles\VunderLost.dir\3-Story\act1.cpp.obj.d -o CMakeFiles\VunderLost.dir\3-Story\act1.cpp.obj -c "C:\Users\14168\Documents\Video Game\3-Story\act1.cpp"
+CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Combat/CombatManager.cpp
+CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Combat\CombatManager.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Combat\CombatManager.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Combat\CombatManager.cpp"
 
-CMakeFiles/VunderLost.dir/3-Story/act1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/3-Story/act1.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\3-Story\act1.cpp" > CMakeFiles\VunderLost.dir\3-Story\act1.cpp.i
+CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Combat\CombatManager.cpp" > CMakeFiles\VunderLost.dir\src\Combat\CombatManager.cpp.i
 
-CMakeFiles/VunderLost.dir/3-Story/act1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/3-Story/act1.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\3-Story\act1.cpp" -o CMakeFiles\VunderLost.dir\3-Story\act1.cpp.s
+CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Combat\CombatManager.cpp" -o CMakeFiles\VunderLost.dir\src\Combat\CombatManager.cpp.s
 
-CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj: C:/Users/14168/Documents/Video\ Game/3-Story/act2.cpp
-CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj -MF CMakeFiles\VunderLost.dir\3-Story\act2.cpp.obj.d -o CMakeFiles\VunderLost.dir\3-Story\act2.cpp.obj -c "C:\Users\14168\Documents\Video Game\3-Story\act2.cpp"
+CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Combat/Effect.cpp
+CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Combat\Effect.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Combat\Effect.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Combat\Effect.cpp"
 
-CMakeFiles/VunderLost.dir/3-Story/act2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/3-Story/act2.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\3-Story\act2.cpp" > CMakeFiles\VunderLost.dir\3-Story\act2.cpp.i
+CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Combat\Effect.cpp" > CMakeFiles\VunderLost.dir\src\Combat\Effect.cpp.i
 
-CMakeFiles/VunderLost.dir/3-Story/act2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/3-Story/act2.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\3-Story\act2.cpp" -o CMakeFiles\VunderLost.dir\3-Story\act2.cpp.s
+CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Combat\Effect.cpp" -o CMakeFiles\VunderLost.dir\src\Combat\Effect.cpp.s
 
-CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj: C:/Users/14168/Documents/Video\ Game/3-Story/act3.cpp
-CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj -MF CMakeFiles\VunderLost.dir\3-Story\act3.cpp.obj.d -o CMakeFiles\VunderLost.dir\3-Story\act3.cpp.obj -c "C:\Users\14168\Documents\Video Game\3-Story\act3.cpp"
+CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Combat/Status.cpp
+CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Combat\Status.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Combat\Status.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Combat\Status.cpp"
 
-CMakeFiles/VunderLost.dir/3-Story/act3.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/3-Story/act3.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\3-Story\act3.cpp" > CMakeFiles\VunderLost.dir\3-Story\act3.cpp.i
+CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Combat\Status.cpp" > CMakeFiles\VunderLost.dir\src\Combat\Status.cpp.i
 
-CMakeFiles/VunderLost.dir/3-Story/act3.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/3-Story/act3.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\3-Story\act3.cpp" -o CMakeFiles\VunderLost.dir\3-Story\act3.cpp.s
+CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Combat\Status.cpp" -o CMakeFiles\VunderLost.dir\src\Combat\Status.cpp.s
 
-CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj: C:/Users/14168/Documents/Video\ Game/3-Story/act4.cpp
-CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj -MF CMakeFiles\VunderLost.dir\3-Story\act4.cpp.obj.d -o CMakeFiles\VunderLost.dir\3-Story\act4.cpp.obj -c "C:\Users\14168\Documents\Video Game\3-Story\act4.cpp"
+CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Utilities/rpg_utils.cpp
+CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Utilities\rpg_utils.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Utilities\rpg_utils.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Utilities\rpg_utils.cpp"
 
-CMakeFiles/VunderLost.dir/3-Story/act4.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/3-Story/act4.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\3-Story\act4.cpp" > CMakeFiles\VunderLost.dir\3-Story\act4.cpp.i
+CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Utilities\rpg_utils.cpp" > CMakeFiles\VunderLost.dir\src\Utilities\rpg_utils.cpp.i
 
-CMakeFiles/VunderLost.dir/3-Story/act4.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/3-Story/act4.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\3-Story\act4.cpp" -o CMakeFiles\VunderLost.dir\3-Story\act4.cpp.s
+CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Utilities\rpg_utils.cpp" -o CMakeFiles\VunderLost.dir\src\Utilities\rpg_utils.cpp.s
 
-CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj: C:/Users/14168/Documents/Video\ Game/4-Saves/save_system.cpp
-CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj -MF CMakeFiles\VunderLost.dir\4-Saves\save_system.cpp.obj.d -o CMakeFiles\VunderLost.dir\4-Saves\save_system.cpp.obj -c "C:\Users\14168\Documents\Video Game\4-Saves\save_system.cpp"
+CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Utilities/save_system.cpp
+CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Utilities\save_system.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Utilities\save_system.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Utilities\save_system.cpp"
 
-CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\4-Saves\save_system.cpp" > CMakeFiles\VunderLost.dir\4-Saves\save_system.cpp.i
+CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Utilities\save_system.cpp" > CMakeFiles\VunderLost.dir\src\Utilities\save_system.cpp.i
 
-CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\4-Saves\save_system.cpp" -o CMakeFiles\VunderLost.dir\4-Saves\save_system.cpp.s
+CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Utilities\save_system.cpp" -o CMakeFiles\VunderLost.dir\src\Utilities\save_system.cpp.s
 
-CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
-CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
-CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj: C:/Users/14168/Documents/Video\ Game/5-Combat/CombatManager.cpp
-CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj -MF CMakeFiles\VunderLost.dir\5-Combat\CombatManager.cpp.obj.d -o CMakeFiles\VunderLost.dir\5-Combat\CombatManager.cpp.obj -c "C:\Users\14168\Documents\Video Game\5-Combat\CombatManager.cpp"
+CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Utilities/stat_utils.cpp
+CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Utilities\stat_utils.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Utilities\stat_utils.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Utilities\stat_utils.cpp"
 
-CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\5-Combat\CombatManager.cpp" > CMakeFiles\VunderLost.dir\5-Combat\CombatManager.cpp.i
+CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Utilities\stat_utils.cpp" > CMakeFiles\VunderLost.dir\src\Utilities\stat_utils.cpp.i
 
-CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\5-Combat\CombatManager.cpp" -o CMakeFiles\VunderLost.dir\5-Combat\CombatManager.cpp.s
+CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Utilities\stat_utils.cpp" -o CMakeFiles\VunderLost.dir\src\Utilities\stat_utils.cpp.s
+
+CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/Utilities/trade.cpp
+CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj -MF CMakeFiles\VunderLost.dir\src\Utilities\trade.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\Utilities\trade.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\Utilities\trade.cpp"
+
+CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\Utilities\trade.cpp" > CMakeFiles\VunderLost.dir\src\Utilities\trade.cpp.i
+
+CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\Utilities\trade.cpp" -o CMakeFiles\VunderLost.dir\src\Utilities\trade.cpp.s
+
+CMakeFiles/VunderLost.dir/src/enemies.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/enemies.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/enemies.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/enemies.cpp
+CMakeFiles/VunderLost.dir/src/enemies.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/VunderLost.dir/src/enemies.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/enemies.cpp.obj -MF CMakeFiles\VunderLost.dir\src\enemies.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\enemies.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\enemies.cpp"
+
+CMakeFiles/VunderLost.dir/src/enemies.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/enemies.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\enemies.cpp" > CMakeFiles\VunderLost.dir\src\enemies.cpp.i
+
+CMakeFiles/VunderLost.dir/src/enemies.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/enemies.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\enemies.cpp" -o CMakeFiles\VunderLost.dir\src\enemies.cpp.s
+
+CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/story/act1.cpp
+CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj -MF CMakeFiles\VunderLost.dir\src\story\act1.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\story\act1.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\story\act1.cpp"
+
+CMakeFiles/VunderLost.dir/src/story/act1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/story/act1.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\story\act1.cpp" > CMakeFiles\VunderLost.dir\src\story\act1.cpp.i
+
+CMakeFiles/VunderLost.dir/src/story/act1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/story/act1.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\story\act1.cpp" -o CMakeFiles\VunderLost.dir\src\story\act1.cpp.s
+
+CMakeFiles/VunderLost.dir/src/story/story.cpp.obj: CMakeFiles/VunderLost.dir/flags.make
+CMakeFiles/VunderLost.dir/src/story/story.cpp.obj: CMakeFiles/VunderLost.dir/includes_CXX.rsp
+CMakeFiles/VunderLost.dir/src/story/story.cpp.obj: C:/Users/14168/Documents/Video\ Game/src/story/story.cpp
+CMakeFiles/VunderLost.dir/src/story/story.cpp.obj: CMakeFiles/VunderLost.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/VunderLost.dir/src/story/story.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VunderLost.dir/src/story/story.cpp.obj -MF CMakeFiles\VunderLost.dir\src\story\story.cpp.obj.d -o CMakeFiles\VunderLost.dir\src\story\story.cpp.obj -c "C:\Users\14168\Documents\Video Game\src\story\story.cpp"
+
+CMakeFiles/VunderLost.dir/src/story/story.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/VunderLost.dir/src/story/story.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\14168\Documents\Video Game\src\story\story.cpp" > CMakeFiles\VunderLost.dir\src\story\story.cpp.i
+
+CMakeFiles/VunderLost.dir/src/story/story.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/VunderLost.dir/src/story/story.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\14168\Documents\Video Game\src\story\story.cpp" -o CMakeFiles\VunderLost.dir\src\story\story.cpp.s
 
 # Object files for target VunderLost
 VunderLost_OBJECTS = \
-"CMakeFiles/VunderLost.dir/main.cpp.obj" \
-"CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj" \
-"CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj" \
-"CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj" \
-"CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj" \
-"CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj" \
-"CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj" \
-"CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj" \
-"CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj" \
-"CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj"
+"CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/enemies.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj" \
+"CMakeFiles/VunderLost.dir/src/story/story.cpp.obj"
 
 # External object files for target VunderLost
 VunderLost_EXTERNAL_OBJECTS =
 
-VunderLost.exe: CMakeFiles/VunderLost.dir/main.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/3-Story/story.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/3-Story/act3.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/3-Story/act4.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/4-Saves/save_system.cpp.obj
-VunderLost.exe: CMakeFiles/VunderLost.dir/5-Combat/CombatManager.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Combat/Effect.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Combat/Status.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Utilities/rpg_utils.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Utilities/save_system.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/enemies.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj
+VunderLost.exe: CMakeFiles/VunderLost.dir/src/story/story.cpp.obj
 VunderLost.exe: CMakeFiles/VunderLost.dir/build.make
 VunderLost.exe: CMakeFiles/VunderLost.dir/linkLibs.rsp
 VunderLost.exe: CMakeFiles/VunderLost.dir/objects1.rsp
 VunderLost.exe: CMakeFiles/VunderLost.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable VunderLost.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\14168\Documents\Video Game\out\build\GCC 14.2.0 x86_64-w64-mingw32 (ucrt64)\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable VunderLost.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\VunderLost.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

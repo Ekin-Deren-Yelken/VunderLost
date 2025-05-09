@@ -1,0 +1,31 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 0,
+    "controller": 1,
+    "currentHealth": 190,
+    "currentMana": 46,
+    "currentTitle": "The Stupid",
+    "gender": "straight",
+    "level": 1,
+    "maxHealth": 200,
+    "maxMana": 46,
+    "name": "Eko",
+    "profession": "Knight",
+    "race": "beast",
+    "sex": "male",
+    "stats": {
+        "ARMOR": 0,
+        "CHARM": 1,
+        "DEX": 7,
+        "GIRTH": 8,
+        "INT": 2,
+        "LUCK": 9,
+        "STR": 15
+    },
+    "titles": [
+        "The Stinky",
+        "The Stupid"
+    ],
+    "trainingPoints": 0
+}
