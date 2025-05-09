@@ -1,0 +1,31 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 0,
+    "controller": 1,
+    "currentHealth": 65,
+    "currentMana": 86,
+    "currentTitle": "The Stupid",
+    "gender": "bisexual",
+    "level": 1,
+    "maxHealth": 100,
+    "maxMana": 86,
+    "name": "Ekin Yelken",
+    "profession": "Archer",
+    "race": "elf",
+    "sex": "male",
+    "stats": {
+        "ARMOR": 0,
+        "CHARM": 8,
+        "DEX": 10,
+        "GIRTH": 5,
+        "INT": 7,
+        "LUCK": 3,
+        "STR": 5
+    },
+    "titles": [
+        "The Stinky",
+        "The Stupid"
+    ],
+    "trainingPoints": 0
+}

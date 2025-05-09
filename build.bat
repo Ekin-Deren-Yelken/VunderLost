@@ -5,7 +5,6 @@ g++ ^
   1-Characters/character.cpp ^
   1-Characters/stat_utils.cpp ^
   1-Characters/npc_factory.cpp ^
-  2-Enemies/enemies.cpp ^
   3-Story/story.cpp ^
   3-Story/act1.cpp ^
   3-Story/act2.cpp ^

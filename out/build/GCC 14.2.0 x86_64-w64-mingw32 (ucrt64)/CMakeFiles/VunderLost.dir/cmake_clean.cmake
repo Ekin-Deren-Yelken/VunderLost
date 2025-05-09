@@ -3,8 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/VunderLost.dir/0-utils/rpg_utils.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj"
   "CMakeFiles/VunderLost.dir/1-Characters/character.cpp.obj.d"
-  "CMakeFiles/VunderLost.dir/2-Enemies/enemies.cpp.obj"
-  "CMakeFiles/VunderLost.dir/2-Enemies/enemies.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj"
   "CMakeFiles/VunderLost.dir/3-Story/act1.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/3-Story/act2.cpp.obj"

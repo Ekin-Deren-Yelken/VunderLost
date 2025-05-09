@@ -1,0 +1,45 @@
+{
+"pending_features": "to do",
+  "inventory_system": [
+    "Player inventory UI with visual item slots",
+    "Clickable items with tooltips or contextual pop-ups",
+    "Inventory capacity limits and optional item categories (e.g., weapons, consumables)"
+  ],
+  "trading_system": [
+    "Two side-by-side inventory panels for player and vendor",
+    "Click to select item, then click to buy/sell",
+    "Gold system for pricing and transactions",
+    "Optional features: price negotiation, vendor inventory refresh"
+  ],
+  "save_load_gui": [
+    "Save button in GUI triggers file write",
+    "Confirmation popup after save",
+    "Optional: support for multiple save slots"
+  ],
+  "expanded_dialogue": [
+    "Branching dialogue trees based on player choices",
+    "NPC reactions based on sentiment or past actions",
+    "Optional enhancements: text scrolling animation, voice bubble effects"
+  ],
+  "sprite_framework": [
+    "Support for additional animated characters and NPCs",
+    "Multiple animation states (idle, casting, attacking)",
+    "Optional: directional facing or simple map-based travel"
+  ],
+  "ai_logic": {
+    "dynamic_enemy_ai": [
+      "Target prioritization based on health or summoned status",
+      "Conditional ability use (e.g., buff if weak, debuff if strong)",
+      "Optional: resistance or immunity to certain effects"
+    ],
+    "npc_sentiment_personality": [
+      "Different NPCs interpret tone differently",
+      "Example: Gregory enjoys sass, others may get offended"
+    ]
+  },
+  "ux_polish": [
+    "Display health and mana regeneration indicators each turn",
+    "Add hover effects or sounds to buttons",
+    "Error/logging UI overlay (display in-game messages if things go wrong)"
+  ]
+}

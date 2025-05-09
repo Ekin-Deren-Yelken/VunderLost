@@ -14,6 +14,8 @@
 using json = nlohmann::json;
 
 int main() {
+
+
     std::cout << "Welcome to the RPG\n[1] New Game\n[2] Load Game\n> ";
     int choice;
     std::cin >> choice;

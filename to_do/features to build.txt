@@ -1,0 +1,64 @@
+Game Mechanics & Systems
+ Inventory System:
+
+Player inventory UI
+
+Clickable items with tooltips or pop-ups
+
+Inventory capacity and categories (optional)
+
+ Trading System with NPCs:
+
+Two side-by-side inventory windows (player & vendor)
+
+Click to select, then click “Buy” or “Sell”
+
+Gold system to manage cost/price
+
+Optional: Price negotiation, inventory refresh
+
+ Save/Load System Integration with GUI:
+
+Button triggers file write
+
+Pop-up message confirming save
+
+Possibly allow multiple save slots
+
+ Expanded Dialogue System:
+
+Branching dialogue trees with conditionals
+
+Reactions based on sentiment or previous actions
+
+Text scroll animation or voice bubbles (optional)
+
+ Sprite Framework Expansion:
+
+Support for more characters/NPCs
+
+Multiple animation states (e.g. idle, casting, attack)
+
+Optional: Directional movement or map-based travel
+
+AI & Decision Logic
+ Dynamic AI Enemy Behavior:
+
+Smarter attack targeting (e.g. punish weak targets)
+
+Variable ability use depending on conditions
+
+Status resistance or counters
+
+ Personality-Based Sentiment Responses:
+
+Let different NPCs interpret tone differently
+
+(e.g., Gregory loves sass, others don’t)
+
+Polish / UX
+ Health/mana regen indicators per turn
+
+ Hover states or button click sounds
+
+ Error/logging UI (i.e., something fails, show a message not just console)

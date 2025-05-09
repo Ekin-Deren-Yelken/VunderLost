@@ -176,30 +176,6 @@ VunderLost/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/1-Characters/character.cpp.s
 .PHONY : 1-Characters/character.cpp.s
 
-2-Enemies/enemies.obj: 2-Enemies/enemies.cpp.obj
-.PHONY : 2-Enemies/enemies.obj
-
-# target to build an object file
-2-Enemies/enemies.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/2-Enemies/enemies.cpp.obj
-.PHONY : 2-Enemies/enemies.cpp.obj
-
-2-Enemies/enemies.i: 2-Enemies/enemies.cpp.i
-.PHONY : 2-Enemies/enemies.i
-
-# target to preprocess a source file
-2-Enemies/enemies.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/2-Enemies/enemies.cpp.i
-.PHONY : 2-Enemies/enemies.cpp.i
-
-2-Enemies/enemies.s: 2-Enemies/enemies.cpp.s
-.PHONY : 2-Enemies/enemies.s
-
-# target to generate assembly for a file
-2-Enemies/enemies.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/2-Enemies/enemies.cpp.s
-.PHONY : 2-Enemies/enemies.cpp.s
-
 3-Story/act1.obj: 3-Story/act1.cpp.obj
 .PHONY : 3-Story/act1.obj
 
@@ -407,9 +383,6 @@ help:
 	@echo ... 1-Characters/character.obj
 	@echo ... 1-Characters/character.i
 	@echo ... 1-Characters/character.s
-	@echo ... 2-Enemies/enemies.obj
-	@echo ... 2-Enemies/enemies.i
-	@echo ... 2-Enemies/enemies.s
 	@echo ... 3-Story/act1.obj
 	@echo ... 3-Story/act1.i
 	@echo ... 3-Story/act1.s

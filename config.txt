@@ -1,0 +1,1 @@
+PYTHON_PATH=C:\Users\14168\AppData\Local\Programs\Python\Python39\python.exe

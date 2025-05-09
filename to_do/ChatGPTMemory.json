@@ -1,0 +1,45 @@
+{
+    "project": "Trigamore RPG",
+    "core_features": [
+      "Modular C++ RPG engine with JSON-based assets",
+      "Turn-based combat system with initiative, abilities, and DOT effects",
+      "Player character creation with stat modifiers from race, sex, gender, profession"
+    ],
+    "combat_system": [
+      "Status effects include Bleed, Poisoned, Scorched, and Frostbitten",
+      "Damage types: Physical, Fire, Frost, Poison, Lightning",
+      "Abilities use mana and require targeting (self or enemy)",
+      "Enemies prioritize targets based on health/summoned status",
+      "Stat-driven HP, Mana, XP system with regen per turn"
+    ],
+    "gui": [
+      "Still building GUI for game, not started yet",
+      "Displays health, mana, XP bars, and level indicator",
+      "Inventory and Save buttons present",
+      "Text box shows current dialogue",
+      "Supports 3-frame animated sprite (slime) via sprite sheet",
+      "Interactive inventory to carry items, equip, and unequip",
+      "Trading system with NPC Characters for gold"
+
+    ],
+    "dialogue": [
+      "Gregory, Lord of Goo — a rhyming slime NPC with branching dialogue",
+      "Dialogue integrates sentiment analysis to detect player attitude",
+      "Sentiment affects outcomes: cooperation, hostility, etc."
+    ],
+    "sentiment_analysis": [
+      "Uses Python `sentiment_check.py` script for real-time sentiment analysis",
+      "Initially used vaderSentiment, planning to switch to TextBlob for stability",
+      "Called from C++ via `_popen()` and reads result via stdout",
+      "Python path is externalized to a `config.txt` for portability",
+      "Currently not working well, need a new way check sentiment"
+    ],
+    "technology_stack": [
+      "C++17 with MSYS2/MinGW",
+      "JSON for abilities and character data",
+      "Python for external sentiment processing",
+      "Git + VS Code for version control and development"
+    ]
+    
+  }
+  

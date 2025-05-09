@@ -29,3 +29,13 @@
 
         Next Combatant's Turn!
 8. 
+
+
+
+Object Oriented Programming 
+- Fully modular combat and charcter system with JSON driven characters
+- AI powered decision making
+Python scripting, integrating NLP and sentiment analysis to influence branching dialogue.
+
+
+C++, Python, JSON, Git Version Control, VS Code, Object Oriented Programing, NLP/Sentiment Analysis
