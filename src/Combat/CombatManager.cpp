@@ -2,6 +2,7 @@
 #include "../../include/rpg_utils.h"    // for rollDice, chanceRoll
 #include "../../include/AbilityLoader.h"
 #include "../../include/Effect.h"
+#include "../../include/save_system.h"
 #include <iostream>
 #include <algorithm>
 #include <chrono>
@@ -17,6 +18,32 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
     allCombatants.clear();
     for (auto* p : players) allCombatants.push_back(p);
     for (auto* e : enemies) allCombatants.push_back(e);
+
+    // Load companions for all players and enemies
+    std::vector<std::unique_ptr<Character>> loadedCompanions;
+
+    auto loadAndAttachCompanions = [&](std::vector<Character*>& group) {
+        std::vector<Character*> newCompanions;
+
+        for (Character* leader : group) {
+            if (leader->isCompanion()) {
+                auto companions = loadCompanionParty(*leader);
+                for (auto& c : companions) {
+                    newCompanions.push_back(c.get());
+                    allCombatants.push_back(c.get());
+                    loadedCompanions.push_back(std::move(c));  // retain ownership
+                }
+            }
+        }
+
+        // Add new companions to the group (players or enemies)
+        group.insert(group.end(), newCompanions.begin(), newCompanions.end());
+    };
+
+    // Apply to both teams
+    loadAndAttachCompanions(players);
+    loadAndAttachCompanions(enemies);
+
 
     // Load abilities of all the combatants
     loadAbilities();
@@ -41,9 +68,19 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
     }
 
     bool victory = std::any_of(enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
-
     std::cout << (victory? "Defeat...\n\n" : "Victory!\n\n") << std::endl;
-    
+
+    if (!victory) {
+    // Save player and companions after battle
+        for (Character* c : players) {
+            if (saveGame(*c).empty()) {
+                std::cerr << "[WARNING] Failed to auto-save: " << c->getName() << "\n";
+            } else {
+                std::cout << "[INFO] Auto-saved: " << c->getName() << "\n";
+            }
+        }
+    }
+
     return victory;
 }
 
@@ -354,3 +391,4 @@ std::vector<std::unique_ptr<Character>> combatManager::loadCompanionParty(const 
 
     return companions;
 }
+

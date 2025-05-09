@@ -39,7 +39,8 @@ protected:
     int                         level;
     int                         trainingPoints;
     int                         act;
-    int                         favour;
+    int                         favour = 0;
+    std::string                 saveID = "";
     std::map<std::string, int>  stats; // create a map called stats where a string is linked to some int
 
     core::ControllerType controller = core::ControllerType::AI; // player, enemy, or summonded/minion turn
@@ -161,6 +162,10 @@ public:
 
     const std::vector<std::string>& getCompanionList() const;
     void setCompanionList(const std::vector<std::string>& list);
+
+    // Saving
+    void setSaveID(const std::string& id);
+    std::string getSaveID() const;
 
 };
 

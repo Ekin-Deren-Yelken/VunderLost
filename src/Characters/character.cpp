@@ -36,7 +36,7 @@ Character::Character(const std::string&  name,
                      int                 act)
     : name(name), race(race), profession(profession),
       sex(sex), gender(gender),
-      armour(armour), XP(XP), level(level), trainingPoints(0), act(act), controller(core::ControllerType::AI)
+      armour(armour), XP(XP), level(level), trainingPoints(0), act(act), controller(core::ControllerType::AI), favour(favour)
 {
     stats = {{"STR",0},{"INT",0},{"DEX",0},{"GIRTH",0},{"LUCK",0},{"CHARM",0}};
     applyStatModifiers(stats, race, sex, gender, profession);
@@ -199,37 +199,39 @@ std::string Character::getDisplayName() const {
 
 // ─── Serialization ────────────────────────────────────────────────────────────
 json Character::toJson() const {
-    return {
-        {"name", name},
-        {"currentTitle", currentTitle},
-        {"titles", titles},
+    json j;
+    
+    j["saveID"] = saveID;
+    j["name"] = name;
+    j["currentTitle"] = currentTitle;
+    j["titles"] = titles;
 
-        {"profession", profession.value_or("")},
-        {"race", race.value_or("")},
-        {"sex", sex.value_or("")},
-        {"gender", gender.value_or("")},
-                
-        {"controller", static_cast<int>(controller)},
+    j["profession"] = profession.value_or("");
+    j["race"] = race.value_or("");
+    j["sex"] = sex.value_or("");
+    j["gender"] = gender.value_or("");
 
-        {"favour", favour},
+    j["controller"] = static_cast<int>(controller);
+    j["favour"] = favour;
 
-        {"level", level},
-        {"XP", XP},
-        {"trainingPoints", trainingPoints},
+    j["level"] = level;
+    j["XP"] = XP;
+    j["trainingPoints"] = trainingPoints;
 
-        {"act", act},
+    j["act"] = act;
 
-        {"maxHealth", maxHealth},
-        {"currentHealth", currentHealth},
-        {"maxMana", maxMana},
-        {"currentMana", currentMana},
-        {"armor", armour},
+    j["maxHealth"] = maxHealth;
+    j["currentHealth"] = currentHealth;
+    j["maxMana"] = maxMana;
+    j["currentMana"] = currentMana;
+    j["armor"] = armour;
 
-        {"stats", stats},
+    j["stats"] = stats;
 
-        {"companion", companion},
-        {"companion_list", companionList}
-    };
+    j["companion"] = companion;
+    j["companion_list"] = companionList;
+
+    return j;
 }
 
 void Character::loadFromJson(const json& j) {
@@ -292,6 +294,11 @@ void Character::loadFromJson(const json& j) {
             }
         }
     }
+
+    if (j.contains("saveID") && j["saveID"].is_string()) {
+        saveID = j["saveID"];
+    }
+
 }
 
 // ─── Combat Hooks ─────────────────────────────────────────────────────────────
@@ -365,11 +372,11 @@ void Character::tickStatuses() {
                       << core::status_toString(node.status)
                       << " (" << node.turnsLeft << " turns left)\n";
             std::cout << name << ": ";
-            printCombatStats();
         }
         // Decrement duration
         --node.turnsLeft;
     }
+    printCombatStats();
     // Remove expired statuses
     activeStatuses.erase(
         std::remove_if(
@@ -416,3 +423,7 @@ void Character::setCompanion(bool value) { companion = value; }
 
 const std::vector<std::string>& Character::getCompanionList() const { return companionList; }
 void Character::setCompanionList(const std::vector<std::string>& list) { companionList = list; }
+
+// ─── Saving ──────────────────────────────────────────────────────────────────
+void Character::setSaveID(const std::string& id) { saveID = id; }
+std::string Character::getSaveID() const { return saveID; }

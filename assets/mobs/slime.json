@@ -1,0 +1,38 @@
+{
+  "name": "goo-man",
+  "currentTitle": "",
+  "titles": [""],
+
+  "profession": "Knight",
+  "race": "Beast",
+  "sex": "Male",
+  "gender": "straight",
+
+  "controller": 0,
+
+  "favour": 0,
+
+  "level": 1,
+  "XP": 0,
+  "trainingPoints": 0,
+
+  "act": 1,
+  
+  "maxHealth": 15,
+  "currentHealth": 15,
+  "maxMana": 20,
+  "currentMana": 20,
+  "armor": 0,
+
+  "stats": {
+      "CHARM": 0,
+      "DEX": 4,
+      "GIRTH": 2,
+      "INT": 1,
+      "LUCK": 1,
+      "STR": 1
+  },
+
+  "companion": false,
+  "companion_list": []
+}

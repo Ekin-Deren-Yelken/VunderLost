@@ -1,0 +1,34 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 0,
+    "companion": false,
+    "companion_list": [],
+    "controller": 1,
+    "currentHealth": 179,
+    "currentMana": 54,
+    "currentTitle": "The Stupid",
+    "favour": 0,
+    "gender": "homosexual",
+    "level": 1,
+    "maxHealth": 190,
+    "maxMana": 54,
+    "name": "Ekin",
+    "profession": "Knight",
+    "race": "beast",
+    "sex": "male",
+    "stats": {
+        "ARMOR": 0,
+        "CHARM": 4,
+        "DEX": 7,
+        "GIRTH": 8,
+        "INT": 3,
+        "LUCK": 7,
+        "STR": 14
+    },
+    "titles": [
+        "The Stinky",
+        "The Stupid"
+    ],
+    "trainingPoints": 0
+}

@@ -10,18 +10,30 @@
 namespace fs = std::filesystem;
 
 std::string saveGame(const Character& player) {
+    // Ensure target folder exists
     std::string folder = "gameSaves";
     if (!fs::exists(folder)) {
         fs::create_directory(folder);
     }
 
+    // get saves in directory
     std::vector<fs::directory_entry> saves;
     for (const auto& entry : fs::directory_iterator(folder)) {
         if (entry.path().extension() == ".json") {
             saves.push_back(entry);
         }
     }
+    // if SaveID field is not empty, then we are overwriting
+    std::string oldSaveID = player.getSaveID();
+    if (!oldSaveID.empty()) {
+        std::string oldFilename = folder + "/Save-" + oldSaveID + ".json";
+        if (std::filesystem::exists(oldFilename)) {
+            std::filesystem::remove(oldFilename);
+            std::cout << "[Old save removed: " << oldFilename << "]\n";
+        }
+    }
 
+    // Check that there only 5 saves maximum
     if (saves.size() >= 5) {
         std::cout << "[Save limit reached: 5 saves]\n";
         std::cout << "Would you like to overwrite one? (Y/N): ";
@@ -84,11 +96,13 @@ std::string saveGame(const Character& player) {
     }
 
     // Create new save with timestamp
-    std::ostringstream oss;
     std::time_t now = std::time(nullptr);
     std::tm* tm = std::localtime(&now);
-    oss << folder << "/Save-" << std::put_time(tm, "%Y-%m-%d-%H-%M-%S") << ".json";
-    std::string filename = oss.str();
+    std::ostringstream timeStr;
+    timeStr << std::put_time(tm, "%Y-%m-%d-%H-%M-%S");
+    std::string timestamp = timeStr.str();
+
+    std::string filename = folder + "/Save-" + timestamp + ".json";
 
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -96,7 +110,13 @@ std::string saveGame(const Character& player) {
         return "";
     }
 
+    // Inject the saveID field into JSON
     json j = player.toJson();
+    if (player.getController() == core::ControllerType::Human) {
+        j["saveID"] = timestamp;
+        const_cast<Character&>(player).setSaveID(timestamp);
+    }
+
     file << j.dump(4);
     std::cout << "[New save created: " << filename << "]\n";
     return filename;
