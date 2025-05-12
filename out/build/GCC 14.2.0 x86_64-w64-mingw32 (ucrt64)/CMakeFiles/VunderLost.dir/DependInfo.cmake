@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/14168/Documents/Video Game/src/Characters/character.cpp" "CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj.d"
-  "C:/Users/14168/Documents/Video Game/src/Characters/npc_factory.cpp" "CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj.d"
   "C:/Users/14168/Documents/Video Game/src/Combat/Ability.cpp" "CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj.d"
   "C:/Users/14168/Documents/Video Game/src/Combat/AbilityLoader.cpp" "CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj.d"
   "C:/Users/14168/Documents/Video Game/src/Combat/CombatManager.cpp" "CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Combat/CombatManager.cpp.obj.d"

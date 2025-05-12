@@ -2,7 +2,6 @@
 g++ ^
   main.cpp ^
   src/Characters/character.cpp ^
-  src/Characters/npc_factory.cpp ^
   src/Combat/Ability.cpp ^
   src/Combat/AbilityLoader.cpp ^
   src/Combat/CombatManager.cpp ^

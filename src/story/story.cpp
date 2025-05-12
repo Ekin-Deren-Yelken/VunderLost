@@ -12,6 +12,7 @@
 #include "../../include/stat_utils.h"
 #include "../../include/rpg_utils.h"
 #include "../../include/act1.h"
+#include "../../include/character.h"
 
 // Helper: Wait for Enter
 void waitForEnter() {
@@ -55,7 +56,7 @@ void runIntroScene() {
     std::cout << "A small window slit lets some moonlight through, and a thick steel cell door separates you from the hallway.\n";
     
     // Create player Character
-    Character player(playerName, "Human", "Knight", "Male", "Straight", 0, 0, 1, 1);
+    Character player(playerName, "Human", "Knight", "Male", "Straight", 0, 0, 1, 1, core::Team::Players);
     player.setController(core::ControllerType::Human);
     std::map<std::string, int> baseStats = getBaseStats();
 
@@ -269,7 +270,8 @@ void runProfessionSelection(Character& player, int initialDamage) {
         /*armour*/5,
         /*XP*/0,
         /*level*/1,
-        /*act*/1
+        /*act*/1,
+        /*team*/core::Team::Enemies
     );
     roland.addTitle("The Rigid Oak");
     roland.setController(core::ControllerType::AI);

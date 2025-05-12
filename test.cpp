@@ -1,10 +1,20 @@
-#include "include/chatgpt_wrapper.h"
+#include "include/rpg_utils.h"
 #include <iostream>
+#include <algorithm>
+#include <cctype>  
 
 
 int main() {
-    std::string input = "I'm feeling really great about this!";
-    std::string result = analyzeSentiment(input);
-    std::cout << "Sentiment: " << result << std::endl;
-    return 0;
+    bool sentimentChecked = false;
+    while (!sentimentChecked) {
+        std::string hc;
+        std::cout << "What do you say > ";
+        std::cin >> hc;
+
+        if (hc == "quit") {
+            sentimentChecked = true;
+        }
+
+
+    }
 }

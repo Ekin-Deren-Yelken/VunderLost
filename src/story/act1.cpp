@@ -94,21 +94,42 @@ void runAct1(Character& player) {
 
         // depending on sentiment, change response
         if (sentiment == "hostile") {
-            std::cout << gregory->getName() << "recoils in gooey anger.\n";
-            
+            std::cout << gregory->getDisplayName() << " recoils in gooey anger.\n";
+
             // Calculate Favour
             favour = player.getStat("CHARM") - favourRoll_gregory;
 
             gregory->setStat("favour", favour);
             sentimentChecked = true;
         } else if (sentiment == "friendly") {
-            std::cout << gregory->getName() << "bounces happily.\n";
+            std::cout << gregory->getDisplayName() << " bounces happily.\n";
 
             // Calculate Favour
             favour = player.getStat("CHARM") + favourRoll_gregory;
 
             std::cout <<  gregory->getDisplayName() << " has joined your team...\n";
             sentimentChecked = true;
+        } else {
+            if (sentiment == "neutral") {
+                std::transform(hechpersonChoice.begin(), hechpersonChoice.end(), hechpersonChoice.begin(), ::tolower); // make lowercase for easier comparison
+
+                if (hechpersonChoice.find("why") != std::string::npos || hechpersonChoice.find("what's in it") != std::string::npos || hechpersonChoice.find("reason") != std::string::npos) {
+                    std::cout << "Greg: Oh, the BENEFITS?! How about non-stop interpretive dance, moral ambiguity, and the chance to punch a wizard in the face?\n";
+                } else if (hechpersonChoice.find("who") != std::string::npos || hechpersonChoice.find("are you") != std::string::npos) {
+                    std::cout << "Greg: I'm Greg. Greg the Goo. Slime with a spine, jester divine, and dancer of the forbidden jig. You're welcome.\n";
+                } else if (hechpersonChoice.find("maybe") != std::string::npos || hechpersonChoice.find("think") != std::string::npos) {
+                    std::cout << "Greg: I'll give you a minute to let the sheer awesomeness of my proposal ferment. Take your time, o indecisive one.\n";
+                } else {
+                    std::cout << "Greg: Hmmm... that's not a yes, not a no. Is that a maybe-possibly-definitely-might? I’ll take it!\n";
+                }
+            }
+        }
+
+        // depending on sentiment, change response
+        if (sentiment == "hostile") {
+            std::cout << gregory->getName() << "recoils in gooey anger.\n";
+        } else if (sentiment == "friendly") {
+            std::cout << gregory->getName() << "bounces happily.\n";
         } else {
             std::cout << gregory->getName() << "... is confused.\n";
             std::cout << gregory->getDisplayName() << ": speak clearly fool, be as descriptive as you like,"

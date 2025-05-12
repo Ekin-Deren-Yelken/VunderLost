@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj"
   "CMakeFiles/VunderLost.dir/src/Characters/character.cpp.obj.d"
-  "CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj"
-  "CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj"
   "CMakeFiles/VunderLost.dir/src/Combat/Ability.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/src/Combat/AbilityLoader.cpp.obj"

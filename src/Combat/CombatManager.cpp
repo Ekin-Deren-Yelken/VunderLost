@@ -16,8 +16,14 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
                                    std::vector<Character*>& enemies) {
     // build turn order: players then enemies
     allCombatants.clear();
-    for (auto* p : players) allCombatants.push_back(p);
-    for (auto* e : enemies) allCombatants.push_back(e);
+    for (Character* p : players) {
+        p->setTeam(core::Team::Players);
+        allCombatants.push_back(p);
+    }
+    for (Character* e : enemies) {
+        e->setTeam(core::Team::Enemies);
+        allCombatants.push_back(e);
+    }
 
     // Load companions for all players and enemies
     std::vector<std::unique_ptr<Character>> loadedCompanions;
@@ -44,42 +50,78 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
     loadAndAttachCompanions(players);
     loadAndAttachCompanions(enemies);
 
+    std::cout << "\n=== DEBUG: Encounter Setup ===\n";
+
+    std::cout << "Players (" << players.size() << "):\n";
+    for (size_t i = 0; i < players.size(); ++i) {
+        Character* c = players[i];
+        std::cout << "  [" << i << "] " << c->getName()
+                << " | Controller: " << static_cast<int>(c->getController())
+                << " | Companion: " << (c->isCompanion() ? "Yes" : "No")
+                << " | HP: " << c->getCurrentHealth() << "/" << c->getMaxHealth() << "\n";
+    }
+
+    std::cout << "Enemies (" << enemies.size() << "):\n";
+    for (size_t i = 0; i < enemies.size(); ++i) {
+        Character* c = enemies[i];
+        std::cout << "  [" << i << "] " << c->getName()
+                << " | Controller: " << static_cast<int>(c->getController())
+                << " | Companion: " << (c->isCompanion() ? "Yes" : "No")
+                << " | HP: " << c->getCurrentHealth() << "/" << c->getMaxHealth() << "\n";
+    }
+
+    std::cout << "===============================\n\n";
 
     // Load abilities of all the combatants
     loadAbilities();
     activeIndex = 0;
 
     // loop until one side is wiped out, all players or enemies health is reduced to zero
+    int turnNumber = 1;
+
     while (true) {
-
-        // Run Next Turn
-        nextTurn();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-
-        // Check if players or enemies are all dead
-        bool anyPlayerAlive = std::any_of(players.begin(), players.end(), [](Character* c){ return c->isAlive(); });
-        bool anyEnemyAlive = std::any_of(enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
-
-        // If there are both enemies and players to battle, next turn
-        if (!anyPlayerAlive || !anyEnemyAlive) break;
-
-        std::cout << "\n-Next Combatant's Turn-\n";
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-    }
-
-    bool victory = std::any_of(enemies.begin(), enemies.end(), [](Character* c){ return c->isAlive(); });
-    std::cout << (victory? "Defeat...\n\n" : "Victory!\n\n") << std::endl;
-
-    if (!victory) {
-    // Save player and companions after battle
-        for (Character* c : players) {
-            if (saveGame(*c).empty()) {
-                std::cerr << "[WARNING] Failed to auto-save: " << c->getName() << "\n";
-            } else {
-                std::cout << "[INFO] Auto-saved: " << c->getName() << "\n";
+        std::cout << "\n==== Turn " << turnNumber++ << " ====\n";
+        std::cout << "\n==Next Team==\n";
+        // --- PLAYER PHASE ---
+        std::cout << "\n-- PLAYER PHASE --\n";
+        for (Character* p : players) {
+            if (p->isAlive()) {
+                playerTurn(*p);
+                std::cout << "\n-Next Combatant's Turn-\n";
+                std::this_thread::sleep_for(std::chrono::seconds(1));
             }
         }
+        std::cout << "\n==Next Team==\n";
+        // --- ENEMY PHASE ---
+        std::cout << "\n-- ENEMY PHASE --\n";
+        for (Character* e : enemies) {
+            if (e->isAlive()) {
+                enemyTurn(*e);
+                std::cout << "\n-Next Combatant's Turn-\n";
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+            }
+        }
+
+        // Check for combat end
+        bool anyPlayerAlive = std::any_of(players.begin(), players.end(), [](Character* c) { return c->isAlive(); });
+        bool anyEnemyAlive = std::any_of(enemies.begin(), enemies.end(), [](Character* c) { return c->isAlive(); });
+
+        if (!anyPlayerAlive || !anyEnemyAlive)
+            break;
+
+        endTurnCleanup();
     }
+
+    // Determine Victory
+    bool victory = std::any_of(enemies.begin(), enemies.end(), [](Character* c) { return c->isAlive(); });
+    std::cout << (victory ? "Defeat...\n\n" : "Victory!\n\n") << std::endl;
+
+    // Auto-save if players won
+    if (!victory && !players.empty()) {
+        saveGame(*players[0]);  // Save main player state
+    }
+
+    return victory;
 
     return victory;
 }
@@ -104,22 +146,8 @@ void combatManager::loadAbilities() {
     
 }
 
-void combatManager::nextTurn() {
-    Character* actor = allCombatants[activeIndex]; // Actor is the who has the turn and they are doing something
-    if (!actor->isAlive()) {
-        std::cout << actor->getName() << " has been defeated, skipping...";
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        // skip dead combatants, get next available player or enemy
-    } else if (actor->isPlayer() || actor->getController()==ControllerType::Summoned || actor->getController()==ControllerType::NPC) {
-        playerTurn(*actor);
-    } else {
-        enemyTurn(*actor);
-    }
-    endTurnCleanup();
-    activeIndex = (activeIndex + 1) % allCombatants.size();
-}
-
 void combatManager::playerTurn(Character& p) {
+    
     std::cout << "\n-- " << p.getName() << "'s turn --";
     p.printCombatStats();
     std::cout << "\n";
@@ -166,8 +194,14 @@ void combatManager::playerTurn(Character& p) {
     } else {
         // Build enemy target list
         std::vector<Character*> possibleTarget;
+        possibleTarget.clear();
+
         for (Character* c : allCombatants) {
-            if (c->getController() == ControllerType::AI && c->isAlive()) {
+            if (!c->isAlive() || c == &p)
+                continue;
+
+            // Team-based targeting: enemies only
+            if (c->getTeam() != p.getTeam()) {
                 possibleTarget.push_back(c);
             }
         }
@@ -283,7 +317,7 @@ void combatManager::resolveAbility(Character& user, Character& target, const cor
     int toHit = RPGUtils::rollDice(a.hitRoll.count, a.hitRoll.sides)
                 + a.hitRoll.bonus;
 
-    std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     std::cout << "Roll to hit:" << " you need " << a.hitThreshold << "\n\n Rolling Dice..."; // TLDR; DISPLAY ODDS HERE
     std::this_thread::sleep_for(std::chrono::seconds(1));
 

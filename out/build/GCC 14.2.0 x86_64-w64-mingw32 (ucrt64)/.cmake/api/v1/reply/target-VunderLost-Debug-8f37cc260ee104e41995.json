@@ -78,8 +78,7 @@
 				9,
 				10,
 				11,
-				12,
-				13
+				12
 			]
 		}
 	],
@@ -128,8 +127,7 @@
 				9,
 				10,
 				11,
-				12,
-				13
+				12
 			]
 		}
 	],
@@ -139,12 +137,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/Characters/character.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/Characters/npc_factory.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

@@ -7,6 +7,7 @@
 #include <map>
 #include <algorithm>
 #include <filesystem>
+#include <array>
 
 namespace {
     std::mt19937& getRng() {
@@ -50,46 +51,20 @@ namespace RPGUtils {
         return "";
     }
 
-    std::string runSentimentAnalysis(const std::string& sentence) {
-        std::string pythonPath = getConfigValue("PYTHON_PATH");
-
-        // Fallback: use PATH environment variable
-        if (pythonPath.empty()) {
-            pythonPath = findPythonInPath();
-
-            if (pythonPath.empty()) {
-                std::cerr << "[ERROR] Could not locate Python via config or PATH.\n";
-                return "error";
-            }
-        }
-
-        // Sanitize input
-        std::string cleanSentence = sentence;
-        std::replace(cleanSentence.begin(), cleanSentence.end(), '"', '\''); // Avoid breaking quotes
-
-        // Compose command
-        std::string cmd = "\"" + pythonPath + "\" sentiment_check.py \"" + cleanSentence + "\"";
-
-        FILE* pipe = _popen(cmd.c_str(), "r");
-        if (!pipe) {
-            std::cerr << "[ERROR] Failed to run sentiment analysis command.\n";
-            return "error";
-        }
-
-        char buffer[128];
+    std::string runSentimentAnalysis(const std::string& input) {
+        std::string command = "python sentiment_check.py \"" + input + "\"";
+        std::array<char, 128> buffer;
         std::string result;
-        while (fgets(buffer, sizeof(buffer), pipe)) {
-            result += buffer;
-        }
-        _pclose(pipe);
 
-        result.erase(result.find_last_not_of(" \n\r\t") + 1);
-
-        if (result.empty()) {
-            std::cerr << "[ERROR] Sentiment analysis returned no output.\n";
-            return "error";
+        std::shared_ptr<FILE> pipe(popen(command.c_str(), "r"), pclose);
+        if (!pipe) return "neutral";
+        
+        while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+            result += buffer.data();
         }
 
+        // Remove any trailing newline
+        result.erase(std::remove(result.begin(), result.end(), '\n'), result.end());
         return result;
     }
 }

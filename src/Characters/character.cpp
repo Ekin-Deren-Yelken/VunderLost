@@ -20,6 +20,7 @@ Character::Character()
     , level(1)
     , trainingPoints(0)
     , act(0)
+    , team(core::Team::Enemies)
     , controller(core::ControllerType::AI)
 {
     stats = {{"STR",0}, {"INT",0}, {"DEX",0}, {"GIRTH",0}, {"LUCK",0}, {"CHARM",0}};
@@ -33,10 +34,11 @@ Character::Character(const std::string&  name,
                      int                 armour,
                      int                 XP,
                      int                 level,
-                     int                 act)
+                     int                 act,
+                     core::Team          team = core::Team::Enemies)
     : name(name), race(race), profession(profession),
       sex(sex), gender(gender),
-      armour(armour), XP(XP), level(level), trainingPoints(0), act(act), controller(core::ControllerType::AI), favour(favour)
+      armour(armour), XP(XP), level(level), trainingPoints(0), act(act), controller(core::ControllerType::AI), favour(favour), team(team)
 {
     stats = {{"STR",0},{"INT",0},{"DEX",0},{"GIRTH",0},{"LUCK",0},{"CHARM",0}};
     applyStatModifiers(stats, race, sex, gender, profession);
@@ -200,11 +202,13 @@ std::string Character::getDisplayName() const {
 // ─── Serialization ────────────────────────────────────────────────────────────
 json Character::toJson() const {
     json j;
-    
+
     j["saveID"] = saveID;
     j["name"] = name;
     j["currentTitle"] = currentTitle;
     j["titles"] = titles;
+    j["team"] = (team == core::Team::Players) ? "Players" : "Enemies";
+
 
     j["profession"] = profession.value_or("");
     j["race"] = race.value_or("");
@@ -238,6 +242,14 @@ void Character::loadFromJson(const json& j) {
     name = j.at("name");
     currentTitle = j.at("currentTitle");
     titles = j.at("titles").get<std::vector<std::string>>();
+    if (j.contains("team") && j["team"].is_string()) {
+        std::string teamStr = j["team"];
+        if (teamStr == "Players") team = core::Team::Players;
+        else                      team = core::Team::Enemies;
+    } else {
+        team = core::Team::Enemies;  // Default fallback
+    }
+
 
     if (j.contains("profession")) {
         profession = j.at("profession").get<std::string>();
@@ -376,7 +388,7 @@ void Character::tickStatuses() {
         // Decrement duration
         --node.turnsLeft;
     }
-    printCombatStats();
+//    printCombatStats();
     // Remove expired statuses
     activeStatuses.erase(
         std::remove_if(
@@ -427,3 +439,7 @@ void Character::setCompanionList(const std::vector<std::string>& list) { compani
 // ─── Saving ──────────────────────────────────────────────────────────────────
 void Character::setSaveID(const std::string& id) { saveID = id; }
 std::string Character::getSaveID() const { return saveID; }
+
+// ─── Saving ──────────────────────────────────────────────────────────────────
+core::Team Character::getTeam() const { return team; }
+void Character::setTeam(core::Team t) { team = t; }

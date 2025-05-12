@@ -152,30 +152,6 @@ src/Characters/character.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/character.cpp.s
 .PHONY : src/Characters/character.cpp.s
 
-src/Characters/npc_factory.obj: src/Characters/npc_factory.cpp.obj
-.PHONY : src/Characters/npc_factory.obj
-
-# target to build an object file
-src/Characters/npc_factory.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.obj
-.PHONY : src/Characters/npc_factory.cpp.obj
-
-src/Characters/npc_factory.i: src/Characters/npc_factory.cpp.i
-.PHONY : src/Characters/npc_factory.i
-
-# target to preprocess a source file
-src/Characters/npc_factory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.i
-.PHONY : src/Characters/npc_factory.cpp.i
-
-src/Characters/npc_factory.s: src/Characters/npc_factory.cpp.s
-.PHONY : src/Characters/npc_factory.s
-
-# target to generate assembly for a file
-src/Characters/npc_factory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/Characters/npc_factory.cpp.s
-.PHONY : src/Characters/npc_factory.cpp.s
-
 src/Combat/Ability.obj: src/Combat/Ability.cpp.obj
 .PHONY : src/Combat/Ability.obj
 
@@ -476,9 +452,6 @@ help:
 	@echo ... src/Characters/character.obj
 	@echo ... src/Characters/character.i
 	@echo ... src/Characters/character.s
-	@echo ... src/Characters/npc_factory.obj
-	@echo ... src/Characters/npc_factory.i
-	@echo ... src/Characters/npc_factory.s
 	@echo ... src/Combat/Ability.obj
 	@echo ... src/Combat/Ability.i
 	@echo ... src/Combat/Ability.s

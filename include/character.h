@@ -18,6 +18,11 @@ namespace core {
         Summoned,     // “belongs” to another Character
         NPC           // can trade and possesses favour
     };
+
+    enum class Team {
+        Players,
+        Enemies
+    };
 }
 class Character {
 
@@ -44,6 +49,8 @@ protected:
     std::map<std::string, int>  stats; // create a map called stats where a string is linked to some int
 
     core::ControllerType controller = core::ControllerType::AI; // player, enemy, or summonded/minion turn
+
+    core::Team team = core::Team::Enemies;     // Determines which team the character is on for combat.
 
     bool companion = false;
     std::vector<std::string> companionList;
@@ -82,7 +89,8 @@ public:
               int armour, 
               int XP, 
               int level, 
-              int act);
+              int act,
+              core::Team team);
     
     // Controller API
     void setController(core::ControllerType c);
@@ -167,6 +175,9 @@ public:
     void setSaveID(const std::string& id);
     std::string getSaveID() const;
 
+    // Combat differentiation
+    core::Team getTeam() const;
+    void setTeam(core::Team t);
 };
 
 enum class Stat {
