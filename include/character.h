@@ -7,6 +7,7 @@
 #include "../JSON/json.hpp"
 #include "Effect.h"
 #include "Ability.h"
+#include "AIDifficulty.h"
 
 using json = nlohmann::json;
 
@@ -24,6 +25,11 @@ namespace core {
         Enemies
     };
 }
+
+namespace combat {
+    enum class AIDifficulty;
+}
+
 class Character {
 
 protected:

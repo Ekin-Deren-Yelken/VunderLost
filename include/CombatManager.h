@@ -4,14 +4,9 @@
 #include <unordered_map> 
 #include "Ability.h"
 #include "character.h"
+#include "AIDifficulty.h"
 
 namespace combat {
-
-enum class AIDifficulty {
-    Easy,
-    Medium,
-    Hard
-};
 
 class combatManager {
 public:
