@@ -40,7 +40,7 @@ private:
     void enemyTurn(Character& e);
 
     // AI smart Targetting
-    Character* chooseAITarget(const Character& actor);
+    Character* chooseAITarget(const Character& actor, AIDifficulty difficulty);
 
     void summondTurn(Character& e);
 

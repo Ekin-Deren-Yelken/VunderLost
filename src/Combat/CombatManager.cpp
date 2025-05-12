@@ -241,7 +241,7 @@ void combatManager::enemyTurn(Character& e) {
         // Targetting Rule:
         // Focus on Characters who are Summond first
         // If an opponent is below 25% health
-        Character* target = chooseAITarget(e);
+        Character* target = chooseAITarget(e, e.getDifficulty());
         if (!target) {
             std::cout << e.getName() << " finds no valid target.\n";
             return;
@@ -252,7 +252,7 @@ void combatManager::enemyTurn(Character& e) {
     
 }
 
-Character* combatManager::chooseAITarget(const Character& actor) {
+Character* combatManager::chooseAITarget(const Character& actor, AIDifficulty difficulty) {
     Character* lowestHP = nullptr;
     Character* firstSummoned = nullptr;
     int minHP = INT_MAX;
@@ -277,35 +277,39 @@ Character* combatManager::chooseAITarget(const Character& actor) {
         return nullptr;
     }
 
-    // Combat logic
-    for (Character* target : possibleTarget) {
-        if ((target->getController() == ControllerType::Human || 
-             target->getController() == ControllerType::Summoned || 
-             target->getController() == ControllerType::NPC) && target->isAlive()) {
-            // Track lowest HP
-            if (target->getCurrentHealth() < minHP) {
-                minHP = target->getCurrentHealth();
-                lowestHP = target;
-            }
+    // Easy: Random
+    if (difficulty == AIDifficulty::Easy) {
+        return possibleTarget[RPGUtils::rollDice(1, possibleTarget.size()) - 1];
+    }
 
-            if (!firstSummoned && 
-                (target->getController() == ControllerType::Summoned || 
-                 target->getController() == ControllerType::NPC)) {
-                firstSummoned = target;
-            }
+    // Medium: Pick lowest HP
+    if (difficulty == AIDifficulty::Medium) {
+        return *std::min_element(possibleTarget.begin(), possibleTarget.end(),
+            [](Character* a, Character* b) {
+                return a->getCurrentHealth() < b->getCurrentHealth();
+            });
+    }
+
+    // Hard: Prioritize high-threat targets (Human > Summoned > NPC), then lowest HP
+    Character* bestTarget = nullptr;
+    float bestScore = -1.0f;
+    for (Character* t : possibleTarget) {
+        float threatScore = 0.0f;
+
+        if (t->getController() == ControllerType::Human) threatScore += 3.0f;
+        else if (t->getController() == ControllerType::Summoned) threatScore += 2.0f;
+        else if (t->getController() == ControllerType::NPC) threatScore += 1.0f;
+
+        float hpRatio = static_cast<float>(t->getCurrentHealth()) / t->getMaxHealth();
+        threatScore += (1.0f - hpRatio); // lower HP → higher priority
+
+        if (threatScore > bestScore) {
+            bestScore = threatScore;
+            bestTarget = t;
         }
     }
 
-    if (!lowestHP) return nullptr;
-
-    float hpPercent = static_cast<float>(lowestHP->getCurrentHealth()) / lowestHP->getMaxHealth();
-
-    if (hpPercent < 0.25f && firstSummoned) {
-        int roll = RPGUtils::rollDice(1, 2);
-        return (roll == 1) ? lowestHP : firstSummoned;
-    }
-
-    return firstSummoned ? firstSummoned : lowestHP;
+    return bestTarget;
 }
 
 void combatManager::resolveAbility(Character& user, Character& target, const core::Ability& a) {

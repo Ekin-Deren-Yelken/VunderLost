@@ -3,6 +3,7 @@
 #include "../include/Status.h"
 #include "../include/AbilityLoader.h"
 #include "../include/character.h"
+#include "../include/CombatManager.h"
 
 #include <iostream>
 
@@ -109,6 +110,8 @@ int         Character::getMaxHealth() const { return maxHealth; }
 int         Character::getMaxMana() const { return maxMana; }
 int         Character::getCurrentHealth() const { return currentHealth; }
 int         Character::getCurrentMana() const { return currentMana; }
+
+combat::AIDifficulty Character::getDifficulty() const { return difficulty; }
 
 // ─── XP and Leveling ─────────────────────────────────────────────────────────
 void Character::spendTrainingPoint(const std::string& statName) {
@@ -221,6 +224,7 @@ json Character::toJson() const {
     j["level"] = level;
     j["XP"] = XP;
     j["trainingPoints"] = trainingPoints;
+    j["difficulty"] = static_cast<int>(difficulty);
 
     j["act"] = act;
 
@@ -268,6 +272,11 @@ void Character::loadFromJson(const json& j) {
     level = j.at("level");
     XP = j.at("XP");
     trainingPoints = j.at("trainingPoints");
+
+    if (j.contains("difficulty")) {
+        int c = j.at("difficulty").get<int>();
+        difficulty = static_cast<combat::AIDifficulty>(c);
+    }
     
     act = j.at("act");
     if (j.contains("favour") && j["favour"].is_number_integer()) {

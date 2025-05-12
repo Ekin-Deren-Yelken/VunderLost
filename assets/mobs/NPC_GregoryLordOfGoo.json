@@ -18,6 +18,7 @@
   "trainingPoints": 0,
 
   "act": 1,
+  "difficulty": 1,
   
   "maxHealth": 30,
   "currentHealth": 30,

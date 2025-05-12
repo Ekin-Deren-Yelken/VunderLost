@@ -50,6 +50,8 @@ protected:
 
     core::ControllerType controller = core::ControllerType::AI; // player, enemy, or summonded/minion turn
 
+    combat::AIDifficulty difficulty = combat::AIDifficulty::Medium; // AI combat difficulty
+
     core::Team team = core::Team::Enemies;     // Determines which team the character is on for combat.
 
     bool companion = false;
@@ -134,6 +136,8 @@ public:
     int getMaxMana() const;
     int getCurrentHealth() const;
     int getCurrentMana() const;
+
+    combat::AIDifficulty getDifficulty() const;
     
     // XP and Leveling
     void spendTrainingPoint(const std::string& statName);
