@@ -7,6 +7,12 @@
 
 namespace combat {
 
+enum class AIDifficulty {
+    Easy,
+    Medium,
+    Hard
+};
+
 class combatManager {
 public:
     /**
@@ -28,14 +34,13 @@ private:
 
     // Advances to the next turn in the encounter
     void nextTurn();
-
     // Handles a human player's turn
     void playerTurn(Character& p);
-
     // Handles an AI-controlled enemy's turn
     void enemyTurn(Character& e);
 
-    Character* chooseAITarget();
+    // AI smart Targetting
+    Character* chooseAITarget(const Character& actor);
 
     void summondTurn(Character& e);
 

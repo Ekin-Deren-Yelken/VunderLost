@@ -382,8 +382,7 @@ void Character::tickStatuses() {
             std::cout << name << " takes " << node.dotValue
                       << " " << core::damage_toString(node.damageType) << " damage from "
                       << core::status_toString(node.status)
-                      << " (" << node.turnsLeft << " turns left)\n";
-            std::cout << name << ": ";
+                      << " (" << node.turnsLeft << " turns left)\n\n";
         }
         // Decrement duration
         --node.turnsLeft;

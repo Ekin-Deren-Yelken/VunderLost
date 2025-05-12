@@ -50,28 +50,6 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
     loadAndAttachCompanions(players);
     loadAndAttachCompanions(enemies);
 
-    std::cout << "\n=== DEBUG: Encounter Setup ===\n";
-
-    std::cout << "Players (" << players.size() << "):\n";
-    for (size_t i = 0; i < players.size(); ++i) {
-        Character* c = players[i];
-        std::cout << "  [" << i << "] " << c->getName()
-                << " | Controller: " << static_cast<int>(c->getController())
-                << " | Companion: " << (c->isCompanion() ? "Yes" : "No")
-                << " | HP: " << c->getCurrentHealth() << "/" << c->getMaxHealth() << "\n";
-    }
-
-    std::cout << "Enemies (" << enemies.size() << "):\n";
-    for (size_t i = 0; i < enemies.size(); ++i) {
-        Character* c = enemies[i];
-        std::cout << "  [" << i << "] " << c->getName()
-                << " | Controller: " << static_cast<int>(c->getController())
-                << " | Companion: " << (c->isCompanion() ? "Yes" : "No")
-                << " | HP: " << c->getCurrentHealth() << "/" << c->getMaxHealth() << "\n";
-    }
-
-    std::cout << "===============================\n\n";
-
     // Load abilities of all the combatants
     loadAbilities();
     activeIndex = 0;
@@ -81,7 +59,6 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
 
     while (true) {
         std::cout << "\n==== Turn " << turnNumber++ << " ====\n";
-        std::cout << "\n==Next Team==\n";
         // --- PLAYER PHASE ---
         std::cout << "\n-- PLAYER PHASE --\n";
         for (Character* p : players) {
@@ -91,7 +68,7 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
                 std::this_thread::sleep_for(std::chrono::seconds(1));
             }
         }
-        std::cout << "\n==Next Team==\n";
+        
         // --- ENEMY PHASE ---
         std::cout << "\n-- ENEMY PHASE --\n";
         for (Character* e : enemies) {
@@ -264,7 +241,7 @@ void combatManager::enemyTurn(Character& e) {
         // Targetting Rule:
         // Focus on Characters who are Summond first
         // If an opponent is below 25% health
-        Character* target = chooseAITarget();
+        Character* target = chooseAITarget(e);
         if (!target) {
             std::cout << e.getName() << " finds no valid target.\n";
             return;
@@ -275,27 +252,51 @@ void combatManager::enemyTurn(Character& e) {
     
 }
 
-Character* combatManager::chooseAITarget() {
+Character* combatManager::chooseAITarget(const Character& actor) {
     Character* lowestHP = nullptr;
     Character* firstSummoned = nullptr;
     int minHP = INT_MAX;
 
+    // possible target vector
+    std::vector<Character*> possibleTarget;
+    possibleTarget.clear();
+
+    // Iterate through alive combatants
     for (Character* c : allCombatants) {
-        if ((c->getController() == ControllerType::Human || c->getController() == ControllerType::Summoned || c->getController()==ControllerType::NPC) && c->isAlive()) {
-            // Track lowest HP target
-            if (c->getCurrentHealth() < minHP) {
-                minHP = c->getCurrentHealth();
-                lowestHP = c;
+        if (!c->isAlive() || c == &actor)
+            continue;
+
+        // Only choose from opposite team
+        if (c->getTeam() != actor.getTeam()) {
+            possibleTarget.push_back(c);
+        }
+    }
+
+    if (possibleTarget.empty()) {
+        std::cout << "There are no valid targets.\n";
+        return nullptr;
+    }
+
+    // Combat logic
+    for (Character* target : possibleTarget) {
+        if ((target->getController() == ControllerType::Human || 
+             target->getController() == ControllerType::Summoned || 
+             target->getController() == ControllerType::NPC) && target->isAlive()) {
+            // Track lowest HP
+            if (target->getCurrentHealth() < minHP) {
+                minHP = target->getCurrentHealth();
+                lowestHP = target;
             }
 
-            // Track first summoned
-            if (!firstSummoned && (c->getController() == ControllerType::Summoned || c->getController()==ControllerType::NPC)) {
-                firstSummoned = c;
+            if (!firstSummoned && 
+                (target->getController() == ControllerType::Summoned || 
+                 target->getController() == ControllerType::NPC)) {
+                firstSummoned = target;
             }
         }
     }
 
-    if (!lowestHP) return nullptr; // no valid targets
+    if (!lowestHP) return nullptr;
 
     float hpPercent = static_cast<float>(lowestHP->getCurrentHealth()) / lowestHP->getMaxHealth();
 
