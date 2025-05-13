@@ -1,0 +1,39 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 0,
+    "companion": false,
+    "companion_list": [
+        "slime"
+    ],
+    "controller": 1,
+    "currentHealth": 154,
+    "currentMana": 37,
+    "currentTitle": "The Stupid",
+    "difficulty": 1,
+    "favour": 0,
+    "gender": "homosexual",
+    "level": 1,
+    "maxHealth": 190,
+    "maxMana": 54,
+    "name": "Ekin",
+    "profession": "Knight",
+    "race": "beast",
+    "saveID": "2025-05-13-13-01-48",
+    "sex": "male",
+    "stats": {
+        "ARMOR": 0,
+        "CHARM": 4,
+        "DEX": 7,
+        "GIRTH": 8,
+        "INT": 3,
+        "LUCK": 7,
+        "STR": 14
+    },
+    "team": "Players",
+    "titles": [
+        "The Stinky",
+        "The Stupid"
+    ],
+    "trainingPoints": 0
+}

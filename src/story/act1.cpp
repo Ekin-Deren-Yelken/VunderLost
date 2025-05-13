@@ -16,7 +16,7 @@
 using json = nlohmann::json;
 
 void runAct1(Character& player) {
-
+    bool gregComp = false;
     std::cout << "\n[ACT 1 begins for " << player.getDisplayName() << "]\n";
     waitForEnter();
 
@@ -109,6 +109,7 @@ void runAct1(Character& player) {
 
             std::cout <<  gregory->getDisplayName() << " has joined your team...\n";
             sentimentChecked = true;
+            gregComp = true;
         } else {
             if (sentiment == "neutral") {
                 std::transform(hechpersonChoice.begin(), hechpersonChoice.end(), hechpersonChoice.begin(), ::tolower); // make lowercase for easier comparison
@@ -124,19 +125,5 @@ void runAct1(Character& player) {
                 }
             }
         }
-
-        // depending on sentiment, change response
-        if (sentiment == "hostile") {
-            std::cout << gregory->getName() << "recoils in gooey anger.\n";
-        } else if (sentiment == "friendly") {
-            std::cout << gregory->getName() << "bounces happily.\n";
-        } else {
-            std::cout << gregory->getName() << "... is confused.\n";
-            std::cout << gregory->getDisplayName() << ": speak clearly fool, be as descriptive as you like,"
-                     << " a poet and artist of my calibre, far outside your liguistic capabilities, can "
-                     << "take any length of answer you decide is necessary\n";
-        }
-    }
-        std::cout << "\nHONK HONK";
-
+        runGregCompanion(player, gregComp);
 }

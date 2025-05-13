@@ -3,9 +3,13 @@ import torch
 import sys
 import time
 
+# Define model and revision explicitly to avoid delay
+model_name = "distilbert/distilbert-base-uncased-finetuned-sst-2-english"
+revision = "714eb0f"  # This is the revision mentioned in the warning
+
 # Safely fallback to CPU
 device = 0 if torch.cuda.is_available() else -1
-classifier = pipeline("sentiment-analysis", device=device)
+classifier = pipeline("sentiment-analysis", model=model_name, revision=revision, device=device)
 
 # Get input from argv
 text = " ".join(sys.argv[1:])
@@ -26,5 +30,5 @@ elif label == "NEGATIVE" and score >= 0.7:
 else:
     print("neutral")
 
-# Optional: print for debug
-# print(f"[DEBUG] Raw Label: {label} ({score:.2f}) | Time: {elapsed:.3f}s")
+# debug:
+# print(f"[DEBUG] Label: {label} | Score: {score:.2f} | Time: {elapsed:.2f}s")

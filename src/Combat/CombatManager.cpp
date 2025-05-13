@@ -201,7 +201,7 @@ void combatManager::playerTurn(Character& p) {
     bool goodAction = false;
 
     // Determine Abilities in Range
-    std::cout << "Available Abilities within Range:";
+    std::cout << "Available Abilities within Range:\n";
     const auto& abilities = characterAbilities[&p];
 
     // Print Abilities in range
@@ -277,8 +277,8 @@ void combatManager::enemyTurn(Character& e) {
 
     // Determine AI decision
     float hpRatio = static_cast<float>(e.getCurrentHealth()) / e.getMaxHealth();
-    int meditate50 = RPGUtils::rollDice(1, 8);
-    int retreat15 = RPGUtils::rollDice(1, 3);
+    int meditate50 = RPGUtils::rollDice(1, 2);
+    int retreat15 = RPGUtils::rollDice(1, 2);
     
     // Step 1: 1/8 chance to meditate if under 50% HP
     if (hpRatio < 0.5 && meditate50 == 1) {
@@ -288,7 +288,7 @@ void combatManager::enemyTurn(Character& e) {
     }
 
     // Step 1.5: 1/3 chance to retreat if under 15% HP
-    else if (hpRatio < 0.15 && retreat15 == 1) {
+    else if (hpRatio < 0.15 && retreat15 < 2) {
         std::cout << e.getName() << " hesitates and retreats to recover.\n";
 
         int dex = e.getStat("DEX");
@@ -394,7 +394,6 @@ void combatManager::enemyTurn(Character& e) {
     }
 }
 
-
 int combatManager::manhattanDistance(const Position& a, const Position& b) {
     return std::abs(a.x - b.x) + std::abs(a.y - b.y);
 }
@@ -459,8 +458,6 @@ Character* combatManager::chooseAITarget(const Character& actor, AIDifficulty di
     return bestTarget;
 }
 
-
-
 void combatManager::resolveAbility(Character& user, Character& target, const core::Ability& a) {
     std::cout << user.getName() << " uses " << a.name << " on " << target.getName() << std::endl;
     
@@ -513,8 +510,6 @@ void combatManager::endTurnCleanup() {
 
 }
 
-
-
 void combatManager::useAbility(Character& c, Character* aiTarget) {
     bool isAI = c.getController() != ControllerType::Human;
 
@@ -537,7 +532,7 @@ void combatManager::useAbility(Character& c, Character* aiTarget) {
                       << " (" << a.cost << " mana)"
                       << (a.abilityTarget == "self" ? " (self target)" : "") << "\n";
         }
-
+    std::cout << ">";
         size_t abilityChoice;
         std::cin >> abilityChoice;
         chosen = &usableAbilities[abilityChoice];
@@ -672,8 +667,6 @@ bool combatManager::isInRange(const Character& user, const Character& target, in
     return false;
 }
 
-
-
 std::unique_ptr<Character> combatManager::loadMonster(const std::string& relPath) {
     using json = nlohmann::json;
 
@@ -740,4 +733,3 @@ std::vector<std::unique_ptr<Character>> combatManager::loadCompanionParty(const 
 
     return companions;
 }
-
