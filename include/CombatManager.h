@@ -24,8 +24,22 @@ private:
     std::map<Character*, std::vector<core::Ability>> characterAbilities;       // list of available abilities by character
     size_t                       activeIndex = 0; // whose turn it is
 
+    // Grid Dimensions
+    static constexpr int GRID_WIDTH = 6;
+    static constexpr int GRID_HEIGHT = 6;
+
+    std::vector<std::vector<Character*>> combatGrid;
+
+    // Meditate Controls
+    static constexpr float MEDITATE_HEALTH = 0.05;
+    static constexpr float MEDITATE_MANA = 0.08;
+
     // Loads a prototype list of abilities (hard-coded or from JSON)
     void loadAbilities();
+
+    // Initialize combat grid
+    void initGrid(std::vector<Character*>& players, std::vector<Character*>& enemies);\
+    void printCombatGrid() const;
 
     // Advances to the next turn in the encounter
     void nextTurn();
@@ -34,10 +48,18 @@ private:
     // Handles an AI-controlled enemy's turn
     void enemyTurn(Character& e);
 
+    int manhattanDistance(const Position& a, const Position& b);
+
     // AI smart Targetting
     Character* chooseAITarget(const Character& actor, AIDifficulty difficulty);
 
     void summondTurn(Character& e);
+
+    // Turn choices
+    void useAbility(Character& c, Character* aiTarget = nullptr);
+    void moveCharacter(Character& c, int dx, int dy);
+    void meditate(Character& c);
+    bool isInRange(const Character& user, const Character& target, int range);
 
     /**
      * Applies an ability from user to target:

@@ -28,6 +28,12 @@ namespace core {
 
 namespace combat {
     enum class AIDifficulty;
+
+    struct Position {
+        int x;
+        int y;
+    };
+
 }
 
 class Character {
@@ -62,6 +68,9 @@ protected:
 
     bool companion = false;
     std::vector<std::string> companionList;
+
+    combat::Position pos;
+
 
     // Active status effects (damage-over-time or debuffs)
     // simple, numeric tweaks to combat
@@ -188,6 +197,10 @@ public:
     // Combat differentiation
     core::Team getTeam() const;
     void setTeam(core::Team t);
+
+    // Combat Position
+    void setPosition(int x, int y);
+    combat::Position getPosition() const;
 };
 
 enum class Stat {

@@ -3,6 +3,7 @@
 #include "../../include/AbilityLoader.h"
 #include "../../include/Effect.h"
 #include "../../include/save_system.h"
+#include "../../include/story.h"
 #include <iostream>
 #include <algorithm>
 #include <chrono>
@@ -12,8 +13,7 @@
 using namespace combat;
 using namespace core;
 
-bool combatManager::startEncounter(std::vector<Character*>& players,
-                                   std::vector<Character*>& enemies) {
+bool combatManager::startEncounter(std::vector<Character*>& players, std::vector<Character*>& enemies) {
     // build turn order: players then enemies
     allCombatants.clear();
     for (Character* p : players) {
@@ -24,6 +24,8 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
         e->setTeam(core::Team::Enemies);
         allCombatants.push_back(e);
     }
+
+    initGrid(players, enemies);
 
     // Load companions for all players and enemies
     std::vector<std::unique_ptr<Character>> loadedCompanions;
@@ -63,7 +65,11 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
         std::cout << "\n-- PLAYER PHASE --\n";
         for (Character* p : players) {
             if (p->isAlive()) {
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+                printCombatGrid();
+                std::this_thread::sleep_for(std::chrono::seconds(1));
                 playerTurn(*p);
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 std::cout << "\n-Next Combatant's Turn-\n";
                 std::this_thread::sleep_for(std::chrono::seconds(1));
             }
@@ -71,9 +77,13 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
         
         // --- ENEMY PHASE ---
         std::cout << "\n-- ENEMY PHASE --\n";
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         for (Character* e : enemies) {
             if (e->isAlive()) {
+                printCombatGrid();
+                std::this_thread::sleep_for(std::chrono::seconds(1));
                 enemyTurn(*e);
+                std::this_thread::sleep_for(std::chrono::seconds(2));
                 std::cout << "\n-Next Combatant's Turn-\n";
                 std::this_thread::sleep_for(std::chrono::seconds(1));
             }
@@ -99,8 +109,6 @@ bool combatManager::startEncounter(std::vector<Character*>& players,
     }
 
     return victory;
-
-    return victory;
 }
 
 void combatManager::loadAbilities() {
@@ -123,133 +131,272 @@ void combatManager::loadAbilities() {
     
 }
 
+void combatManager::initGrid(std::vector<Character*>& players, std::vector<Character*>& enemies) {
+    // Initialize empty grid
+    combatGrid = std::vector<std::vector<Character*>>(GRID_HEIGHT, std::vector<Character*>(GRID_WIDTH, nullptr));
+
+    // Place players on left, enemies on right
+    int px = 0, ex = GRID_WIDTH - 1;
+    int y = 1;
+
+    for (Character* p : players) {
+        p->setPosition(px, y);
+        combatGrid[y][px] = p;
+        y += 2;
+    }
+
+    y = 1;
+    for (Character* e : enemies) {
+        e->setPosition(ex, y);
+        combatGrid[y][ex] = e;
+        y += 2;
+    }
+
+}
+
+void combatManager::printCombatGrid() const {
+
+    if (combatGrid.empty() || combatGrid[0].empty()) {
+        std::cout << "(Grid not initialized)\n";
+        return;
+    }
+
+
+    std::cout << "\n=== Combat Grid ===\n    ";
+
+    // Print X-axis labels (A-H or however wide your grid is)
+    for (int x = 0; x < GRID_WIDTH; ++x)
+        std::cout << static_cast<char>('A' + x) << ' ';
+    std::cout << "\n";
+
+    for (int y = 0; y < GRID_HEIGHT; ++y) {
+        // Print Y-axis label (1-based)
+        std::cout << std::setw(2) << y + 1 << "  ";
+
+        for (int x = 0; x < GRID_WIDTH; ++x) {
+            const Character* c = combatGrid[y][x];
+            if (c) {
+                if (c->getTeam() == core::Team::Players)
+                    std::cout << 'P';
+                else
+                    std::cout << 'E';
+            } else {
+                std::cout << '.';
+            }
+            std::cout << ' ';
+        }
+
+        std::cout << "\n";
+    }
+
+    std::cout << "====================\n\n";
+}
+
 void combatManager::playerTurn(Character& p) {
     
     std::cout << "\n-- " << p.getName() << "'s turn --";
     p.printCombatStats();
     std::cout << "\n";
 
-    auto it = characterAbilities.find(&p);
-    if (it == characterAbilities.end() || it->second.empty()) {
-        std::cout << "No usable abilities.\n";
-        return;
-    }
-    const auto& myAbilities = it->second;
+    bool goodAction = false;
 
-    // Filter Abilities based on current Mana
-    std::vector<Ability> usableAbilities;
-    for (const auto& a : myAbilities) {
-        if (a.canUse(p.getCurrentMana())) {
-            usableAbilities.push_back(a);
-        }
-    }
+    // Determine Abilities in Range
+    std::cout << "Available Abilities within Range:";
+    const auto& abilities = characterAbilities[&p];
 
-    // Edge Case: No Mana
-    if (usableAbilities.empty()) {
-        std::cout << "You do not have enough mana to use any abilities.\n";
-        return;
-    }
+    // Print Abilities in range
+    for (size_t i = 0; i < abilities.size(); ++i) {
+        const auto& a = abilities[i];
+        bool inRange = false;
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-
-    // Show ability list
-    for (size_t i = 0; i < usableAbilities.size(); ++i) {
-        std::cout << "[" << i << "] " << usableAbilities[i].name
-                  << " (" << usableAbilities[i].cost << " mana)\n";
-    }
-
-    // Choose Ability
-    std::cout << "Choose an ability to use > ";
-    size_t abilityChoice;
-    std::cin >> abilityChoice;
-    const Ability& chosen = usableAbilities[abilityChoice];
-
-    // Ensure Spell hits correct target
-    if (chosen.abilityTarget == "self") {
-        // Resolve with self target
-        resolveAbility(p, p, chosen);
-    } else {
-        // Build enemy target list
-        std::vector<Character*> possibleTarget;
-        possibleTarget.clear();
-
-        for (Character* c : allCombatants) {
-            if (!c->isAlive() || c == &p)
-                continue;
-
-            // Team-based targeting: enemies only
-            if (c->getTeam() != p.getTeam()) {
-                possibleTarget.push_back(c);
+        // Self Targetting always in range
+        if (a.abilityTarget == "self") {
+            inRange = true;
+        } else {
+            // For every "enemy"
+            for (auto* enemy : allCombatants) {
+                // characters who are not on same team as player (p), who are alive, and who are in range of ability a
+                if (enemy->getTeam() != p.getTeam() && enemy->isAlive() &&
+                    isInRange(p, *enemy, a.range)) {
+                    inRange = true;
+                    break;
+                }
             }
         }
-        
-        // Valid Targets?
-        if (possibleTarget.empty()) {
-            std::cout << "There are no valid targets.\n";
-            return;
+        // Print ability if in range
+        if (inRange) {
+            std::cout << " > " << a.name << "\n";
         }
-        // Player Target Choice
-        std::cout << "\nAvailable targets: ";
-        for (size_t i = 0; i < possibleTarget.size(); ++i) {
-            std::cout << "[" << i << "] " << possibleTarget[i]->getName() << "    ";
-            possibleTarget[i]->printCombatStats();
-            std::cout;
-        }
-        // Get Choice
-        std::cout << "Choose a Target > ";
-        size_t targetChoice;
-        std::cin >> targetChoice;
-        Character* target = possibleTarget[targetChoice];
-
-        // Resolve
-        resolveAbility(p, *target, chosen);
     }
+    
+    while (!goodAction) {
+        // Chose action
+        int action;
+        std::cout << "\n\n===============\nChoose your action: \n[0] Move\n[1] Meditate\n[2] Use Ability\n\n" <<"> ";
+        std::cin >> action;
 
-}
+            
+        // Execute action
+        if (action == 0) { 
+            std::cout << "Choose Direction (N, NE, E, SE, S, SW, W, NW): ";
+            std::string dir;
+            std::cin >> dir;
+
+            int dx = 0, dy = 0;
+            if (dir == "N") dy = -1;
+            else if (dir == "S") dy = 1;
+            else if (dir == "E") dx = 1;
+            else if (dir == "W") dx = -1;
+            else if (dir == "NE") { dx = 1; dy = -1; }
+            else if (dir == "NW") { dx = -1; dy = -1; }
+            else if (dir == "SE") { dx = 1; dy = 1; }
+            else if (dir == "SW") { dx = -1; dy = 1; }
+
+            moveCharacter(p, dx, dy);
+            goodAction = true;
+        } else if (action == 1) {
+            meditate(p);
+            goodAction = true;
+        } else if (action == 2) {
+            useAbility(p);
+            goodAction = true;
+        } else {
+            std::cout << "Invalid Input\n\n";
+        }
+    } // while loops
+
+} // playerTurn()
 
 void combatManager::enemyTurn(Character& e) {
-    // Simple AI: use first ability on first alive player or summoned ally
+
+    Character* target = chooseAITarget(e, e.getDifficulty());
+    if (!target) {
+        std::cout << e.getName() << " finds no valid target.\n";
+        return;
+    }
+
+    // Determine AI decision
+    float hpRatio = static_cast<float>(e.getCurrentHealth()) / e.getMaxHealth();
+    int meditate50 = RPGUtils::rollDice(1, 8);
+    int retreat15 = RPGUtils::rollDice(1, 3);
     
-    // Find abilities corresponding to the enemy. Each entry in character Abilities is specific to that character.
-    // This could be inefficient but I am only planning ot have maximum 8 characters with 5 abilities each. I think the size makesit reasonable.
-    auto it = characterAbilities.find(&e);
-    if (it == characterAbilities.end() || it->second.empty()) {
-        std::cout << e.getName() << " has no abilities.\n";
-        return;
-    }
-    const auto& enemyAbilities = it->second;
-
-    // Filter for usable abilities
-    std::vector<Ability> usable;
-    for (const auto& a : enemyAbilities) {
-        if (a.canUse(e.getCurrentMana())) usable.push_back(a);  // Mana available
-    }
-
-    if (usable.empty()) {
-        std::cout << e.getName() << " has no mana to use any abilities.\n";
+    // Step 1: 1/8 chance to meditate if under 50% HP
+    if (hpRatio < 0.5 && meditate50 == 1) {
+        std::cout << e.getName() << " chooses to meditate.\n";
+        meditate(e);
         return;
     }
 
-    // Chose random abilitiy
-    int idx = RPGUtils::rollDice(1, usable.size()) - 1;
-    const auto& chosen = usable[idx];
+    // Step 1.5: 1/3 chance to retreat if under 15% HP
+    else if (hpRatio < 0.15 && retreat15 == 1) {
+        std::cout << e.getName() << " hesitates and retreats to recover.\n";
 
-    // Ensure correct target
-    if (chosen.abilityTarget == "self") {
-        resolveAbility(e, e, chosen);
-    } else {
-        // Targetting Rule:
-        // Focus on Characters who are Summond first
-        // If an opponent is below 25% health
-        Character* target = chooseAITarget(e, e.getDifficulty());
-        if (!target) {
-            std::cout << e.getName() << " finds no valid target.\n";
-            return;
+        int dex = e.getStat("DEX");
+        int retreatSquares = 1;
+        if (dex >= 15) retreatSquares = 3;
+        else if (dex >= 10) retreatSquares = 2;
+
+        Position myPos = e.getPosition();
+        Position tPos = target->getPosition();
+        int dx = (myPos.x > tPos.x) ? 1 : (myPos.x < tPos.x) ? -1 : 0;
+        int dy = (myPos.y > tPos.y) ? 1 : (myPos.y < tPos.y) ? -1 : 0;
+
+        bool retreated = false;
+        for (int i = 1; i <= retreatSquares; ++i) {
+            int newX = myPos.x + (dx * i);
+            int newY = myPos.y + (dy * i);
+
+
+
+
+            if (newX >= 0 && newX < GRID_WIDTH && newY >= 0 && newY < GRID_HEIGHT && combatGrid[newY][newX] == nullptr) {
+                combatGrid[myPos.y][myPos.x] = nullptr;
+                combatGrid[newY][newX] = &e;
+                e.setPosition(newX, newY);
+                std::cout << e.getName() << " retreats to (" << newX << ", " << newY << ")\n";
+                retreated = true;
+                break;
+            }
         }
-        
-        resolveAbility(e, *target, chosen);
+
+        if (!retreated) {
+            std::cout << e.getName() << " tries to retreat but finds no space!\n";
+        }
+        return;
     }
-    
+
+    // Step 2: Check how many abilities in rangeCheck if a target is in range
+    const auto& abilities = characterAbilities[&e];
+    bool targetInRange = false;
+    int abilitiesWithinRange = 0;
+    for (const auto& a : abilities) {
+        if (e.getCurrentMana() < a.cost) continue;
+        if (a.abilityTarget != "self" && isInRange(e, *target, a.range)) {
+            targetInRange = true;
+            abilitiesWithinRange++;
+            break;
+        }
+    }
+
+    // Step 2: chance to move toward target if out of range
+    bool moved = false; 
+    if (abilitiesWithinRange < 2) {
+        // 1:6 chance to use a self targetting ability
+        if(RPGUtils::rollDie(5) == 1) {
+            // do not move
+        } else {
+            Position myPos = e.getPosition();
+            Position tPos = target->getPosition();
+
+            int dx = (tPos.x > myPos.x) ? 1 : (tPos.x < myPos.x) ? -1 : 0;
+            int dy = (tPos.y > myPos.y) ? 1 : (tPos.y < myPos.y) ? -1 : 0;
+
+            std::vector<std::pair<int, int>> directions = {
+                {dx, dy}, {dx, 0}, {0, dy}, {0, 0}
+            };
+
+            for (auto [mx, my] : directions) {
+                int newX = myPos.x + mx;
+                int newY = myPos.y + my;
+
+                if (newX >= 0 && newX < GRID_WIDTH &&
+                    newY >= 0 && newY < GRID_HEIGHT &&
+                    combatGrid[newY][newX] == nullptr) {
+                    combatGrid[myPos.y][myPos.x] = nullptr;
+                    combatGrid[newY][newX] = &e;
+                    e.setPosition(newX, newY);
+                    std::cout << e.getName() << " moves to (" << newX << ", " << newY << ")\n";
+                    moved = true;
+                    break;
+                }
+            }
+        }
+    }
+
+    // Step 3: Try attacking if didn’t move or already in range
+    if (!moved) {
+
+        const Ability* chosen = nullptr;
+        // Choose an ability in range
+        for (const auto& a : abilities) {
+            if (e.getCurrentMana() >= a.cost &&
+                (a.abilityTarget == "self" || isInRange(e, *target, a.range))) {
+                chosen = &a;
+                break;
+            }
+        }
+
+        if (chosen) {
+            useAbility(e, target);
+        } else {
+            std::cout << e.getName() << " ends turn (no usable ability in range).\n";
+        }
+    }
+}
+
+
+int combatManager::manhattanDistance(const Position& a, const Position& b) {
+    return std::abs(a.x - b.x) + std::abs(a.y - b.y);
 }
 
 Character* combatManager::chooseAITarget(const Character& actor, AIDifficulty difficulty) {
@@ -312,6 +459,8 @@ Character* combatManager::chooseAITarget(const Character& actor, AIDifficulty di
     return bestTarget;
 }
 
+
+
 void combatManager::resolveAbility(Character& user, Character& target, const core::Ability& a) {
     std::cout << user.getName() << " uses " << a.name << " on " << target.getName() << std::endl;
     
@@ -363,6 +512,167 @@ void combatManager::endTurnCleanup() {
     for (auto* c : allCombatants)         c->tickStatuses();
 
 }
+
+
+
+void combatManager::useAbility(Character& c, Character* aiTarget) {
+    bool isAI = c.getController() != ControllerType::Human;
+
+    const auto& usableAbilities = characterAbilities[&c];
+    if (usableAbilities.empty()) {
+        std::cout << c.getName() << " has no abilities to use.\n";
+        return;
+    }
+
+    const Ability* chosen = nullptr;
+
+    if (isAI) {
+        int idx = RPGUtils::rollDice(1, usableAbilities.size()) - 1;
+        chosen = &usableAbilities[idx];
+    } else {
+        std::cout << "\nAvailable Abilities:\n";
+        for (size_t i = 0; i < usableAbilities.size(); ++i) {
+            const auto& a = usableAbilities[i];
+            std::cout << "[" << i << "] " << a.name
+                      << " (" << a.cost << " mana)"
+                      << (a.abilityTarget == "self" ? " (self target)" : "") << "\n";
+        }
+
+        size_t abilityChoice;
+        std::cin >> abilityChoice;
+        chosen = &usableAbilities[abilityChoice];
+    }
+
+    if (c.getCurrentMana() < chosen->cost) {
+        std::cout << c.getName() << " does not have enough mana for " << chosen->name << ".\n";
+        return;
+    }
+
+    // Self-targeting
+    if (chosen->abilityTarget == "self") {
+        resolveAbility(c, c, *chosen);
+        return;
+    }
+
+    // Build valid targets
+    std::vector<Character*> possibleTarget;
+    for (Character* target : allCombatants) {
+        if (!target->isAlive()) continue;
+        if (target == &c) continue;
+        if (target->getTeam() == c.getTeam()) continue;
+        possibleTarget.push_back(target);
+    }
+
+    if (possibleTarget.empty()) {
+        std::cout << "No valid targets available.\n";
+        return;
+    }
+
+    Character* target = nullptr;
+    if (isAI) {
+        target = aiTarget;
+    } else {
+        std::cout << "Available targets:\n";
+        for (size_t i = 0; i < possibleTarget.size(); ++i) {
+            std::cout << "[" << i << "] " << possibleTarget[i]->getName()
+                      << " - HP: " << possibleTarget[i]->getCurrentHealth() << "/"
+                      << possibleTarget[i]->getMaxHealth() << "\n";
+        }
+
+        std::cout << "Choose a Target > ";
+        size_t targetChoice;
+        std::cin >> targetChoice;
+        target = possibleTarget[targetChoice];
+    }
+
+    // Range check
+    if (!isInRange(c, *target, chosen->range)) {
+        std::cout << chosen->name << " is out of range! The ability fails.\n";
+        c.setHealthMana("M", -chosen->cost);
+        return;
+    }
+
+    resolveAbility(c, *target, *chosen);
+}
+
+void combatManager::moveCharacter(Character& c, int dx, int dy) {
+    Position pos = c.getPosition();
+    int newX = pos.x + dx;
+    int newY = pos.y + dy;
+
+    // Bounds and collision check
+    if (newX < 0 || newX >= GRID_WIDTH || newY < 0 || newY >= GRID_HEIGHT) {
+        std::cout << "Cannot move outside grid!\n";
+        return;
+    }
+    if (combatGrid[newY][newX] != nullptr) {
+        std::cout << "Tile is occupied!\n";
+        return;
+    }
+
+    // Move
+    combatGrid[pos.y][pos.x] = nullptr;
+    combatGrid[newY][newX] = &c;
+    c.setPosition(newX, newY);
+    std::cout << c.getName() << " moved to (" << newX << ", " << newY << ")\n";
+}
+
+void combatManager::meditate(Character& c) {   
+    int gainHealth = std::ceil(c.getMaxHealth() * MEDITATE_HEALTH);
+    int gainMana   = std::ceil(c.getMaxMana()   * MEDITATE_MANA);
+
+    // Clamp to not exceed max
+    int newHealth = std::min(c.getCurrentHealth() + gainHealth, c.getMaxHealth());
+    int newMana   = std::min(c.getCurrentMana()   + gainMana,   c.getMaxMana());
+
+    // Compute actual gains (in case clamped)
+    int actualGainHealth = newHealth - c.getCurrentHealth();
+    int actualGainMana   = newMana   - c.getCurrentMana();
+
+    std::cout << c.getDisplayName() << " meditates ";
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    std::cout << "...\n";
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::cout << "+" << actualGainHealth << " HP\n";
+    std::cout << "+" << actualGainMana   << " MP\n\n";
+
+    // Set new clamped values
+    c.setCurrentHealth(newHealth);
+    c.setCurrentMana(newMana);
+
+    c.printCombatStats();
+}
+
+bool combatManager::isInRange(const Character& user, const Character& target, int range) {
+    // Get position of user and target
+    Position userPosition = user.getPosition();
+    Position targetPosition = target.getPosition();
+    
+    // See if user and target are on the same x or y line.
+    // For example if user on (x,y)=(1,0) and target on on (x,y)=(1,3), they are on the same row...
+    int dx = std::abs(userPosition.x - targetPosition.x);
+    int dy = std::abs(userPosition.y - targetPosition.y);
+
+    // std::cout << "[DEBUG] User: (" << userPosition.x << ", " << userPosition.y << ")\n";
+    // std::cout << "[DEBUG] Target: (" << targetPosition.x << ", " << targetPosition.y << ")\n";
+    // std::cout << "[DEBUG] dx = " << dx << ", dy = " << dy << "\n";
+
+    if (dx == 0 || dy == 0) {
+        // Cardinal direction (straight)
+        return std::max(dx, dy) <= range;
+    } else if (dx == dy) {
+        // Perfect diagonal
+        if (range < 3) {
+            return dx <= (range);
+        } else {
+            return dx <= (range - 1);
+        }
+    }
+    // Not a straight or diagonal line — disallow
+    return false;
+}
+
+
 
 std::unique_ptr<Character> combatManager::loadMonster(const std::string& relPath) {
     using json = nlohmann::json;

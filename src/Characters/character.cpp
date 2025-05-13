@@ -448,6 +448,10 @@ void Character::setCompanionList(const std::vector<std::string>& list) { compani
 void Character::setSaveID(const std::string& id) { saveID = id; }
 std::string Character::getSaveID() const { return saveID; }
 
-// ─── Saving ──────────────────────────────────────────────────────────────────
+// ─── Team Differentiation ────────────────────────────────────────────────────
 core::Team Character::getTeam() const { return team; }
 void Character::setTeam(core::Team t) { team = t; }
+
+// ─── Character Position ────────────────────────────────────────────────────
+void Character::setPosition(int x, int y) { pos = {x, y}; }
+combat::Position Character::getPosition() const { return pos; }

@@ -1,0 +1,62 @@
+{
+  "project": "Trigamore Tactical RPG",
+  "combat": {
+    "grid": {
+      "type": "2D Grid",
+      "size": "dynamic (e.g., 6x6)",
+      "movement": "8 directions (N, S, E, W, NE, NW, SE, SW)",
+      "positions": "Each character has a Position {x, y}"
+    },
+    "rangeRules": {
+      "cardinal": "max(dx, dy) <= range",
+      "diagonal": "dx == dy && dx <= (range - 1)",
+      "off-axis": "out of range"
+    },
+    "turnOrder": "Players go first (human + allied AI), then enemies (AI only)"
+  },
+  "abilities": {
+    "source": "Loaded from JSON",
+    "fields": ["name", "cost", "range", "abilityTarget", "damageType"],
+    "targeting": {
+      "self": "automatic",
+      "enemy": "uses isInRange()"
+    }
+  },
+  "AI": {
+    "controllerType": ["Human", "AI"],
+    "difficulty": ["Easy", "Medium", "Hard (future extension)"],
+    "decisionLogic": {
+      "meditate": "if HP < 50%, 1 in 8 chance",
+      "retreat": "if HP < 15%, 1 in 3 chance; distance depends on DEX",
+      "move": "if target not in range, 1 in 6 chance to move toward",
+      "attack": "choose first usable ability in range on target"
+    }
+  },
+  "retreatLogic": {
+    "trigger": "HP < 15% and 1 in 3 dice roll",
+    "distance": "based on DEX (1-3 tiles away from closest threat)",
+    "direction": "moves directly opposite from target if tile is empty"
+  },
+  "playerTurn": {
+    "prompt": ["Move", "Meditate", "Use Ability"],
+    "display": "Prints ability list with ranges and availability",
+    "input": "User selects option; useAbility() confirms isInRange() before casting"
+  },
+  "combatManager": {
+    "functions": [
+      "startEncounter(players, enemies)",
+      "enemyTurn(Character&)",
+      "playerTurn(Character&)",
+      "useAbility(Character&)",
+      "isInRange(user, target, range)",
+      "moveCharacter(Character&, dx, dy)",
+      "meditate(Character&)"
+    ]
+  },
+  "status": {
+    "range system": "implemented and debugged",
+    "AI phases": "working with probabilistic meditate/retreat/move/attack",
+    "grid logic": "characters are correctly updated on move/retreat",
+    "player UI": "choice system and ability display functional"
+  }
+}
