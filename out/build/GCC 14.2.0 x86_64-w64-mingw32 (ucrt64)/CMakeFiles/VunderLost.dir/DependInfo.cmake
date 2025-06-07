@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/14168/Documents/Video Game/src/Utilities/stat_utils.cpp" "CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Utilities/stat_utils.cpp.obj.d"
   "C:/Users/14168/Documents/Video Game/src/Utilities/trade.cpp" "CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj.d"
   "C:/Users/14168/Documents/Video Game/src/enemies.cpp" "CMakeFiles/VunderLost.dir/src/enemies.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/enemies.cpp.obj.d"
+  "C:/Users/14168/Documents/Video Game/src/gui/gui.cpp" "CMakeFiles/VunderLost.dir/src/gui/gui.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/gui/gui.cpp.obj.d"
   "C:/Users/14168/Documents/Video Game/src/story/act1.cpp" "CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj.d"
   "C:/Users/14168/Documents/Video Game/src/story/story.cpp" "CMakeFiles/VunderLost.dir/src/story/story.cpp.obj" "gcc" "CMakeFiles/VunderLost.dir/src/story/story.cpp.obj.d"
   )

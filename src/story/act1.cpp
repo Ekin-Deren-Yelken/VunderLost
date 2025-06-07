@@ -125,5 +125,6 @@ void runAct1(Character& player) {
                 }
             }
         }
-        runGregCompanion(player, gregComp);
+        //runGregCompanion(player, gregComp);
+}
 }

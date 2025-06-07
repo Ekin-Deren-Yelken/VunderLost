@@ -392,6 +392,30 @@ src/enemies.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/enemies.cpp.s
 .PHONY : src/enemies.cpp.s
 
+src/gui/gui.obj: src/gui/gui.cpp.obj
+.PHONY : src/gui/gui.obj
+
+# target to build an object file
+src/gui/gui.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/gui/gui.cpp.obj
+.PHONY : src/gui/gui.cpp.obj
+
+src/gui/gui.i: src/gui/gui.cpp.i
+.PHONY : src/gui/gui.i
+
+# target to preprocess a source file
+src/gui/gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/gui/gui.cpp.i
+.PHONY : src/gui/gui.cpp.i
+
+src/gui/gui.s: src/gui/gui.cpp.s
+.PHONY : src/gui/gui.s
+
+# target to generate assembly for a file
+src/gui/gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\VunderLost.dir\build.make CMakeFiles/VunderLost.dir/src/gui/gui.cpp.s
+.PHONY : src/gui/gui.cpp.s
+
 src/story/act1.obj: src/story/act1.cpp.obj
 .PHONY : src/story/act1.obj
 
@@ -482,6 +506,9 @@ help:
 	@echo ... src/enemies.obj
 	@echo ... src/enemies.i
 	@echo ... src/enemies.s
+	@echo ... src/gui/gui.obj
+	@echo ... src/gui/gui.i
+	@echo ... src/gui/gui.s
 	@echo ... src/story/act1.obj
 	@echo ... src/story/act1.i
 	@echo ... src/story/act1.s

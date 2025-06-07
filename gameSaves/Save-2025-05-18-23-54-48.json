@@ -1,0 +1,36 @@
+{
+    "XP": 0,
+    "act": 1,
+    "armor": 0,
+    "companion": false,
+    "companion_list": [],
+    "controller": 1,
+    "currentHealth": 193,
+    "currentMana": 32,
+    "currentTitle": "The Stupid",
+    "difficulty": 1,
+    "favour": 228,
+    "gender": "straight",
+    "level": 1,
+    "maxHealth": 200,
+    "maxMana": 46,
+    "name": "Juul",
+    "profession": "Knight",
+    "race": "beast",
+    "saveID": "2025-05-18-23-54-48",
+    "sex": "male",
+    "stats": {
+        "ARMOR": 0,
+        "CHARM": 1,
+        "DEX": 7,
+        "GIRTH": 8,
+        "INT": 2,
+        "LUCK": 9,
+        "STR": 15
+    },
+    "team": "Players",
+    "titles": [
+        "The Stupid"
+    ],
+    "trainingPoints": 0
+}

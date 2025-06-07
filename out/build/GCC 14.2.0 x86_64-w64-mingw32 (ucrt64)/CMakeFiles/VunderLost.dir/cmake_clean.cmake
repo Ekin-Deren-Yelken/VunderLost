@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/VunderLost.dir/src/Utilities/trade.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/src/enemies.cpp.obj"
   "CMakeFiles/VunderLost.dir/src/enemies.cpp.obj.d"
+  "CMakeFiles/VunderLost.dir/src/gui/gui.cpp.obj"
+  "CMakeFiles/VunderLost.dir/src/gui/gui.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj"
   "CMakeFiles/VunderLost.dir/src/story/act1.cpp.obj.d"
   "CMakeFiles/VunderLost.dir/src/story/story.cpp.obj"
